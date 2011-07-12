@@ -22,7 +22,7 @@ Central to the method is a $DAG$ data structure that is used to store decomposed
 Messmer called this data structure a network so here we will refer to their method as the \textit{Network Method}. 
 A simplified schematic of the Network Method is shown in fig.\ref{fig:fig2}. 
 This method finds all induced subgraph isomorphisms from graphs in the graph database to a query graph.
-The \textit{Network Method} can be divided into two parts.
+We divide the \textit{Network Method} into two parts.
 
 In the first part a directed acyclic graph $DAG$ is constructed by recursively decomposing model graphs and storing the decomposed graphs at the nodes of the $DAG$.
 In the $DAG$, the creation of the decomposed graph is directed by the original graph and on decomposition the directed graph is a \textit{child} graph and the directing graph is the \text{parent} graph. 

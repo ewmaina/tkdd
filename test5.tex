@@ -1,0 +1,123 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{plotmarks}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.3}
+\usetikzlibrary{calc}
+\usepgfplotslibrary{groupplots}
+\usetikzlibrary{pgfplots.units}
+%\usepgfplotslibrary{groupplots}
+
+\begin{document}
+   \pgfplotstableread[col sep=&,row sep=\\]{
+      Q &  NNA  &  VF2 \\
+      10 & 400391 & 30917760 \\
+      20 & 1919648 & 102039169 \\
+      30 & 9883433 & 234524256 \\
+      40 & 12475437 & 465056798 \\
+      50 & 24249592  & 614153242 \\
+      60 & 39273662 & 1083145839 \\
+    }\inducedrealdata
+
+    \pgfplotstableread[col sep=&,row sep=\\]{
+      Q &  Messmer & VF2 \\
+      10 & 509499 & 34655051 \\
+      20 & 2319550 & 109153271 \\
+      30 & 10238520 & 244282083 \\
+      40 & 14226889 & 455319328 \\
+      50 & 23967028 & 626567799 \\
+      60 & 39208161 & 1095361792 \\
+    }\inducedmessmerrealdata
+ 
+   \pgfplotstableread[col sep=&,row sep=\\]{
+      Query & NNA & VF2 \\
+      10 & 335998 & 18964666 \\
+      20 & 1517706 & 75140850 \\
+      30 & 6232611 & 153872224 \\
+      40 & 9378092 & 315600441 \\
+      50 & 17296627 & 416698578 \\
+      60 & 26084195 & 891339716 \\
+    }\ninducedrealdata
+
+
+\begin{center}
+ \begin{tabular}{rl}
+    \begin{tikzpicture}[baseline,trim axis left]
+      \begin{axis}
+        \addplot table[x=Q,y=NNA] \inducedrealdata;
+        \addplot table[x=Q,y=VF2]  \inducedrealdata;
+        \addplot table[x=Q,y=Messmer]  \inducedmessmerrealdata ;
+      \end{axis}
+    \end{tikzpicture}
+    &
+    \begin{tikzpicture}[baseline,trim axis right]
+      \begin{axis}[
+          yticklabel pos=right,
+          ylabel style={font=\Huge}]
+        \addplot table[x=Query,y=NNA] \ninducedrealdata;
+        \addplot table[x=Query,y=VF2]  \ninducedrealdata;  
+      \end{axis}
+    \end{tikzpicture}
+    \\
+    %
+    \begin{tikzpicture}[baseline,trim axis left]
+      \begin{semilogxaxis}[xlabel=$x$,xlabel style={font=\Huge}]
+        \addplot table[x=Q,y=NNA]  \inducedrealdata;
+        \addplot table[x=Q,y=VF2]  \inducedrealdata;
+        \addplot table[x=Q,y=Messmer] \inducedmessmerrealdata;
+      \end{semilogxaxis}
+    \end{tikzpicture}%
+    &
+    \begin{tikzpicture}[baseline,trim axis right]
+      \begin{axis}[yticklabel pos=right]
+        \addplot table[x=Query,y=NNA] \ninducedrealdata;
+        \addplot table[x=Query,y=VF2]  \ninducedrealdata;
+      \end{axis}
+    \end{tikzpicture}%
+    \\
+ \end{tabular}%
+\end{center}
+
+\begin{tikzpicture}
+  \pgfplotsset{small}
+  \matrix {
+    \begin{axis}[
+          scaled y ticks=manual:{$1$}{%
+          \pgfmathfloatcreate{1}{1.0}{6}%
+          \pgfmathdivide{#1}{\pgfmathresult}%
+          },
+        yticklabel style={
+          /pgf/number format/fixed,
+          /pgf/number format/precision=1},
+        xticklabel pos=upper,
+        xticklabels={,,},      
+]
+       \addplot table[x=Q,y=NNA] \inducedrealdata;
+        \addplot table[x=Q,y=VF2]  \inducedrealdata;
+        \addplot table[x=Q,y=Messmer]  \inducedmessmerrealdata ;
+     \end{axis}
+    &
+      \begin{semilogyaxis}[xlabel=$x$,xlabel style={font=\Huge},yticklabel pos=right,xticklabel pos=upper, xticklabels={,,}]
+        \addplot table[x=Q,y=NNA]  \inducedrealdata;
+        \addplot table[x=Q,y=VF2]  \inducedrealdata;
+        \addplot table[x=Q,y=Messmer] \inducedmessmerrealdata;
+      \end{semilogyaxis}
+      \\
+    % differently large labels are aligned automatically:
+     \begin{axis}[
+          yticklabel pos=left,
+          ylabel style={font=\Huge}]
+        \addplot table[x=Query,y=NNA] \ninducedrealdata;
+        \addplot table[x=Query,y=VF2]  \ninducedrealdata;  
+      \end{axis}
+    &
+    %
+
+      \begin{semilogyaxis}[yticklabel pos=right]
+          \addplot table[x=Query,y=NNA] \ninducedrealdata;
+          \addplot table[x=Query,y=VF2]  \ninducedrealdata;
+      \end{semilogyaxis}
+\\
+  };
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,175 @@
+We describe the main elements of the \textit{Network Algorithm}  and the changes and additions that we have made to construct the improved new 
+\textit{Network Algorithm}
+\subsection{The \textit{Network Algorithm}}
+
+%\begin{figure}
+%\centering
+%\epsfig{file=dynamic_acyclic_graph.eps, height=2in, width=3.5in}
+%\caption{Messmer et al.'s method}
+%\label{fig:fig100}
+%\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{dag_construction_query_processing6.pdf}
+\caption{Schematic of the Network Algorithm: (I) Model Graphs $g_1$ and $g_2$, (II) The Graph Database:A DAG is Constructed using  the model graphs $g_1$ and $g_2$ and their decomposed subgraphs. $DAG$ $node$ $8$ contains a subgraph common to model graphs $g_1$ and $g_2$  (III) Query Processing: Query Graph $g_3$ processed on the Graph Database and the matching query graph node IDs shown in braces}
+\label{fig:fig2}
+\end{figure}
+
+
+Messmer et al.\cite{messmer_bunke2000} proposed a so-called \textit{Network Algorithm} to search graphs which are induced subgraphs of a 
+query graph from a graph database. A simplified schematic of the algorithm is shown in fig.\ref{fig:fig2}. In addition to existence of an induced subgraph isomorphism, this method also finds all induced subgraph isomorphisms from graphs in the graph database to a query graph.
+The \textit{Network Algorithm} consists of two parts.
+
+The first part constructs a directed acyclic graph $DAG$ which stores a set of graphs in a recursively decomposed form.
+In the $DAG$,  decomposed graph creation is directed by the original graph and on decomposition 
+the directed graph is a \textit{child} and the directing graph is the \text{parent}. 
+The left side of Fig.\ref{fig:fig2} shows an example of the decomposition of two model graphs and storing to of the decomposed graph in a database.
+Model graphs $g_1$ and $g_2$ are decomposed into two graphs each, in such a way that each pair of decomposed graphs have as close to equal number of vertices  as possible.
+Each of the decomposed pair of graphs is further decomposed into two graphs.
+This process continues until the decomposition results in singleton graphs.
+Before any graph is decomposed, it is checked for containment of an induced subgraph previously created by the decomposition process so far. If one is found, the graph is decomposed into the induced subgraph and a rest subgraph. In this way, an induced subgraph can be shared by multiple parents as shown in Fig.\ref{fig:fig2} where $g_1$ is decomposed randomly into subgraph $6$ and subgraph $8$ by partitioning approximately an equal number of vertices.
+If $g_2$ contains an induced subgraph $8$, $g_2$ is decomposed into graph $8$ and graph $5$ after the all decomposition of $g_1$ has finished.
+
+The second part induced subgraph isomorphism query is processed using the $DAG$ constructed in first part.
+Initially all induced subgraph isomorphisms from all singleton graphs in the $DAG$ to query graph are detected.
+Then, based on the induced subgraph isomorphisms, calculates induced subgraph isomorphisms of the respective parent graphs by combining the induced subgraph isomorphisms of its children. This process repeats until finally, all induced subgraph isomorphisms of model graphs to the query are detected.
+The \textit{Network Algorithm} makes use of the fact that if a graph in $DAG$ is not an induced subgraph of query graph, its ancestors are also not induced subgraphs.
+In Fig.\ref{fig:fig2} part(III), if \textit{node 8} is not an induced subgraph of $g_3$, we know each of $g_1$ and $g_2$ are also not induced subgraph of $g_3$without performing any additional computation. Using this knowledge the time required to process the induced subgraph query is reduced by avoiding this unnecessary computation. The advantages of the \textit{Network Algorithm}  are:  
+
+\begin{enumerate}
+\item The $DAG$ is constructed by decomposing graphs recursively which allows solution of queries by divide and conquer.
+\item The induced subgraph isomorphisms of induced subgraphs discovered in the $DAG$ that are common to multiple model graphs are computed only once and the result is shared.
+\end{enumerate}
+
+\subsection{Our Contributions}
+
+We propose improvements in two areas: extension of processing to subgraph isomorphism query and more scalable \textit{Network Algorithm}. First, We describe below the improvements to the \textit{Network Algorithm} aimed at more efficient computation of induced subgraph query in the context of induced subgraph query processing. Then we describe the new extensions that enable subgraph query processing. 
+
+%\begin{figure}[t]
+%\centering
+%\epsfig{file=partition.eps, height=2.3in, width=3in}
+%\caption{Two ways to decompose a graph into two subgraphs}
+%\label{fig:fig2}
+%\end{figure}
+
+\begin{figure}
+        \centering
+        \input{fig6_explosion_of_matchings.tex}
+        \caption{An example of the explosion of number of matching \label{fig:fig3} }
+\end{figure}
+
+\begin{table}
+\begin{center}\begin{tabular}{|c|c|c|}
+\hline
+  & Vertex partition  & Edge partition  \\ \hline
+Subgraph & sometimes infeasible  & feasible \\ \hline
+Induced subgraph & feasible & sometimes  infeasible \\ \hline
+\end{tabular}
+\caption{Appropriate method for decompositions \label{tab:table1} }
+\end{center}
+\end{table}
+
+\begin{figure}
+\centering
+\input{Fig3_decompose_a_graph_into_subgraphs.tex}
+\caption{Two ways to decompose a graph, (I) \textit{Decomposition to induced subgraph} by partitioning the set vertices (interconnecting edge cutting). (II) \textit{Decomposition to subgraph} by partitioning the set of edges (common vertex sharing).}
+\label{fig:fig4}
+\end{figure}
+
+
+\begin{enumerate}
+\item Induced subgraph query processing
+
+\begin{enumerate}
+\item Decomposing a graph into two connected subgraphs.
+
+
+The \textit{Network Algorithm} decomposes a graph at random and without any restriction on the resulting subgraphs other than that they be connected graphs.
+Therefore the decomposition result possibly creates multiple connected graph composed of many small graph fragments.
+However the number of matchings from number of smaller graphs to a query graph can easily become intractable.
+Fig.\ref{fig:fig3} shows an extreme example of the rapid increase of the matchings that results when a graph is decomposed to singletons.
+The number of matchings correlate with processing time as well as memory requirements, hence the need to restrict them. We reformulate the decomposition algorithm with the restriction that a connected graph must be decomposed to strictly result in only two connected subgraphs. When decomposition results in one or both graph disconnected, we post-process the resulting subgraphs by redistributing one or both components between the children  at random until two connected graphs result.
+
+%\begin{figure}
+%\centering
+%\epsfig{file=images/explosion.eps, height=2.2in, width=3.5in}
+%\caption{An example of the explosion of number of matching}
+%\label{fig:fig102}
+%\end{figure}
+
+\item Early propagation of subgraph search state.
+
+The \textit{Network Algorithm} searches all nodes in $DAG$ from the leaf nodes in a bottom up fashion.
+As a result, all the child nodes in the $DAG$ will get processed before the parent nodes. The state of the parent nodes is computed after all the child nodes have been computed. This results in some unnecessary computation in the case that one or more of the children are found not to be isomorphic to a query because a parent graph state determined as non isomorphic if at least one children is not isomorphic to a query.  In fact when the isomorphism state is negative, only one test is sufficient to discover the state of all the ancestral graphs. We use a simple example in Fig.\ref{fig:fig2} (III) to illustrate this.
+Assume that we know that $node$ 6 is not a subgraph of query $g_3$ in advance. This implies that $g_1$ is not a subgraph of the query $g_3$.
+Hence we need not check $node$ 8 and its descendants to know the status of $g_1$ which we propagate. Further, the potential computation savings increase when a non isomorphic subgraph is common to multiple parents. We propose a recursive algorithm for subgraph search with state propagation of subgraph status to avoid the needless calculations. This results in a \textit{New Network Algorithm} is faster than the \textit{Network Algorithm}.
+\end{enumerate}
+
+\item Subgraph query processing
+
+\begin{enumerate}
+
+\item Extending the \textit{Network Algorithm} to subgraph query.
+
+The \textit{Network Algorithm} implements only processing of induced subgraph queries. We implement an extension of the method enable processing of subgraph queries. The limitation in the \textit{Network Algorithm} occurs due decomposition by vertex partition used to facilitate induced subgraph isomorphism query. We need to provide a similar facility suited to subgraph isomorphism query. To do so, first we rewrite the algorithms to process subgraphs, mostly by replacing the term \textit{induced subgraph} with \textit{subgraph} in the previous section. Then, we define a new decomposition method by partitioning edges, that is suited for processing subgraphs.
+
+
+Table. \ref{tab:table1} summarizes feasible approaches to decomposition. In the \textit{Network Algorithm}, graphs are decomposed by cutting edges.
+In order to extend the \textit{Network Algorithm} to non-induced subgraph query, we implement \textit{decomposition to subgraph} by partitioning edges (shared vertices). Fig.\ref{fig:fig4} shows the difference between two methods of decomposition. We now describe the rationale for the difference in decomposition described above.
+
+For induced subgraph query, we have to decompose a graph partitioning vertices to form two induced subgraphs and store the information about the interconnecting cut edges. Both the resulting children must be induced subgraphs of their parent to enable the processing of induced subgraph queries in a divide and conquer fashion. However, Decomposing an arbitrary graph into its induced subgraph and rest graph by shared vertices such that both children are induced subgraphs of the parent cannot be assured.
+
+In Fig.\ref{fig:fig51} we see an example where the decomposition of a graph into two induced subgraphs is infeasible by partitioning edges (sharing vertices).
+If we decompose $g$ by partitioning edges, the rest graph is $s_{rest}$. But $s_{rest}$ must be induced subgraph of $g$, so the edge is complemented as $s_{rest}'$ and $s_{rest}'$ is equal to $g$. This indicates that we cannot decompose a graph $g$ any further as $g$ is a complete graph.
+The subtraction of induced subgraph by partitioning vertices (vertex subtraction)  is defined in \textit{Definition \ref{def:def37}}.
+
+For subgraph query, we need to decompose graphs by partitioning edges. This is due to the requirement that both children must be subgraphs of their parent graphs
+and the limitation that we are unable to decompose a graph into an arbitrary subgraph and the rest graph by partitioning vertices so that rest graph becomes subgraph of its parent.
+Fig.\ref{fig:fig61} shows an example where a decomposition of a graph into two subgraphs is not feasible by partitioning vertices.
+If we subtract $s$ from $g$ by partitioning vertices, $s_{rest}$ cannot be represented as a graph as only an edge remains. We need to subtract the subgraphs by partitioning edges and then including the vertices on the edges as $s_{rest}'$ shows. Hence subgraph query processing we decompose the graphs by partitioning edges and including the corresponding vertices.
+The subtraction of subgraphs by partitioning edges (edge subtraction)is defined in \textit{Definition \ref{def:def310}}.
+
+We use the appropriate decomposition for both decompositions and also reform corresponding algorithms.
+
+\item Subgraph processing algorithms
+
+In addition to the specialized routines for subgraph decomposition mentioned in the previous section,  we have also developed a parallel set of routines for both the construction of the $DAG$ and query processing. 
+
+%% Non induced subgraphs can only be decomposed by shared vertices  
+\end{enumerate}
+\end{enumerate}
+%\begin{figure}[t]
+%\centering
+%\epsfig{file=ex_induced_decomposition.eps, height=0.8in, width=3in}
+%\caption{An example that a decomposition of a graph into two induced subgraphs is unable by sharing vertices}
+%\label{fig:fig11}
+%\end{figure}
+
+
+\begin{figure}
+\centering
+\input{fig4_example_sharing_vertices.tex}
+\caption{A case where decomposition of induced subgraph by partitioning edges (shared vertices) is not feasible \label{fig:fig51} }
+\end{figure}
+
+%% Induced graphs can only be decomposed by edge cutting 
+%\begin{figure}[t]
+%\centering
+%\epsfig{file=ex_typical_decomposition.eps, height=0.8in, width=3in}
+%\caption{An example that a decomposition of a graph into two subgraphs is unable by cutting edges}
+%\label{fig:fig10}
+%\end{figure}
+
+\begin{figure}
+\centering
+\input{fig5_example_cutting_edges.tex}
+\caption{A case where decomposition of subgraph by partitioning vertices (cutting edges) is not feasible \label{fig:fig61} }
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{dag_search_optimize.pdf}
+\caption{The search strategy for the \textit{New Network Algorithm}: For a simplified database composed of model graphs $g_1$ and $g_2$, given a query graph $g_3$ each model graph is processed locally by starting at the top of the $DAG$ in a depth first search (DFS) fashion. The search concludes when the first \textit{dead} state is encountered. Hence we conclude that nodes 1,13,19, 22 (hence model graph $g_1$) are in \textit{dead} state as soon as node 1 is processed. After processing $g_1$ and $g_2$ we have the result in spite of nodes 2,3,4, and 14 remaining in \textit{unsolved} state. In contrast, the \textit{Network Algorithm} processes \textit{all} the nodes in the $DAG$ in the order of the numbers on the top right of the nodes before any output is delivered.}
+\label{fig:fig7}
+\end{figure}

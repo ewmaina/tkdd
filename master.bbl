@@ -1,0 +1,156 @@
+\begin{thebibliography}{}
+
+\bibitem[\protect\citeauthoryear{Agrafiotis, Bandyopadhyay, Wegner, and van
+  Vlijmen}{Agrafiotis et~al\mbox{.}}{2007}]{agrafiotis2007}
+{\sc Agrafiotis, D.~K.}, {\sc Bandyopadhyay, D.}, {\sc Wegner, J.~K.}, {\sc
+  and} {\sc van Vlijmen, H.} 2007.
+\newblock Recent advances in chemoinformatics.
+\newblock {\em Journal of Chemical Information and Modeling\/}~{\em 47,\/}~4,
+  1279--1293.
+
+\bibitem[\protect\citeauthoryear{Babai}{Babai}{1981}]{babai1981}
+{\sc Babai, L.} 1981.
+\newblock Moderately exponential bound for graph isomorphism.
+\newblock In {\em Fundamentals of Computation Theory}, {F.~Gécseg}, Ed.
+  Lecture Notes in Computer Science Series, vol. 117. Springer Berlin /
+  Heidelberg, 34--50.
+
+\bibitem[\protect\citeauthoryear{Burge and Kropatsch}{Burge and
+  Kropatsch}{1999}]{burge_kropatsch1999}
+{\sc Burge, M.} {\sc and} {\sc Kropatsch, W.~G.} 1999.
+\newblock A minimal line property preserving representation of line images.
+\newblock {\em Computing\/}~{\em 62}, 355--368.
+\newblock 10.1007/s006070050029.
+
+\bibitem[\protect\citeauthoryear{Cai, Shao, He, Yan, and Han}{Cai
+  et~al\mbox{.}}{2005}]{cai_he_yan2005}
+{\sc Cai, D.}, {\sc Shao, Z.}, {\sc He, X.}, {\sc Yan, X.}, {\sc and} {\sc Han,
+  J.} 2005.
+\newblock Community mining from multi-relational networks.
+\newblock In {\em PKDD}. 445--452.
+
+\bibitem[\protect\citeauthoryear{Chen, Yan, Yu, Han, Zhang, and Gu}{Chen
+  et~al\mbox{.}}{2007}]{chen2007_cindex}
+{\sc Chen, C.}, {\sc Yan, X.}, {\sc Yu, P.~S.}, {\sc Han, J.}, {\sc Zhang,
+  D.-Q.}, {\sc and} {\sc Gu, X.} 2007.
+\newblock Towards graph containment search and indexing.
+\newblock In {\em Proceedings of the 33rd international conference on Very
+  large data bases}. VLDB '07. VLDB Endowment, 926--937.
+
+\bibitem[\protect\citeauthoryear{Cheng, Ke, Ng, and Lu}{Cheng
+  et~al\mbox{.}}{2007}]{cheng2007_fgindex}
+{\sc Cheng, J.}, {\sc Ke, Y.}, {\sc Ng, W.}, {\sc and} {\sc Lu, A.} 2007.
+\newblock Fg-index: towards verification-free query processing on graph
+  databases.
+\newblock In {\em Proceedings of the 2007 ACM SIGMOD international conference
+  on Management of data}. SIGMOD '07. ACM, New York, NY, USA, 857--872.
+
+\bibitem[\protect\citeauthoryear{Chi, Muntz, Nijssen, and Kok}{Chi
+  et~al\mbox{.}}{2005}]{chi_muntz_nijssen2005}
+{\sc Chi, Y.}, {\sc Muntz, R.~R.}, {\sc Nijssen, S.}, {\sc and} {\sc Kok,
+  J.~N.} 2005.
+\newblock Frequent subtree mining - an overview.
+\newblock {\em Fundam. Inform.\/}~{\em 66,\/}~1-2, 161--198.
+
+\bibitem[\protect\citeauthoryear{Cook}{Cook}{1971}]{cook1971_np}
+{\sc Cook, S.~A.} 1971.
+\newblock The complexity of theorem-proving procedures.
+\newblock In {\em Proceedings of the third annual ACM symposium on Theory of
+  computing}. STOC '71. ACM, New York, NY, USA, 151--158.
+
+\bibitem[\protect\citeauthoryear{Cordella, Foggia, Sansone, and Vento}{Cordella
+  et~al\mbox{.}}{2000}]{cordella2000}
+{\sc Cordella, L.~P.}, {\sc Foggia, P.}, {\sc Sansone, C.}, {\sc and} {\sc
+  Vento, M.} 2000.
+\newblock Fast graph matching for detecting cad image components.
+\newblock In {\em ICPR}. 6034--6037.
+
+\bibitem[\protect\citeauthoryear{Cordella, Foggia, Sansone, and Vento}{Cordella
+  et~al\mbox{.}}{2001}]{cordella2001_vf2}
+{\sc Cordella, L.~P.}, {\sc Foggia, P.}, {\sc Sansone, C.}, {\sc and} {\sc
+  Vento, M.} 2001.
+\newblock {\em An improved algorithm for matching large graphs}.
+\newblock Citeseer, 149–159.
+
+\bibitem[\protect\citeauthoryear{Corneil and Gotlieb}{Corneil and
+  Gotlieb}{1970}]{corneil1970}
+{\sc Corneil, D.~G.} {\sc and} {\sc Gotlieb, C.~C.} 1970.
+\newblock An efficient algorithm for graph isomorphism.
+\newblock {\em J. ACM\/}~{\em 17}, 51--64.
+
+\bibitem[\protect\citeauthoryear{Hoffmann}{Hoffmann}{1982}]{hoffmann1982}
+{\sc Hoffmann, C.~M.} 1982.
+\newblock {\em Group-Theoretic Algorithms and Graph Isomorphism}. Lecture Notes
+  in Computer Science Series, vol. 136.
+\newblock Springer.
+
+\bibitem[\protect\citeauthoryear{Li, Wan, 0003, and Yi}{Li
+  et~al\mbox{.}}{2003}]{li_wan_wang2003}
+{\sc Li, X.-Y.}, {\sc Wan, P.-J.}, {\sc 0003, Y.~W.}, {\sc and} {\sc Yi, C.-W.}
+  2003.
+\newblock Fault tolerant deployment and topology control in wireless networks.
+\newblock In {\em MobiHoc}. 117--128.
+
+\bibitem[\protect\citeauthoryear{McKay}{McKay}{1981}]{mckay1981}
+{\sc McKay, B.} 1981.
+\newblock Practical graph isomorphism.
+\newblock {\em or [Online],[cited 2004, October 21], Available from http://cs.
+  anu. edu. au/~ bdm/nauty/PGI\/}, 45--87.
+
+\bibitem[\protect\citeauthoryear{Messmer and Bunke}{Messmer and
+  Bunke}{2000}]{messmer_bunke2000}
+{\sc Messmer, B.} {\sc and} {\sc Bunke, H.} 2000.
+\newblock Efficient subgraph isomorphism detection: a decomposition approach.
+\newblock {\em Knowledge and Data Engineering, IEEE Transactions on\/}~{\em
+  12,\/}~2, 307 --323.
+
+\bibitem[\protect\citeauthoryear{Petrakis and Faloutsos}{Petrakis and
+  Faloutsos}{1997}]{petrakis_faloutsos1997}
+{\sc Petrakis, E. G.~M.} {\sc and} {\sc Faloutsos, C.} 1997.
+\newblock Similarity searching in medical image databases.
+\newblock {\em IEEE Trans. Knowl. Data Eng.\/}~{\em 9,\/}~3, 435--447.
+
+\bibitem[\protect\citeauthoryear{Shasha, Wang, and Giugno}{Shasha
+  et~al\mbox{.}}{2002}]{shasha_wang_giugno2002_grapgrep}
+{\sc Shasha, D.}, {\sc Wang, J. T.~L.}, {\sc and} {\sc Giugno, R.} 2002.
+\newblock Algorithmics and applications of tree and graph searching.
+\newblock In {\em Proceedings of the twenty-first ACM SIGMOD-SIGACT-SIGART
+  symposium on Principles of database systems}. PODS '02. ACM, New York, NY,
+  USA, 39--52.
+
+\bibitem[\protect\citeauthoryear{Ullmann}{Ullmann}{1976}]{ullmann1976}
+{\sc Ullmann, J.~R.} 1976.
+\newblock An algorithm for subgraph isomorphism.
+\newblock {\em J. ACM\/}~{\em 23}, 31--42.
+
+\bibitem[\protect\citeauthoryear{Willett, Barnard, and Downs}{Willett
+  et~al\mbox{.}}{1998}]{willet_barnard_john1998}
+{\sc Willett, P.}, {\sc Barnard, J.~M.}, {\sc and} {\sc Downs, G.~M.} 1998.
+\newblock Chemical similarity searching.
+\newblock {\em Journal of Chemical Information and Computer Sciences\/}~{\em
+  38,\/}~6, 983--996.
+
+\bibitem[\protect\citeauthoryear{Williams, Huan, and Wang}{Williams
+  et~al\mbox{.}}{2007}]{williams_huan_wang2007_gdindex}
+{\sc Williams, D.}, {\sc Huan, J.}, {\sc and} {\sc Wang, W.} 2007.
+\newblock Graph database indexing using structured graph decomposition.
+\newblock In {\em Data Engineering, 2007. ICDE 2007. IEEE 23rd International
+  Conference on}. 976 --985.
+
+\bibitem[\protect\citeauthoryear{Yan, Yu, and Han}{Yan
+  et~al\mbox{.}}{2004}]{yan_yu_han2004_gindex}
+{\sc Yan, X.}, {\sc Yu, P.~S.}, {\sc and} {\sc Han, J.} 2004.
+\newblock Graph indexing: a frequent structure-based approach.
+\newblock In {\em Proceedings of the 2004 ACM SIGMOD international conference
+  on Management of data}. SIGMOD '04. ACM, New York, NY, USA, 335--346.
+
+\bibitem[\protect\citeauthoryear{Zhang, Gao, Wu, Li, and Gao}{Zhang
+  et~al\mbox{.}}{2011}]{zhang_gao_wu2011}
+{\sc Zhang, S.}, {\sc Gao, X.}, {\sc Wu, W.}, {\sc Li, J.}, {\sc and} {\sc Gao,
+  H.} 2011.
+\newblock Efficient algorithms for supergraph query processing on graph
+  databases.
+\newblock {\em Journal of Combinatorial Optimization\/}~{\em 21}, 159--191.
+\newblock 10.1007/s10878-009-9221-1.
+
+\end{thebibliography}

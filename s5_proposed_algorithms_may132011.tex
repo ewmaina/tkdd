@@ -1,0 +1,591 @@
+In this section, we propose an expansion of Messmer's method to subgraph query with some improvements, mentioned previously in section 4.2.
+We also describe the process of dealing with induced subgraph query.
+
+We now describe the algorithms processing subgraph query and induced subgraph query in detail.
+
+These algorithms consist of two parts. The first part consists of the construction of a dynamic acyclic graph $DAG$ that stores graphs in its nodes 
+in a recursively decomposed form. In the $DAG$ there is directed a edge from a parent to a child. The second part consists of the process of 
+detecting subgraph isomorphisms using $DAG$ constructed in previous part. The $DAG$ is the central graph structure for this work and is considered  a global variant in all the algorithms. 
+
+\subsection{DAG definitions}
+First we make some formal definitions to help us write the algorithms for the DAG more concisely.
+
+A DAG is a directed Acyclic Graph $D=(N,A)$, where $N=\{n_1,\dots,n_x\}$  is a finite set of nodes and $A =\{a_1,\dots,a_y\}$ is a finite set of directed 
+Edges. A node N of the DAG  is a 5-tuple (g, s, p, c, f)
+where g is a graph, s is one of states {unsolvable, dead, alive} p is a set of parent nodes, c is a set of child nodes and A is an ordered pair ($n_{i},n_{j}$) 
+nodes. This expression means that the edge directs from $n_i$ to $n_j$. We call the source of the directed edge the parent node and the sink of the directed
+edge the child node, respectively. Except of the root Node, a node may have multiple parent nodes and at most two child nodes.
+An arbitrary edge $a_{ij}$ that represents a hierarchical connection between two DAG nodes $n_i$ and $n_j$ is defined as $a_{ij}=\{(n_i,n_j)\mid n_i,n_j \in N\}$.
+$N$ is a finite set of nodes where each node $n_{i}$ is defined by a four tuple,  $n_{i}=\{graph, state, parentGraph, childGraph\}$. Hence each Node in the 
+DAG holds five components: an undirected graph $g_{i}=(V,E)$ as defined earlier in section 3; a \emph{state} which has one of three values, 
+$\emph{unsolved}, \emph{dead}, \text{or }\emph{alive}$; a set of links,  $\emph{parentGraph}$, from one or more parent nodes to $n_i$ and 
+a set of links, \emph{childGraph}, to one or more child nodes from $n_i$; and finaly a function F that contains a set of Edge IDs for edges between 
+the two child Nodes.
+
+We define four transformations on the DAG
+
+\begin{enumerate}
+\item $\emph{addNode(n)}$: Adds a node such that \\ 
+$N\leftarrow N \cup \{n\}$ , \\ 
+$E\leftarrow E \cup \{n_{i} ,n_{j}\}$, \\
+$n_{i} \leftarrow  \{graph, state, parentGraph, childGraph\}$
+\item $\emph{addEdge}$($n_{i} ,n_{j} $) : Adds an edge $e_{ij}$ between a pair of nodes, $n_i$ and  $n_j$
+\item $\emph{deleteNode}$($n$): Deletes a node and all its incoming edges, $n=\emptyset$
+\item $\emph{deleteEdge}$($n_{i} ,n_{j} $): Deletes an edge between two nodes $n_i$ and $n_j$
+\end{enumerate}
+
+Using these definitions let we now propose an expansion of Messmer's method to subgraph query with some improvements.
+
+\subsection{Expansion to Subgraph Isomorphism Query with Improvements}
+The \textit{Network Algorithm} only supports induced subgraph isomorphism query. However, in practice,  subgraph isomorphism query is more likely to suit
+real world problems so we reformulate the \textit{Network Algorithm} to process subgraph isomorphism query.
+In this subsection, we describe the details of the expansion of the \textit{Network Algorithm} to subgraph query and also propose some addition improvements.
+Some of our improvements applied to subgraph query are also applicable to induced subgraph queries which is addressed in the next subsection.
+For these algorithms, we use parenthesis such as (induced) subgraph to seperate the two processes. We first discuss the subgraph isomorphism so ignore the 
+inside of the parentheses throughout this subsection.
+
+\subsubsection{DAG Construction}
+The $DAG$ is the main data structure for the database construction and query processing. In this section we outline the steps required to construct 
+the $DAG$ and the use of the $DAG$ to process queries. First the algorithm for the construction of the DAG is show in Algorithm \ref{alg:alg101} below.
+
+
+\begin{algorithm}
+\caption{DagConstruct(G)}
+\label{alg:alg101}
+\begin{algorithmic}
+\STATE Input: Model Graphs $G$=$\{g_1,g_2,\dots,g_m\}$
+%%\STATE Output: DAG $D(g)=\{(g,g^{'},g^{''} ,E)\dots (g_n ,g_n^{'},g_{n}^{''} ,E_n )\}$
+\STATE Output: $DAG$
+\end{algorithmic}
+\begin{algorithmic}[1]
+\STATE Initialize Model Graph Set, $G$ $\leftarrow$ $\emptyset$
+\STATE Initialize root, $\emph{ROOT}$ $\leftarrow$ $\emptyset$
+\STATE Initialize DAG, $\emph{DAG}$ $\leftarrow$ $\emptyset$
+\STATE Initialize model graph count, $\emph{DAGSize}$ $\leftarrow$ $\emptyset$
+\STATE Default node State, $\emph{state}$ $\leftarrow$ $\emph{unsolved}$
+\STATE Default DAG edge $e_{\emptyset}$ $\leftarrow$ $\emptyset$
+%%\STATE Initialize the largest common subgraph, $S_{max}$=0  
+\STATE Create a $\emph{NULL}$ node as root for $DAG$
+\FOR{ $i=1$ to $m$}
+ \STATE  $\emph{DAG}$ $\leftarrow$ $\emph{DagInsert}$($g_{i},state, parentGraph,childGraph1,childGraph2,EdgeIDs,DAG$$)
+ \STATE  $\emph{DAGSize}$  $\leftarrow$   $\emph{DAGSize + 1}$
+\ENDFOR
+\RETURN $\emph{DAG}$
+\end{algorithmic}
+\end{algorithm}
+
+
+% \begin{algorithm}
+% \caption{DagInsert(g,D)}
+% \label{alg:alg102}
+% \begin{algorithmic}
+% \STATE Input: Model Graph $g$
+% \STATE Output: DAG
+% \end{algorithmic}
+% \begin{algorithmic}[1]
+% \IF{ g has  one vertex}
+   % \STATE create node for g as child of ROOT
+% \RETURN
+% \ENDIF
+% \FORALL{ ${gm_{1},gm_{2},\dots,gm_{n}}$ in $D$}
+    % \IF{ $(gm_{i} \subseteq_{subgraph})$ \AND $(S_{max} < g_{i})$} 
+      % \STATE set  $S_{max}:=gm_{i}$
+    % \ELSIF{ $S_{max}$ is isomorphic to $gm_{i}$ } 
+          % \STATE link $gm_{i}$ to the parent node of $S_{max}$
+    % \RETURN
+    % \ELSIF{no subgraph found}
+       % \STATE $RandomPartition(g,g_{'},g^{''},E)$
+       % \STATE $ Addnode(g_{'})$
+       % \STATE $ Addnode(g^{''})$
+% \ENDIF
+% \ENDFOR
+% \RETURN
+% \end{algorithmic}
+% \end{algorithm
+
+
+% \begin{algorithm}
+% \caption{DagInsert($g,D,$)}
+% \label{alg:alg102}
+% \begin{algorithmic}
+% \STATE Input: New Model Graph $g$
+% \STATE Output: DAG $D(g)=\{(g,g^{'},g^{''} ,E)\dots (g_n ,g_n^{'},g_{n}^{''} ,E_n )\}$
+% \end{algorithmic}
+% \begin{algorithmic}[1]
+%\STATE $P = \cup_{i=1}^n \{g_i ,g_i^{'},g_i^{''} \}$ where n is the number of Model graphs in DAG
+% \STATE $g = \emptyset$
+% \STATE $Z= \emptyset$
+% \STATE $DAGSize<n$ Number of model graphs already stored in DAG
+% \STATE 
+% \FOR{k=1 to DAGSize}
+    % \STATE $Z$= SubgraphQuery($g_k, g$)
+% \ENDFOR
+% \IF{ $Z=\emptyset$}
+    % \STATE Link $g$ to ROOT node
+    % \WHILE{ $|g|>1$}
+        % \STATE ($g^{'},g^{''}$)=RandomPartition($g,g^{'},g^{''},E$)
+        % \STATE $D$ $\leftarrow$ AddNode($g^{'},D$)
+        % \STATE Link $g^{'}$ to $g$ 
+        % \STATE $D$ $\leftarrow$ AddNode($g^{''},D$)
+        % \STATE Link $g^{''}$ to $g$ 
+        % \STATE DagInsert($g^{'},D$)
+        % \STATE DagInsert($g^{''},D$)
+     % \ENDWHILE
+% \ELSIF{$g-|Z|_{max} = \emptyset$ }
+% \RETURN
+% \ELSE
+    % \FORALL{ $g_i$ $\in Z$}
+       % \STATE ConnectGraph($g,g_i,g-g_i,E$)
+       % \STATE DagInsert($g-g_i$,D)
+       % \STATE Link graph ($g-g_i$) to the parent of $g_i$ 
+    % \ENDFOR
+% \ENDIF
+% \RETURN D
+% \end{algorithmic}
+% \end{algorithm}
+
+
+\begin{algorithm}
+\caption{DagInsert($g,state, parentGraph,childGraph1,childGraph2,EdgeIDs,DAG$)} 
+\label{alg:alg102}
+\begin{algorithmic}
+\STATE Input: New Model Graph $g$, $DAG$, $DAGIndexGraph$
+\STATE Output: $DAG$ 
+\end{algorithmic}
+\begin{algorithmic}[1]
+%%\STATE $P = \cup_{i=1}^n \{g_i ,g_i^{'},g_i^{''} \}$ where n is the number of Model graphs in DAG
+\STATE $g = \emptyset$
+\STATE $Z= \emptyset$
+
+\FOR{all $|DAGIndexGraph|$ $\leq$ $|g|$}
+\STATE $Z$ $\leftarrow$  SubgraphQuery$(DAGIndexGraph, g)$
+\ENDFOR 
+\IF{ $Z=\emptyset$}
+    \STATE Link $g$ to ROOT node
+    \WHILE{ $|g|>1$}
+        \STATE ($childGraph1,childGraph2$) $\leftarrow$ RandomPartition($g,childGraph1,childGraph2,EdgeIDs$)
+        \STATE $DAG$ $\leftarrow$ AddNode($g, childGraph1, childGraph2, DAG$)
+        \STATE Link $childGraph1$ to $g$ 
+        \STATE Link $childGraph2$ to $g$ 
+        \STATE DagInsert($childGraph1,state, g ,childGraph1^{'} ,childGraph1^{''}, EdgeIDs,DAG$)
+        \STATE DagInsert($childGraph2,state, g ,childGraph2^{'} ,childGraph2^{''}, EdgeIDs,DAG$)
+     \ENDWHILE
+\ELSIF{$g-Z|_{max} = \emptyset$ }
+\RETURN
+\ELSE 
+    \FORALL{ $g_i$ $\in Z$}
+       \STATE ConnectGraph($g,g_i,g-g_i,EdgeIDs$)
+       \STATE DagInsert($g-g_i$,DAG)
+       \STATE Link graph ($g-g_i$) to the parent of $g_i$ 
+    \ENDFOR
+\ENDIF
+\RETURN $DAG$
+\end{algorithmic}
+\end{algorithm}
+
+
+\begin{algorithm}
+\caption{ConnectGraph($g,childGraph1,childGraph2,EdgeIDs$)}
+\label{alg:alg103}
+\begin{algorithmic}
+\STATE Input: disconnected graph ($g,childGraph1,childGraph2,EdgeIDs$)
+\STATE Output: connected graph ($g,childGraph1,childGraph2,EdgeIDs$)
+\end{algorithmic}
+\begin{algorithmic}[1]
+\STATE $childGraph1$=0
+\STATE $childGraph2$=0
+\IF{ graph $g$ has a single edge e($v_1$,$v_2$) }
+   \STATE Insert $v_{1}$ to $childGraph1, v_{2}$ to $childGraph2$
+\ELSE 
+ \WHILE{ $childGraph1$ or $childGraph2$ not connected}
+  \IF{ both $childGraph1$ \AND $childGraph2$ are disconnected }
+    \STATE move minimum component of $|childGraph1 ,childGraph2 |_{max} $ to $|childGraph1 ,childGraph2 |_{min} $
+  \ELSE
+    \STATE move component of disconnected graph to the other side
+  \ENDIF
+ \ENDWHILE
+\ENDIF
+\RETURN ($g,childGraph1,childGraph2,EdgeIDs$)
+\end{algorithmic}
+\end{algorithm}
+
+
+\begin{algorithm}
+\caption{RandomPartition($g,childGraph1,childGraph2,EdgeIDs$)}
+\label{alg:alg104}
+\begin{algorithmic}
+\STATE Input: graph ($g$)
+\STATE Output: tuple ($g,childGraph1,childGraph2,EdgeIDs$) consisting of graph $g$, children  $childGraph1,childGraph2 $ and the edges between the children $E$ 
+\end{algorithmic}
+\begin{algorithmic}[1]
+\IF{ f has a single edge $e=(v_1,v_2)$}
+    \STATE insert $v_1$,to $childGraph1$, $v_2$ to $childGraph2$    
+ \ELSE
+   \STATE RandomPartitionInduced($g,childGraph1,childGraph2,EdgeIDs$)
+\ENDIF
+\RETURN ($g,childGraph1,childGraph2,EdgeIDs$)
+\end{algorithmic}
+\end{algorithm}
+
+
+\begin{algorithm}
+\caption{New Network Algorithm, NNA($D , q , Z$)}
+\label{alg:alg105}
+\begin{algorithmic}
+\STATE Input: DAG $D(g)=\{(g,g^{'},g^{''} ,E)\dots (g_n ,g_n^{'},g_{n}^{''} ,E_n )\}$, Query $q$
+\STATE $P = \cup_{i=1}^n \{g_i ,g_i^{'},g_i^{''} \}$ 
+\STATE Output: All subgraph isomorphisms of $q$ in all the Model graphs in $D$
+\end{algorithmic}
+\begin{algorithmic}[1]
+\STATE $F=\emptyset$
+\STATE $Z=\emptyset$
+\FORALL{ $g$ $\in$ $P$}
+  \STATE mark $S$ \textit{unsolved}
+\ENDFOR
+\FOR{ each $S_i$ $\in$ $D$}
+   \STATE $F$=SubgraphQuery($S_i$,$q$)
+   \IF{$F\neq \emptyset$}
+      \STATE $Z$=$Z \cup \{F\}$
+   \ENDIF
+\ENDFOR
+\RETURN Z
+\end{algorithmic}
+\end{algorithm}
+
+
+\begin{algorithm}
+\caption{SubgraphQuery($g$, $q$)}
+\label{alg:alg106}
+\begin{algorithmic}
+\STATE Input: Model Subgraph in database  $g$, Query $q$, $childGraph1$, $childgraph2$
+\STATE Output: Induced Subgraph Isomorphisms($g$, $q$, EdgeIDs)
+\end{algorithmic}
+\begin{algorithmic}[1]
+\IF{ $g$ is unsolved }
+    \IF{ $g$ is a singleton }
+        \STATE AssignVertex($g$,$q$)
+      \ELSE 
+         \STATE let $childGraph1,childGraph2$ be children of $g$
+         \IF{  $childGraph1$ \OR $childGraph1$ have mark dead=true}
+          \STATE Mark $g(dead)=true$
+          \ELSIF{SubgraphQuery$(childGraph1,q) \neq \emptyset$ \\ or SubgraphQuery$(childGraph2 ,q) \neq \emptyset$}
+			\STATE mark $g(dead)=true$
+		\ELSE
+			\STATE $F :=$ Combine(Induced)$(g,q)$
+		\ENDIF
+	\ENDIF
+	\IF{$F \neq \emptyset$}
+		\STATE mark $g(alive)=true$
+	\ELSE
+		\STATE mark  $g(dead)=true$
+	\ENDIF
+\ELSE
+	\STATE $F$ is the already calculated subgraph isomorphisms from $g$ to $q$
+\ENDIF
+\RETURN $F$
+          
+\end{algorithmic}
+\end{algorithm}
+
+
+%%\label{insertion}
+Insert(Algorithm\ref{alg:alg102}) outlines the dynamic insertion algorithm for $DAG$. In order to construct $DAG$, we can insert graphs in a graph database 
+sequentially.
+
+While constructing $DAG$, the algorithm maintains a rule that graph $g$ directs its two (induced) subgraphs.
+The exception being that $g$ will have no children if $g$ is a singleton graph.
+The information about the shared vertices and the mappings between a parent and children must be stored with a parent-child relationship.
+
+First, the algorithm searches $g_i$'s all (induced) subgraphs in $DAG$(line 3-7).
+The discovered (induced) subgraphs are inserted to a priority queue $PriorityQueue$.
+For this (induced) subgraph search, SubgraphQuery (Algorithm\ref{alg:alg5}) explained in the latter section can be used.
+
+If it is discovered that  $s$, the graph at the top of the priority queue is isomorphic to $g_i$,
+we replace them by setting a directed edge from the parent of $g_i$ to $s$(line 9-11).
+The existence of graph isomorphism is easily assured by checking whether $E(g_i)$ is equals to $E(s)$ or not.
+
+In most cases, a (induced) subgraph $s$ of $g_i$ will be discovered. In that case, the algorithm calculates $s_{rest} = g_i -_{(induced)} s$ and $g_i$ is decomposed into the $s$ and the rest graph $s_{rest}$.
+If $s_{rest}$ is connected, $s_{rest}$ is inserted to $DAG$ recursively(line 14-15).
+There is the case that $s_{rest}$ is disconnected.
+This result violates the requirement that a connected graph is decomposed into two connected graphs.
+When faced with the violation the algorithm abandons this result and tests the subtractions of all (induced) subgraph isomorphisms of all (induced) subgraphs until $s_{rest}$ becomes connected.
+
+The order in which the  (induced) subgraph are tested for subtraction relies on how we set the priority on $PriorityQueue$.
+The larger a graph is, the more costly it is to compute the (induced) subgraph isomorphisms of the graph therefore we make $PriorityQueue$ precede larger graphs
+so a larger graph is shared.
+
+If no (induced) subgraph is discovered or no (induced) subgraph can make $s_{rest}$ connected, $g_i$ is decomposed by the RandomPartition (Algorithm\ref{alg:alg2}).
+The decomposed (induced) subgraphs are inserted to $DAG$ recursively(line 26-33).
+In the case that $g_i$ is disconnected, $g_i$ is decomposed by distributing its components to two children so that decomposed graphs finally become connected gr
+phs(line 28-29).
+
+
+
+The \textit{Network Algorithm} decomposes a graph by distributing vertices randomly and creating subgraphs which induced by distributed vertices.
+This decomposition possibly creates disconnected subgraphs composed of many tiny components.
+The number of matchings resulting from a lerge numer of such disconnected graphs to a query graph can easily skyrocket.
+We need to make sure that the decomposed subgraphs are connected to avoid this problem.
+
+The \textit{Network Algorithm} decomposes a graph by cutting edges for induced subgraph query.
+We  now  focus on the subgraphs.
+In order to allow a subtraction of an arbitrary subgraph from a graph we have to decompose a graph by sharing vertices.
+
+RandomPartition (Algorithm\ref{alg:alg2}) decompose a connected graph $g$ into two connected subgraphs.
+First, the algorithm distributes edges randomly.
+If at least one subgraph is disconnected, two subgraphs transfer their components to the other side.
+A transition of a component connects components of the other side because $g$ is connected.
+So the algorithm repeats the transitions until both subgraphs become connected.
+We can not decompose a single edge any further by sharing vertices.
+As a result the algorithm cannot deal with a singleton graph or a disconnected graph which includes one or more isolated vertices.
+We decompose a single edge in the manner of cutting edges.
+
+\begin{algorithm}
+\caption{RandomPartition}
+\label{alg:alg2}
+\begin{algorithmic}
+\STATE Input: Graph $g$
+\STATE Output: A pair of graphs $(s_1, s_2)$
+\end{algorithmic}
+\begin{algorithmic}[1]
+\STATE let $s_1 := \emptyset$, $s_2 := \emptyset$
+\IF{$g$ is composed of a single edge $e = (v_1, v_2)$}
+	\STATE insert $v_1,v_2$ to $s_1,s_2$ respectively
+\ELSE
+	\STATE $(s_1, s_2)$ RandomPartitionInduced($g$)
+	\WHILE{either $s_1$ or $s_2$ is disconnected}
+		\IF{both $s_1$ and $s_2$ is disconnected}
+			\STATE move minimum component of the larger graph to the other side
+		\ELSE
+			\STATE move minimum component of the disconnected graph to the other side
+		\ENDIF
+	\ENDWHILE
+\ENDIF
+\RETURN $(s_1,s_2)$
+\end{algorithmic}
+\end{algorithm}
+
+\subsubsection{Query Processing}
+There are two types of query processing to the graph database. The induced graph query and the Non induced graph query. In this section we outline the algorithm
+ for both types of processing.
+Search(Algorithm \ref{alg:alg4}) outlines the procedure for the (induced) subgraph isomorphism query processing.
+SubgraphQuery (Algorithm \ref{alg:alg5}) can calculate the (induced) subgraph isomorphisms from any node in $DAG$ to a query graph $q$.
+So we can accomplish (induced) subgraph isomorphism query by processing SubgraphQuery with all model graphs as input.
+
+In the procedure of the (induced) subgraph search, all nodes in $DAG$ are supposed to be marked with one of three different tags, $alive$, $dead$ or $unsolved$.
+Those tags express the conditions that (a) have been matched already with the query graph and (induced) subgraph isomorphisms exists, (b) have been matched alre
+ady and (induced) subgraph isomorphisms do not exist, (c) have not been matched yet respectively.
+At the beginning, all nodes in $DAG$ are marked as $unsolved$.
+
+SubgraphQuery works recursively.
+If the input graph $g$ have been already marked $alive$ or $dead$, there is nothing to do and the algorithm only returns subgraph isomorphisms $F$ that is supposed to have been already calculated.
+
+If $g$ is a singleton graph, there are no children.
+Then, SubgraphQuery calls AssignVertex(Algorithm\ref{alg:alg6}).
+AssignVertex simply searches the occurrences of the label of the single vertices in a query graph $q$.
+
+If $g$ marked $unsolved$, we check (induced) subgraph isomorphisms of its children by using SubgraphQuery recursively.
+Now we can exploit the useful fact that if a child is not a (induced) subgraph of a query graph, its parent also not a (induced) subgraph of the query graph.
+First, in order to remove redundancies we check the tags of children of $g$ before we call SubgraphQuery. 
+Next, we call SubgraphQuery for $g$'s children.
+If at least one child tagged $dead$ or returns empty sets, we can also assure that $g$ is $dead$  
+Only in the case that both of the children return $alive$, we have to calculate the (induced) subgraph isomorphisms from $g$ to $q$ by calling Combine.
+
+\begin{algorithm}[t]
+\caption{Search}
+\label{alg:alg4}
+\begin{algorithmic}
+\STATE Input: Query graph $q$, Graph database $D$
+\STATE Output: Set of (induced) subgraph isomorphisms $Z$
+\end{algorithmic}
+\begin{algorithmic}[1]
+\STATE $Z := \emptyset$
+\STATE mark all nodes in $DAG$ $unsolved$
+\FOR{each graph $g \in D$}
+	\STATE $F :=$ SubgraphQuery$(g,q)$
+	\IF{ $F \neq \emptyset$ }
+		\STATE $Z = Z \cup \{F\}$
+	\ENDIF
+\ENDFOR
+\RETURN $Z$
+\end{algorithmic}
+\end{algorithm}
+
+
+
+$DAG$ is designed such that a graph $g$ can make use of its children's (induced) subgraph isomorphisms to $q$ in order to reduce the computational effort of 
+calculating (induced) subgraph isomorphisms from $g$ to $q$. For this purpose, a procedure for combining of induced subgraph isomorphisms is required.
+
+Combine (Algorithm\ref{alg:alg11}) is the procedure for the combining subgraph isomorphisms. When Combine is called with $g$ as input, the subgraph 
+isomorphisms $F_1, F_2$ from its children $childGraph1, childGraph2$ to $q$ are supposed to be already calculated.
+In the case that $g$ is connected, two conditions must be satisfied to combine two functions, $f_1 \in F_1, f_2 \in F_2$.
+First, it must be ensured that each corresponding common vertices is mapped correctly onto same vertex(line 11).
+Second, the image of non-common vertices of $f_1$ and $f_2$ must be disjoint(line 12).
+If these two conditions are not satisfied, the combining of $f_1$ and $f_2$ would not be an injective function.
+If $g$ is disconnected, we only need to check one condition that the images of $f_1$ and $f_2$ are disjoint(line 20).
+We define the combination of (induced) subgraph isomorphisms as follows
+\begin{eqnarray}
+\label{eq:eq1}
+f(v) = \left\{
+\begin{array}{l}
+f_1(p_1(v)) (p_1(v) \in V(childGraph1))\\
+f_2(p_2(v)) (p_2(v) \in V(childGraph2))
+\end{array}
+\right.
+\end{eqnarray}
+ 
+The Combine algorithm checks all pairs of functions $f_1$ and $f_2$. If a pair satisfies these conditions, the algorithm evaluates and returns it.
+
+However this algorithm cannot process a graph that is not decomposed by shared vertices. As such, if a graph consisting of a single edge
+is input, the Combine algorithm calls Combine (induced) (Algorithm\ref{alg:alg8}) which is able to process graphs decomposed in the 
+manner of cutting edges.
+
+\begin{algorithm}
+\caption{AssignVertex}
+\label{alg:alg6}
+\begin{algorithmic}
+\STATE Input: Singleton graph $g=(V,E,L^v ,L^e ,\mu,\nu)$, Query graph $q=(V_q,E_q,L_q^v ,L_q^e ,\mu_q,\nu_q)$ 
+\STATE Output: Subgraph isomorphisms $F$
+\end{algorithmic}
+\begin{algorithmic}[1]
+\STATE $F := \emptyset$
+\STATE let $v \in V$
+\FOR{each $v_q \in V_q$}
+	\IF{$\mu(v)= \mu_q (v_q)$}
+		\STATE add $f(v) = v_q$ to $F$
+	\ENDIF
+\ENDFOR
+\RETURN $F$
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Combine}
+\label{alg:alg11}
+\begin{algorithmic}
+\STATE Input: Graph $g$, Query graph $q$
+\STATE Output: Subgraph isomorphisms $F$
+\end{algorithmic}
+\begin{algorithmic}[1]
+\IF{$g$ is composed of a single edge}
+	\STATE $F := $CombineInduced$(g,q)$
+\ELSE
+	\STATE let $childGraph1$ and $childGraph2$ be children of $g$
+	\STATE let $p_1$ and $p_2$ be functions from $g$ to $childGraph1$ and $childGraph2$
+	\STATE let $F_1$ and $F_2$ be sets of injection from $childGraph1$ and $childGraph2$ to query graph
+	\STATE $F := \emptyset$
+	\IF{$g$ is connected}
+		\STATE let $V_C \subset V(g)$ be set of shared vertices
+		\FOR{each $f_1, f_2$ in $F_1, F_2$}
+			\IF{$f_1(p_1(V_C)) = f_2(p_2(V_C))$}
+				\IF{$f_1(V(childGraph1)) \cap f_2(V(childGraph2)) = f_1( p_1(V_C) )$}
+					\STATE define subgraph isomorphism $f$ by eq(\ref{eq:eq1})
+					\STATE $F = F \cup f $
+				\ENDIF
+			\ENDIF
+		\ENDFOR
+	\ELSE
+		\FOR{each $f_1 \in F_1, f_2 \in F_2$}
+			\IF{$f_1(V(childGraph1)) \cap f_2(V(childGraph2)) = \emptyset$}
+				\STATE define subgraph isomorphism $f$ by eq(\ref{eq:eq1})
+				\STATE $F = F \cup f $
+			\ENDIF
+		\ENDFOR
+	\ENDIF
+\ENDIF
+\RETURN $F$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Induced Subgraph Query}
+The improvement algorithms proposed in previous subsection are also efficient for induced subgraph query.
+In this subsection, we explain the detail algorithms for our induced subgraph query procesing.
+Many of algorithms of induced subgraph query are same as that of subgraph query, therefore when we reference the 
+previous subsection, take the insides of the parenthesises into consideration to indicate the induced versions.
+
+\subsubsection{DAG Construction}
+The procedure for the construction of $DAG$ and dynamic insertion algorithm are also almost identical to the case of subgraph query.
+We now explain the differences. First, a parent-child relationship must store the information about the cut edges instead of the 
+shared vertices due of the difference in the manner of decomposition of the graph. Second, the existence of a graph isomorphism is 
+assured by checking whether input graph $V(g_i)$ is equal to a graph $V(s)$ in the DAG or not.
+
+In order to decompose an arbitrary graph into two smaller induced subgraphs we have to decompose a graph in the manner of cutting edges
+hence we define a procedure for decomposing a randomly connected graph in this manner.
+
+RandomPartitionInduced (Algorithm\ref{alg:alg15}) decomposes a connected graph into two connected induced subgraphs.
+First, the algorithm initializes two induced subgraphs by distributed vertices and the edges that the vertices induce.
+Then, two subgraphs transfer their minimum components until they become connected, a process similar to the one in the 
+algorithm for subgraph query.
+
+The decomposition of a disconnected graph is identical to the one for subgraph query.
+
+\begin{algorithm}
+\caption{RandomPartitionInduced}
+\label{alg:alg15}
+\begin{algorithmic}
+\STATE Input: Graph $g$
+\STATE Output: A pair of graphs $(s_1, s_2)$
+\end{algorithmic}
+\begin{algorithmic}[1]
+\STATE let $s_1 := \emptyset$, $s_2 := \emptyset$
+\STATE distribute vertices of $g$ randomly to $s_1$ or $s_2$ in half
+\STATE set edges induced by distributed vertices to $s_1$ and $s_2$ 
+\REPEAT
+	\IF{both $s_1$ and $s_2$ is disconnected}
+		\STATE move minimum component of the larger graph to the other side
+	\ELSE
+		\STATE move minimum component of the disconnected graph to the other side
+	\ENDIF
+	\STATE reset edges induced by distributed vertices to $s_1$ and $s_2$ 
+\UNTIL{both $s_1$ and $s_2$ is connected}
+\RETURN $(s_1,s_2)$
+\end{algorithmic}
+\end{algorithm}
+
+\subsubsection{Query Processing}
+The search processing algorithms for subgraphs, Search(Algorithm\ref{alg:alg4}), SubgraphQuery (Algorithm\ref{alg:alg106}) and AssignVertex(Algorithm\ref{alg:alg6}) 
+are also applicable to induced subgraph query. However, due to the difference in the method of decomposition, we need a new procedure for the combining the 
+induced subgraph isomorphisms. CombineInduced(Algorithm\ref{alg:alg8}) outlines that procedure.
+When CombineInduced is called with graph $g$ as input, the sets of induced subgraph isomorphisms $F_1, F_2$ from its children $childGraph1, childGraph2$ 
+to the query graph must have been already calculated, as part recursive calling of \label{alg:alg106}.
+There are two conditions that must be satisfied to CombineInduced two functions $f_1 \in F_1 and f_2 \in F_2$.
+First, there must exist edges in the query graph correspond to cut edges and vice versa(line 7).
+Second, we must ensure that $f_1$ and $f_2$ are disjoint(line 8), otherwise the combination of $f_1$ and $f_2$ will not be injective function.
+CombineInduced algorithm checks all pairs of the two functions and returns the sets of its unions that satisfy these conditions.
+
+\begin{algorithm}[t]
+\caption{CombineInduced}
+\label{alg:alg8}
+\begin{algorithmic}
+\STATE Input: Graph $g=(V,E,L^v ,L^e ,\mu,\nu)$, Query graph $q=(V_q,E_q,L_q^v ,L_q^e ,\mu_q,\nu_q)$ 
+\STATE Output: Subgraph isomorphisms $F$
+\end{algorithmic}
+\begin{algorithmic}[1]
+\STATE let $childGraph1$ and $childGraph2$ be children of $g$
+\STATE let $p_1$ and $p_2$ be functions from $g$ to $childGraph1$ and $childGraph2$
+\STATE let $F_1$ and $F_2$ be sets of injection from $childGraph1$ and $childGraph2$ to query graph
+\STATE $F := \emptyset$
+\STATE let $E_c \subset E$ be the set of cut edges
+\FOR{each $f_1, f_2$ in $F_1, F_2$}
+		\IF{ for each edge $e = (v_1, v_2) \in E_c$ there exists an edge $e_q = (f_1(v_1),f_2(v_2)) \in E_q$ with $\nu(e) = \nu_q(e_q)$ and for each edge $e_q = (u_1, u_2) \in E_q$ such that $u_1 \in f_1(V(childGraph1)), u_2 \in f_2(V(childGraph2))$ there exists an edge $e = (f_1^{-1}(u_1), f_2^{-1}(u_2)) \in E_c$ with $\nu_q(e_q) = \nu(e)$}	
+			\IF{$f_1(V(childGraph1)) \cap f_2(V(childGraph2)) = \emptyset$}
+				\STATE define subgraph isomorphism $f$ by eq(\ref{eq:eq1})
+				\STATE $F = F \cup f $
+		\ENDIF
+	\ENDIF
+\ENDFOR
+\RETURN $F$
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Network Algorithm with Graph Pruning}
+The \textit{Network Algorithm} cannot process a local query efficiently (i.e. In the case that you want to know subgraph isomorphisms for only some graphs in a 
+graph database to a query graph, the \textit{Network Algorithm} calculates subgraph isomorphisms for all the nodes in $DAG$).
+In contrast our recursive formulation of the \textit{Network Algorithm} only checks the relevant descendants of selected nodes and this allows us to solve 
+local queries more efficiently.
+
+One result of the support of local query is that we can make use of some graph pruning techniques. Let us consider a simple example \textit{label check}. 
+If a graph database stores the numeric labels of attributed graphs, it may be easily determined when they have no subgraph isomorphisms to 
+a query graph just by comparing the attributes of the graph with those of the query graph.
+In this way, we can efficiently reduce the candidates graphs for the answer.
+Consequently, by pruning graphs in advance, we can significantly reduce the related procesing time.
+

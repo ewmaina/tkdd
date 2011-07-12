@@ -1,0 +1,224 @@
+In this section, we present the definitions relevant to graph and graph isomorphism. For convenience, we focus on undirected labeled graphs. 
+Extension to other kinds of graphs is straightforward.
+
+\begin{definition}
+\label{def:def31}
+A \textit{labeled graph} is a six-element tuple $g= (V,E,L^v ,L^e ,\mu,\nu)$ where $V$ is a vertex set, $E$ is a edge set, both $\mu$ and $\nu$ 
+are functions assigning labels to the vertices and edges respectively. $L^v$ and $L^e$ denotes the set of vertex and edge labels respectively.
+\end{definition}
+
+Following the convention, we denote a vertex set of a graph $g_1$ as $V_1$ and the edge set as $E_1$.
+
+\begin{definition}
+\label{def:def32}
+A graph $g_1=(V_1,E_1,L_1^v ,L_1^e ,\mu_1,\nu_1)$ is \textit{isomorphic} to another graph $g_2=(V_2,E_2,L_2^v ,L_2^e , \mu_2, \nu_2)$ if there exists a bijection $\phi$ such that
+\begin{enumerate}
+\item for every vertex $v \in V_1$, $\phi(v) \in V_2$ and $\mu_1(v) = \mu_2(\phi(v))$,
+\item for every edge $(v,u) \in E_1$, $(\phi(v), \phi(u)) \in E_2$ and $\nu_1((u,v)) = \nu_2((\phi(v), \phi(u)))$
+\end{enumerate}
+\end{definition}
+
+If $g_1$ is isomorphic to $g_2$, $\phi$ is called a \textit{graph isomorphism} and we use the notation $ g_1 \underset{iso}{=}  g_2$.
+
+\begin{definition}
+\label{def:def33}
+A graph $g_1=(V_1,E_1,L_1^v ,L_1^e ,\mu_1,\nu_1)$  is \textit{subgraph isomorphic} to another graph $g_2=(V_2,E_2,L_2^v ,L_2^e , \mu_2, \nu_2)$ if there exists a injection $\phi$ such that
+\begin{enumerate}
+\item for every vertex $v \in V_1$, $\phi(v) \in V_2$ and $\mu_1(v) = \mu_2(\phi(v))$,
+\item for every edge $(v,u) \in E_1$, $(\phi(v), \phi(u)) \in E_2$ and $\nu_1((u,v)) = \nu_2((\phi(v), \phi(u)))$
+\end{enumerate}
+\end{definition}
+
+If $g_1$ is subgraph isomorphic to $g_2$, $\phi$ is called a \textit{subgraph isomorphism},
+$g_1$ is called a \textit{subgraph} of $g_2$ and we use the notation $g_1 \subseteq g_2$.
+
+\begin{definition}
+\label{def:def34}
+Given a graph $g_1=(V_1,E_1,L_1^{v} ,L_1^{e} ,\mu_1,\nu_1)$, a subgraph  $g_2=(V_2,E_2,L_2^{v} ,L_2^{e} , \mu_2, \nu_2)$ 
+and a subgraph isomorphism $ \phi(\phi: V_2 \rightarrow V_1)$, $g_2$ is \textit{induced subgraph} of $g_1$ if it satisfies
+\begin{itemize}
+\item $ \exists (\phi_1(u), \phi_1(v)) \in E_1 \Rightarrow \exists (u,v) \in E_2$ for all $u,v \in V_2$
+\end{itemize}
+\end{definition}
+
+If $g_2$ an is induced subgraph of $g_1$, $\phi$ is called an \textit{induced subgraph isomorphism} and we use the notation $\ g_{2} \underset{ind}{\subseteq} g_{1}$.
+
+We further introduce definitions and notations that we use in discussing the processing of graphs. Since we need to support induced subgraphs as well as subgraphs, we provide the respective definitions for the decomposition, union and subtraction of graphs for both these cases. Note that during random decomposition, the graphs are partitioned into roughly two equal number of vertices or edges for efficient processing.
+
+\begin{definition}
+\label{def:def35}
+The union of induced subgraphs $g_1=(V_1,E_1,L_1^{v} ,L_1^{e} ,\mu_1,\nu_1)$ and $g_2=(V_2,E_2,L_2^{v} ,L_2^{e} , \mu_2, \nu_2)$ with respect to a set of interconnecting edges $E^{'} \subseteq (V_{1} \times V_{2})$ with a labeling function $\nu:E^{'} \rightarrow L_{E}$, is the graph $g=(V,E,L^{v} ,L^{e} ,\mu,\nu)$ if:
+\begin{enumerate}[1.]
+\item $V=V_1 \cup V_2$ and $V_{1} \cap V_{2} =\emptyset$,
+\item $E=E_1 \cup E_2 \cup E^{'}$
+\item{ 
+\[\mu(v) = \left\{
+  \begin{array}{1 1}  
+     \mu_{1}(v)  & \quad \text{if }  v \in V_{1} \\  
+     \mu_{2}(v)  & \quad \text{if }  v \in V_{2} 
+  \end{array} \right
+\]
+}
+
+\item{ 
+\[\nu(e) = \left\{
+  \begin{array}{1 1}  \nu_{1}(e)  & \quad \text{if }  e \in E_{1} \\  
+                      \nu_{2}(e)  & \quad \text{if } e \in E_{2} \\
+                      \nu(e)     & \quad \text{if } e \in E^{'} 
+  \end{array} \right
+\]
+}
+
+\end{enumerate}
+We denote this union of induced subgraphs $g_1$ and $g_2$, with respect to a set of interconnecting edges  by $g_{1} \cup _{E} g_{2}$.
+\end{definition}
+
+
+\begin{definition}
+\label{def:def36}
+The \textit{decomposition to induced subgraph} of graph $g=(V,E,L^{v} ,L^{e} ,\mu,\nu)$ is the partitioning of the set of vertices (also known as edge cutting) to form a pair of induced subgraphs $g_1=(V_1,E_1,L_1^{v} ,L_1^{e} ,\mu_1,\nu_1)$ and $g_2=(V_2,E_2,L_2^{v} ,L_2^{e} , \mu_2, \nu_2)$ where  the following conditions hold:
+
+\begin{enumerate}[1.]
+\item $V_1 \subseteq V$ , $V_2 \subseteq V$ and $V_{1} \cap V_{2} =\emptyset$ 
+\item $E_{1} = E \cap (V_{1} \times V_{1})$, $E_{2} = E \cap (V_{2} \times V_{2})$, $E^{'} \subseteq (V_{1} \times V_{2})$ and $E_1 \cup E_2 \cup E^{'} = E$ where $\nu:E^{'} \rightarrow L_{E}$ is the edge labeling function for edges to $V_1$ and $V_2$.
+\item $\mu_1 , \mu_2 , \nu_1, \nu_2$ are the restrictions of $\mu$ and $\nu$ to $V_1$, $V_2$ and $E_1$, $E_2$ respectively, that is:
+%\item{ 
+\[\mu_1(v) = \left\{
+  \begin{array}{1 1}  
+     \mu(v)  & \quad \text{if }  v \in V_{1} \\  
+     \text{undefined} & \quad \text{otherwise} 
+  \end{array} \right
+\]
+\[\mu_2(v) = \left\{
+  \begin{array}{1 1}  
+     \mu(v)  & \quad \text{if }  v \in V_{2} \\ 
+     \text{undefined} & \quad \text{otherwise} 
+  \end{array} \right
+\]
+%}
+%\item{ 
+\[\nu_1(e) = \left\{
+  \begin{array}{1 1}  \nu(e)  & \quad \text{if }  e \in E_{1} \\  
+                      \text{undefined} & \quad \text{otherwise}     
+  \end{array} \right
+\]
+\[\nu_2(e) = \left\{
+  \begin{array}{1 1}  \nu(e)  & \quad \text{if }  e \in E_{2} \\  
+                      \text{undefined} & \quad \text{otherwise}  
+  \end{array} \right
+
+%}
+
+\end{enumerate} 
+
+We denote the \textit{decomposition to induced subgraphs} of graph $g$ by partition of a set edges to subgraphs $g_1$ and $g_2$ as $g  \underset{V}{\rightarrow} \{ g_1 , g_2 \}$.
+ 
+If the assignment of the edges to $g_1$ and $g_2$ is performed at random, we get randomly decomposed subgraphs. We denote \textit{random decomposition to subgraph}  by $g  \underset{V_r }{\rightarrow} \{ g_1 , g_2 \}$.
+
+\textit{Decomposition to induced subgraphs} uniquely defines induced subgraphs of $g$ denoted by  $g_{1} \underset{ind}{\subseteq} g$, $g_{2} \underset{ind}{\subseteq} g$ and satisfies $ g_{1} \cup_{E} g_{2} \underset{iso}{=} g$.
+
+\end{definition}
+
+
+\begin{definition}
+\label{def:def37}
+The \textit{difference} between a graph $g$ and its induced subgraph $ g_1 \underset{ind}{\subseteq} g$ is the induced subgraph $g_2 \underset{ind}{\subseteq}  g$ that 
+is defined by $ V_2 =V - V_1$.
+We use the notation $ g\underset{ind}{-} g_1$ to represent the subtraction of induced subgraph.
+\end{definition}
+Note that both $g_1$ and $g_2$ are induced subgraphs of $g$ and there are edges that are not included by either $g_1$ or $g_2$ as shown in definition \ref{def:def36}
+
+Next we define union, decomposition and subtraction for subgraphs.
+
+
+\begin{definition}
+\label{def:def38}
+The union of subgraphs $g_1=(V_1,E_1,L_1^{v} ,L_1^{e} ,\mu_1,\nu_1)$ and $g_2=(V_2,E_2,L_2^{v} ,L_2^{e} , \mu_2, \nu_2)$ given a set of common vertices $V^{'} = V_{1} \cap V_{2}$ with respect to $V^{'}$ is the graph $g=(V,E,L^{v} ,L^{e} ,\mu,\nu)$ if:
+\begin{enumerate}[1.]
+\item $E=E_1 \cup E_2$ and $E_{1} \cap E_{2} =\emptyset$
+\item $V=V_1 \cup V_2 \cup V^{'}$
+\item{ 
+\[\mu(v) = \left\{
+  \begin{array}{1 1}  
+     \mu_{1}(v)  & \quad \text{if }  v \in V_{1} - V_{2}\\  
+     \mu_{2}(v)  & \quad \text{if }  v \in V_{2} - V_{1}\\
+     \mu(v)    & \quad \text{if }   v \in V_{1} \cap V_{2}
+  \end{array} \right
+\]
+}
+
+\item{ 
+\[\nu(e) = \left\{
+  \begin{array}{1 1}  \nu_{1}(e)  & \quad \text{if }  e \in E_{1} \\  
+                      \nu_{2}(e)  & \quad \text{if } e \in E_{2} \\
+  \end{array} \right
+\]
+}
+
+\end{enumerate}
+We denote this union of subgraphs $g_1$ and $g_2$, with respect to a set of common vertices $V$ by $g_{1} \cup _{V} g_{2}$.
+\end{definition}
+
+
+\begin{definition}
+\label{def:def39}
+The \textit{decomposition to subgraph} of a graph $g=(V,E,L^{v} ,L^{e} ,\mu,\nu)$ is the partitioning of the set of edges (also known as vertex sharing) to form a set of subgraphs $g_1=(V_1,E_1,L_1^{v} ,L_1^{e} ,\mu_1,\nu_1)$ and $g_2=(V_2,E_2,L_2^{v} ,L_2^{e} , \mu_2, \nu_2)$ where the following conditions hold:
+
+\begin{enumerate}[1.]
+\item $E_1 \subseteq E$ , $E_2 \subseteq E$, $E_{1} \cup E_{2} = E$  and $E_{1} \cap E_{2} =\emptyset$ 
+%\item $V_{1} = V \cap (E_{1} \times E_{1})$, $V_{2} = V \cap (E_{2} \times E_{2})$ and $V^{'} \subseteq (E_{1} \times E_{2})$ 
+\item $\cup_{i \in [1,2]} V_{i} = V $ and $V_1 \cap V_2 = V^{'}$ where $V^{'}$ are vertices common to sets  $V_1$ and $V_2$.
+\item $\mu_1 , \mu_2 , \nu_1, \nu_2$ are the restrictions of $\mu$ and $\nu$ to $V_1$, $V_2$ and $E_1$, $E_2$ respectively, such that:
+%\item{ 
+\[\mu_1(v) = \left\{
+  \begin{array}{1 1}  
+     \mu(v)  & \quad \text{if }  v \in V_{1} \\  
+     \text{undefined} & \quad \text{otherwise} 
+  \end{array} \right
+\]
+\[\mu_2(v) = \left\{
+  \begin{array}{1 1}  
+     \mu(v)  & \quad \text{if }  v \in V_{2} \\ 
+     \text{undefined} & \quad \text{otherwise} 
+  \end{array} \right
+\]
+%}
+%\item{ 
+\[\nu_1(e) = \left\{
+  \begin{array}{1 1}  \nu(e)  & \quad \text{if }  e \in E_{1} \\  
+                      \text{undefined} & \quad \text{otherwise}     
+  \end{array} \right
+\]
+\[\nu_2(e) = \left\{
+  \begin{array}{1 1}  \nu(e)  & \quad \text{if }  e \in E_{2} \\  
+                      \text{undefined} & \quad \text{otherwise}  
+  \end{array} \right
+%\]
+%}
+
+\end{enumerate} 
+
+We denote the \textit{decomposition to subgraphs} of graph $g$ by partition of a set edges to subgraphs $g_1$ and $g_2$ as $g  \underset{E}{\rightarrow} \{ g_1 , g_2 \}$.
+ 
+If the assignment of the edges to $g_1$ and $g_2$ is performed at random, we get randomly decomposed subgraphs. We denote \textit{random decomposition to subgraph}  by $g  \underset{E_r }{\rightarrow} \{ g_1 , g_2 \}$.
+
+\textit{Decomposition to subgraphs} uniquely defines subgraphs of $g$ denoted by  $g_1 \subseteq g$, $g_2 \subseteq g$ and satisfies $g_{1} \cup_{V} g_{2} \underset{iso}{=} g $
+\end{definition}
+
+
+\begin{definition}
+\label{def:def310}
+The \textit{difference} between a graph $g$ and a subgraph $g_1 \subseteq g$ is the subgraph $g_2 \subseteq g$ that is induced by $E_2 =E -E_1$.
+We use the notation $g-g_1$ to represent the subtraction of subgraph.
+\end{definition}
+Note that both of $g_1$ and $g_2$ are subgraphs of $g$ and there are vertices both are included in both  $g_1$ and $g_2$  as shown in definition \ref{def:def39}.
+
+
+\begin{definition}
+\label{def:def311}
+Given a graph database $D= \{ g_1,g_2,\dots,g_n \}$ and a query graph $q$,
+\textit{induced subgraph isomorphism query} detects isomorphisms of all induced subgraphs from $g \in D$ to $q$.
+Similarly, \textit{subgraph isomorphism query} detects all isomorphisms of all subgraphs from $g \in D$ to $q$.
+\end{definition}
+
+We call a graph that is present in the graph database a \textit{model graph}. 

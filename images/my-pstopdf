@@ -1,0 +1,3 @@
+#! /bin/bash
+# convert all the eps files to pdf
+ls *.eps | awk '{system("pstopdf -dEPSCrop "$0 )}'

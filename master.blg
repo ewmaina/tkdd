@@ -1,0 +1,71 @@
+This is BibTeX, Version 0.99d (TeX Live 2010)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: master.aux
+The style file: acmsmall.bst
+Database file #1: master.bib
+Warning--string name "mar/apr" is undefined
+--line 90 of file master.bib
+Warning--string name "april" is undefined
+--line 149 of file master.bib
+A bad cross reference---entry "li_wan_wang2003"
+refers to entry "DBLP:conf/mobihoc/2003", which doesn't exist
+A bad cross reference---entry "cai_he_yan2005"
+refers to entry "DBLP:conf/pkdd/2005", which doesn't exist
+Warning--I didn't find a database entry for "DBLP:conf/mobihoc/2003"
+Warning--I didn't find a database entry for "DBLP:conf/pkdd/2005"
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Warning--empty address in babai1981
+Warning--empty publisher in cai_he_yan2005
+Warning--empty address in cai_he_yan2005
+Warning--empty address in chen2007_cindex
+Warning--empty publisher in cordella2000
+Warning--empty address in cordella2000
+Warning--empty address in cordella2001_vf2
+Warning--empty address in hoffmann1982
+Warning--empty publisher in li_wan_wang2003
+Warning--empty address in li_wan_wang2003
+Warning--no number and no volume in mckay1981
+Warning--empty publisher in williams_huan_wang2007_gdindex
+Warning--empty address in williams_huan_wang2007_gdindex
+You've used 22 entries,
+            3084 wiz_defined-function locations,
+            871 strings with 9577 characters,
+and the built_in function-call counts, 18398 in all, are:
+= -- 1567
+> -- 1356
+< -- 2
++ -- 417
+- -- 443
+* -- 1728
+:= -- 3189
+add.period$ -- 107
+call.type$ -- 22
+change.case$ -- 173
+chr.to.int$ -- 22
+cite$ -- 35
+duplicate$ -- 557
+empty$ -- 1102
+format.name$ -- 511
+if$ -- 3611
+int.to.chr$ -- 1
+int.to.str$ -- 0
+missing$ -- 33
+newline$ -- 115
+num.names$ -- 222
+pop$ -- 167
+preamble$ -- 1
+purify$ -- 307
+quote$ -- 0
+skip$ -- 554
+stack$ -- 0
+substring$ -- 978
+swap$ -- 215
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 420
+warning$ -- 13
+while$ -- 208
+width$ -- 0
+write$ -- 320
+(There were 2 error messages)

@@ -1,0 +1,9 @@
+In this article, we have studied the problem of scalable enumeration of all subgraph isomorphisms in a graph database. We took the graph decomposition process of the \textit{Network Algorithm} first proposed by  Messmer and Bunke \cite{messmer_bunke2000} and extended it from processing only induced subgraph isomorphism to include subgraph isomorphism. The extended Algorithm  likely suits more research oriented as well as real world  problems.
+We proposed improvements on \textit{Network Algorithm} enable it to process larger query or a larger graph database while maintaining good performance.
+We did this mainly by restraining the rapid increase in running time due to the creation of disconnected graphs in the DAG during query processing.
+
+For small graphs our method shows performance that is indistinguishable from that is Messmer's \textit{Network Algorithm}. We have shown that for large
+query graph and for large database our method is an order of magnitude faster than the \textit{Network Algorithm} or VF2. This is in spite of the fact that, unlike
+VF2 algorithm, our algorithm processes enumeration of all isomorphic subgraphs, while VF2 will stop as soon as an isomorphic subgraph is detected in the database.
+
+

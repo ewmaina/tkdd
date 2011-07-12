@@ -1,0 +1,137 @@
+ #+STARTUP: hidestars
+
+* [[file:master.tex::\section{Related%20Work}][master document]] 
+  This document contains an outline of the document in the same format as 
+  this one, with the acutal content in tex file that are read using the latex
+  input function at compile time. This allows one to edit the sections independently
+  as well as restructure the document without much effort
+* [[file:s0_abstract.tex::They%20proposed%20a%20so-called%20\textit{Network%20Algorithm}%20that%20stores%20graphs%20in%20a%20network%20structure%20by%20recursively%20decomposing%20the%20individual%20graphs,%20and%20the%20algorithms%20to%20facilitate%20retrieval%20using%20the%20structure.][abstract]] 
+  The abstract will stay at it stands for now. May change with the changes in the introduction
+
+* [[file:s1_introduction.tex::Graphs%20have%20become%20increasingly%20important%20structures%20for%20representing%20and%20understanding%20complex%20structures.][introduction]]
+  The introduction has to come up to the newer publications and sources.
+  Mainly we need to take a leaf from both Messmer(2000) and Chen(2007)
+  To make a very convincing argument of the merits of our approach and 
+  the main motivation for pursuing our track instead of any other track
+
+  Two tracks of thought:
+  
+  Since subgraph isormorphism is NP complete, Optimal solutions for the subgraph isomorphism problem
+  have been investigated. Backtracing in the search tree is indeed the most common method. Several 
+  techniques have been devised to restrict the search tree growth, such as Ullman(1976) and Haralick(1980)
+  
+  New Outline with references
+
+  Application oriented start first:
+  * pattern matching 
+  * Protein molecule fragments
+  * social networks - new and exploding usage
+  * character recognition
+  * document analysis
+  * computer vision
+  * multimedia database
+  * xml documents
+
+  Introducing trends in the research
+  * Tracking research upto present:
+  ** traditional graph isomorphism research
+     - One-to-one matching
+     - Query is as large as or smaller than database graph
+       - Ullman
+       - Messmer
+
+  ** Sasha e-al(2002) introduced the idea of approximate containment search
+    - Filter and verify idea that is the backbone of all index based 
+
+  ** Traditional with index
+     - Feature based
+  ** Modern trends
+     - Supergraph and  Containment type matching - summary of trend
+     - feature based
+     - containment with index
+  ** New Approach
+     - randomised decomposition of database and query
+     - random fragments form feature space 
+        - no need to select features actively
+        - recombining provides larger subgraphs as features
+        - larger subgraphs have higer discriminatory power
+
+     - containment or supergraph matching satisfied 
+     - typical graph database query results require verification. The network tree structure is verification free
+     - fast subgraph isomorphism tests due to reduced combinatorial explosion
+  ** Related
+     - Decision tree decomposition appreaches
+       - exponentiol in the size of the graph
+       - suited for smaller graph databases
+       - Tree 
+
+  Simple Introduction 
+
+  Supergraph query is an important type of graph queries which has many practical applications. 
+  Given a graph database D, the answer set of a supergraph query q is computed by retrieving 
+  all graphs in D which are fully contained in q. A primary challenge in computing the answers 
+  of graph queries is that pair-wise comparisons of graphs are usually hard problems. For 
+  example, subgraph isomorphism is known to be NP-complete. Clearly, the success of any graph 
+  database application is directly dependent on the efficiency of the graph indexing and query 
+  processing mechanisms.
+
+* [[file:s2_related_work.tex::The%20subgraph%20isomorphism%20problem%20is%20a%20known%20NP-complete%20problem\cite{np-complete}.][related work]]
+  More work has to be done here. The two separations does not show the diversity ofresearch on graph
+  isomorphism. We need to make more detailed description along the line of the work of Messmer et al.
+  We need to add on the ideas used in the Chen(2007) which brings to the present situation.
+
+  
+  Much of the work has come into focus
+  First the work of Sasha et. al. \cite{sasha_wang_giugno2002} shows how the present track of 
+  Graph research was developed leading to the present focus on indexing of graph features. 
+  Path and Tree searching is the precurser to the present wave of graph research. Search trees 
+  form the basis of approximate containment queries which such as the well known w3 tree query 
+  language XQuery and AQUA Query. The concept of containment mapping is first considered here
+  in the more general context of exact or approximate containment matching. The "approximation"
+  is measured by the number of paths of the query that do not appear in the data tree, or some 
+  other distance function.
+
+  There have been many attempts to reduce the combinatorial cost of AC query processing in
+  graphs or keygraph searching. They can be classified as approcximate, inexact, and exact 
+  algorithms. Approximate algorithms have polynomial complexity but they are not guaranteed to 
+  find a correct solution.
+
+  Exact and inexact algorithms do find the correct answers and therefor have exponential worst 
+  case complexity. These algorithms employ a cost function to measure the similarity of the graphs.
+  he most popular exact and inexact subgraph matching algorithms are based on heuristics on state 
+  space representation tree that corresponds to the subisomorphism.
+
+  Ullmann's Algorithm
+  Ullmann presented an algorithm for  exact subgraph matching abased on the state space search 
+  with backtracking(prunning)[32]. A depth forst search of  the state space tree representation 
+  depicts the agorithms progress. When a node (a pair of matching vertices) is added to the tree,
+  the isomorphism conditions are checked in the partial matching. If the isomorphism conditions 
+  are not satsfied 
+
+ 
+
+  
+
+
+ 
+
+* [[file:s3_preliminaries.tex::In%20this%20section,%20we%20present%20the%20definitions%20regarding%20graph%20and%20graph%20isomorphism.][preliminaries]] 
+
+
+* [[file:s4_our_approach.tex][our approach]]
+
+* [[file:s5_proposed_algorithms.tex::In%20this%20section,%20we%20describe%20the%20algorithms%20of%20subgraph%20query%20and%20induced%20subgraph%20query%20in%20detail.][proposed algorithm]]
+
+* [[file:s6_performance_evaluation.tex::In%20this%20section,%20we%20perform%20our%20algorithm%20in%20synthetic%20graph%20dataset%20and%20real%20graph%20dataset.][performance evaluation]]
+
+* [[file:s7_conclusions.tex::In%20this%20paper,%20we%20applied%20Messmer%20et%20al.'s%20algorithm%20for%20induced%20subgraph%20isomorphism%20detection%20to%20subgraph%20isomorphism%20detection%20that%20more%20likely%20to%20suit%20real%20problems.][conclusions]]
+
+* other references
+
+
+* experiments
+
+** 
+
+
+#+STARTUP: showstars

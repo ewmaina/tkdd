@@ -1,0 +1,61 @@
+\documentclass{standalone}
+\usepackage{pgfplots}
+\usepgfplotslibrary{groupplots}
+
+\begin{document}
+%\centering
+
+\begin{tikzpicture}
+  \pgfplotstableread{datafile.dat}\myscatter
+  \begin{groupplot}[
+      group style={
+        group size=1 by 2,
+        horizontal sep=0pt, vertical sep=0pt,
+        xticklabels at=edge bottom,yticklabels at=edge left},
+      height=6cm,width=6cm
+    ]
+\pgfmathsetmacro\a{2}
+\pgfmathsetmacro\b{2}
+\pgfmathsetmacro\c{\a+\b}
+
+    \pgfplotsinvokeforeach{1,...,\c} {
+    \nextgroupplot
+    \pgfmathsetmacro\x{mod(#1-1,\a)}
+    \pgfmathsetmacro\y{floor((#1-1)/\b)}
+
+        \addplot+[only marks] 
+          table[header=false,x index=\x,y index=\y]
+          {\myscatter};
+    }
+  \end{groupplot}
+\end{tikzpicture}
+
+\begin{tikzpicture} 
+  \pgfplotstableread{datafile.dat}\myscatter
+  \begin{groupplot}[
+      group style={
+        group size=1 by 2,
+        horizontal sep=0pt, vertical sep=0pt,
+        xticklabels at=edge bottom,yticklabels at=edge left},
+      height=6cm,width=6cm
+    ]
+\pgfmathsetmacro\a{2}
+\pgfmathsetmacro\b{2}
+\pgfmathsetmacro\c{\a+\b}
+
+    \pgfplotsinvokeforeach{1,...,\c} {
+    \nextgroupplot
+    \pgfmathsetmacro\x{mod(#1-1,\a)}
+    \pgfmathsetmacro\y{floor((#1-1)/\b)}
+
+        \addplot+[only marks] 
+          table[header=false,x index=\x,y index=\y]
+          {\myscatter};
+    }
+  \end{groupplot}
+\end{tikzpicture}
+
+
+%\centering
+
+\end{document}

@@ -1,0 +1,215 @@
+Construct DAG
+
+\begin{algorithm}
+\caption{DAG Construction}
+\label{alg:algdag}
+\begin{algorithmic}
+\STATE Input: Model Graphs $g={gm_1,gm_2,\dots,gm_n}$
+\STATE Output:DAG  $D_g={g_1,g_2,\dots,g_n}$
+\end{algorithmic}
+\begin{algorithmic}[1]
+\STATE Set $g_1=gm_1$ 
+\STATE Create a NULL node as root for DAG
+\STATE Create a node for $g_1$
+\STATE Initialize the iterator, i=1
+\IF{$g_1$ is a singleton
+   \STATE create a node for $g_1$ as a child of the root of DAG 
+\ELSE
+ \WHILE $g_i$ is not a singleton
+	\FOR $g_1$ to $g_n$
+		\STATE decompose  $g_i$ to $g_i^'$ and $g_i^{''}$
+		\IF $g_i^'$ is a singleton,  %% End   of the road
+			\STATE create  a node for $g_i^'$ as a child of  $g_i$
+			\STATE $S_max=|g_i^',S_max|_max$
+			
+		\ELSE %% Difference is feasible
+			\IF $g$ - $S_max= q_s$;  %% Difference gives a subgraph g_s
+			\STATE $S_max=|g_s,S_max|_max$
+			
+		\ELSE %% Difference is infeasible
+			\IF $g$ - $S_max \lt 0$;  %% S_max is larger  than g
+			\STATE $S_max=|g_s,S_max|_max$
+			
+		\ELSE %% Difference is infeasible
+			\IF $g$ - $S_max = NULL$;  %% S_max is not subgraph isomorphic to g
+			\STATE $S_max=|g_s,S_max|_max$
+			
+		\ELSE %%  There is an isomorphic subgraph to g
+			\IF $g$ - $S_max= 0$;
+				\STATE \GOTO \END
+				
+
+			\STATE Decompose $g_{i}$ 
+	\ENDFOR
+	\END
+\ENDWHILE
+\RETURN Root Node with decomposed graphs
+\end{algorithmic}
+\end{algorithm}
+
+\pagebreak
+
+Input: Graph $g$
+Output: Decomposed subgraphs  $D_g={g_1,g_2}$
+\begin{algorithm}
+\caption{Decomposition}
+\label{alg:algdec}
+\begin{algorithmic}
+\STATE Input: Graph $g={g_1}$
+\STATE Output:Two Decomposed Subgraphs or Sigleton
+\end{algorithmic}
+\begin{algorithmic}[1]
+\STATE Create a node for $g$
+\STATE Initialize the iterator, i=1
+\STATE Set $S_max=0$
+\IF{$g$ is a singleton
+   \STATE create  a node for $g$ as a child of the root of DAG 
+   \STATE $S_max=g$
+\ELSE
+ \WHILE $g$ is not a singleton
+	\FOR $g$ to $g_n$
+		\STATE decompose  $g_i$ to $g_i^'$ and $g_i^{''}$
+		\IF $g_i^' \gt g_i^{''}$
+			\STATE $S_max=g_i^'$
+		\ELSE 
+			\STATE $S_max=g_i^{''}$
+		\IF $g_i^'$ is a singleton, 
+			\STATE create  a node for $g_i^'$ as a child of  $g_i$
+		\ELSE
+			\STATE Decompose $g_i^'$ 
+		\IF $g_i^{''}$ is a singleton
+			\STATE create  a node for $g_i^{''}$ as a child of  $g_i$
+		\ELSE Decompose $g_i^{''}$
+	\STATE i:=i+1
+	\ENDFOR
+\ENDWHILE
+\RETURN decomposed graphs
+\end{algorithmic}
+\end{algorithm}
+
+
+Input: Model Graphs $G_m = {g_m1,g_m2,\dots,g_mn}$
+Output: DAG with decomposed subgraphs stored at nodes, $D_g={g_1,g_2,\dots,g_n}$
+\begin{algorithm}
+\caption{RandomPartition}
+\label{alg:algdec}
+\begin{algorithmic}
+\STATE Input: Model Graphs $g={g_1m,g_2m,\dots,g_mn}$
+\STATE Output:DAG 
+\end{algorithmic}
+\begin{algorithmic}[1]
+\STATE Set $g_1m=g_1$ 
+\STATE Create a NULL node as root for DAG
+\STATE Create a node for $g_1$
+\STATE Initialize the iterator, i=1
+\IF{$g_1$ is a singleton
+   \STATE create  a node for $g_1$ as a child of the root of DAG 
+\ELSE
+ \WHILE $g_i$ is not a singleton
+	\FOR $g_1$ to $g_n$
+		\STATE set $g_i^'$ and $g_i^{''}$ to children of $g_i$
+		\STATE decompose  $g_i$ to $g_i^'$ and $g_i^{''}$
+		\IF $g_i^'$ is a singleton, 
+			\STATE create  a node for $g_i^'$ as a child of  $g_i$
+		\ELSE
+			\STATE set i:=i+1
+			\STATE set $g_{i+1}$ := $g_i^'$
+			\STATE set $g_{i+1}^'$ and $g_i^{''}$ to children of $g_{i-1}$
+			\STATE Decompose $g_i^'$ 
+		\IF $g_i^{''}$ is a singleton
+			\STATE create  a node for $g_i^{''}$ as a child of  $g_i$
+		\ELSE Decompose $g_i^{''}$
+	\STATE i:=i+1
+	\ENDFOR
+		\STATE i:=i+1
+\ENDWHILE
+\RETURN $D_g={g_m1,g_m2,\dots,g_mn}$
+\end{algorithmic}
+\end{algorithm}
+
+*********************
+
+begin{algorithm}
+\caption{DAG Construction}
+\label{alg:algdag}
+\begin{algorithmic}
+\STATE Input: Model Graphs $g={gm_1,gm_2,\dots,gm_n}$
+\STATE Output:DAG  $D_g$ includes decomposed model graphs stored in the nodes
+\end{algorithmic}
+\begin{algorithmic}[1]
+\STATE Initialize the iterator, i=1
+\STATE Initializs the largest common subgraph, $S_max$=0  
+\STATE Create a NULL node as root for DAG
+\WHILE Unprocessed Model Graph \gt 0
+	\STATE Set $g_i=gm_i$ 
+	\IF i = 1
+		\STATE Create a node for $g_i$
+	\IF{$g_i$ is a singleton
+	   \STATE create a node for $g_1$ as a child of the root of DAG 
+	   \STATE Insert $g_i$ in priority queue
+	\ELSE
+		\IF $g_i$ - $S_max$ = $q_s$;  %% Difference gives a subgraph g_s
+			\STATE $s_{max}$ is subgraph isomophic to $g_i$ 
+			\STATE Create node for $g_i$ and set link from the parent of $S_max$ to  $g_i$.
+			\STATE Decompose $g_s$
+			\STATE $S_max$ = $|g_s,S_{max}|$
+			\STATE Insert $g_i$ in priority queue  
+		\ENDIF
+		\RETURN
+	\ELSE
+		\IF  $g$ - $S_max$ = 0
+			\STATE $g_i$ is isomophic to  $S_{max}$ 
+			\STATE Set Link in DAG from the parent of $g_i$ to  $S_max}$ 
+			\STATE Delete $g_i$
+		\ENDIF
+		\RETURN
+	\ELSE
+		\IF  $g_i$ - $S_max$ = $q_i$ %%  g_i does not include S_max	
+			\STATE RandomDecompose($g_i$) into connected graphs $g_i^'$ and  $g_i^{''}$
+			\STATE set $S_max$=|$g_i^`$,$g_i^{''}$,$S_max$|
+			\STATE Insert $g_i$ in priority queue 
+		\ENDIF
+		\RETURN
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+	
+*************
+
+
+
+
+
+
+ \WHILE $g_i$ is not a singleton
+	\FOR $g_1$ to $g_n$
+		\STATE decompose  $g_i$ to $g_i^'$ and $g_i^{''}$
+		\IF $g_i^'$ is a singleton,  %% End   of the road
+			\STATE create  a node for $g_i^'$ as a child of  $g_i$
+			\STATE $S_max=|g_i^',S_max|_max$
+
+		\ELSE %% Difference is feasible
+			\IF $g$ - $S_max= q_s$;  %% Difference gives a subgraph g_s
+			\STATE $S_max=|g_s,S_max|_max$
+			
+		\ELSE %% Difference is infeasible
+			\IF $g$ - $S_max \lt 0$;  %% S_max is larger  than g
+			\STATE $S_max=|g_s,S_max|_max$
+			
+		\ELSE %% Difference is infeasible
+			\IF $g$ - $S_max = NULL$;  %% S_max is not subgraph isomorphic to g
+			\STATE $S_max=|g_s,S_max|_max$
+			
+		\ELSE %%  There is an isomorphic subgraph to g
+			\IF $g$ - $S_max= 0$;
+				\STATE \GOTO \END
+				
+
+			\STATE Decompose $g_{i}$ 
+	\ENDFOR
+	\END
+\ENDWHILE
+\RETURN Root Node with decomposed graphs
+\end{algorithmic}
+\end{algorithm}
+

@@ -33,7 +33,7 @@ This process continues until the decomposition results in singleton graphs.
 Before any graph is decomposed, it is checked for containment of an induced subgraph previously created by the decomposition process so far. If one is found, the graph is decomposed into the induced subgraph and a rest subgraph. In this way, an induced subgraph can be shared by multiple parents as shown in Fig.\ref{fig:fig2} where $g_1$ is decomposed randomly into subgraph $6$ and subgraph $8$ by partitioning approximately an equal number of vertices.
 If $g_2$ contains an induced subgraph $8$, $g_2$ is decomposed into graph $8$ and graph $5$ after the all decomposition of $g_1$ has finished.
 
-The second part induced subgraph isomorphism query is processed using the $DAG$ constructed in first part.
+The second part an induced subgraph isomorphism query is processed using the $DAG$ constructed in first part.
 Initially all induced subgraph isomorphisms from all singleton graphs in the $DAG$ to query graph are detected.
 Then, based on the induced subgraph isomorphisms, calculates induced subgraph isomorphisms of the respective parent graphs by combining the induced subgraph isomorphisms of its children. This process repeats until finally, all induced subgraph isomorphisms of model graphs to the query are detected.
 The \textit{Network Algorithm} makes use of the fact that if a graph in $DAG$ is not an induced subgraph of query graph, its ancestors are also not induced subgraphs.

@@ -212,13 +212,3 @@ This results in a \textit{New Network Algorithm} is faster than the \textit{Netw
 \caption{A case where decomposition of subgraph by partitioning vertices (cutting edges) is not feasible \label{fig:fig61} }
 \end{figure}
 
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{dag_search_optimize.pdf}
-\caption{The search strategy for the \textit{New Network Algorithm}: For a simplified database composed of model graphs $g_1$ and $g_2$, given a query graph $g_3$ each model graph is processed locally by starting at the top of the $DAG$ in a depth first search (DFS) fashion. 
-The search concludes when the first \textit{dead} state is encountered. 
-Specifically, we conclude that nodes 1,13,19, 22 (hence model graph $g_1$) are in \textit{dead} state as soon as node 1 is processed. 
-After processing $g_1$ and $g_2$ we have the result in spite of nodes 2,3,4, and 14 remaining in \textit{unsolved} state. 
-In contrast, the \textit{Network Algorithm} processes \textit{all} the nodes in the $DAG$ in the order of the numbers on the top right of the nodes before any output is delivered.}
-\label{fig:fig7}
-\end{figure}

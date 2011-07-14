@@ -83,12 +83,12 @@ Induced subgraph & feasible & sometimes  infeasible \\ \hline
 
 \begin{enumerate}
 
-\item Data structure.
+\item Data structure
 
 The \textit{Network Method} implements only processing of induced subgraph queries. We implement an extension of the method enable processing of subgraph queries. This limitation in the \textit{Network Algorithm} occurs due to the method of decomposition by vertex partition used to facilitate induced subgraph isomorphism query. A provision is required for a similar facility suited to subgraph isomorphism query. To do so, we use the algorithms intended for processing induced subgraphs, mostly by replacing the term \textit{induced subgraph} with \textit{subgraph} in the next section. Then, we define a new decomposition method by partitioning edges, that is suited for processing subgraphs.
 
 
-Table. \ref{tab:table1} summarizes feasible approaches to decomposition. In the \textit{Network Algorithm}, graphs are decomposed by cutting edges.
+Table. \ref{tab:table1} summarizes feasible approaches to decomposition. In the \textit{Network Algorithm}, graphs are decomposed by partitioning vertices (cutting edges).
 In order to extend the \textit{Network Algorithm} to non-induced subgraph query, we implement \textit{decomposition to subgraph} by partitioning edges (shared vertices). Fig.\ref{fig:fig4} shows the difference between two methods of decomposition. We now describe the rationale for the difference in decomposition described above.
 
 For induced subgraph query, we have to decompose a graph partitioning vertices to form two induced subgraphs and store the information about the interconnecting cut edges. Both the resulting children must be induced subgraphs of their parent to enable the processing of induced subgraph queries in a divide and conquer fashion. However, Decomposing an arbitrary graph into its induced subgraph and rest graph by shared vertices such that both children are induced subgraphs of the parent cannot be assured.

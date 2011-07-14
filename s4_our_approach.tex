@@ -126,7 +126,7 @@ For induced subgraph query, we have to decompose a graph partitioning vertices t
 Both the resulting children must be induced subgraphs of their parent to enable the processing of induced subgraph queries in a divide and conquer fashion. 
 However, Decomposing an arbitrary graph into its induced subgraph and rest graph by shared vertices such that both children are induced subgraphs of the parent cannot be assured.
 
-In Fig.\ref{fig:fig51} we see an example where the decomposition of a graph into two induced subgraphs is infeasible by partitioning edges (sharing vertices).
+In Fig.\ref{fig:fig6} we see an example where the decomposition of a graph into two induced subgraphs is infeasible by partitioning edges (sharing vertices).
 If we decompose $g$ by partitioning edges, the rest graph is $s_{rest}$. But $s_{rest}$ must be an induced subgraph of $g$, so the edge is complemented as $s_{rest}'$ and $s_{rest}'$ is equal to $g$. 
 This indicates that we cannot decompose a graph $g$ any further as $g$ is a complete graph.
 The subtraction of induced subgraph by partitioning vertices (vertex subtraction)  is defined in \textit{Definition \ref{def:def37}}.
@@ -134,7 +134,7 @@ The subtraction of induced subgraph by partitioning vertices (vertex subtraction
 For subgraph query, we need to decompose graphs by partitioning edges. 
 This is due to the requirement that both children must be subgraphs of their parent graphs
 and the limitation that we are unable to decompose a graph into an arbitrary subgraph and the rest graph by partitioning vertices so that rest graph becomes subgraph of its parent.
-Fig.\ref{fig:fig61} shows an example where a decomposition of a graph into two subgraphs is not feasible by partitioning vertices.
+Fig.\ref{fig:fig7} shows an example where a decomposition of a graph into two subgraphs is not feasible by partitioning vertices.
 If we subtract $s$ from $g$ by partitioning vertices, $s_{rest}$ cannot be represented as a graph as only an edge remains. 
 We need to subtract the subgraphs by partitioning edges and then including the vertices on the edges as $s_{rest}'$ shows. 
 Hence subgraph query processing we decompose the graphs by partitioning edges and including the corresponding vertices.
@@ -195,7 +195,7 @@ This results in a \textit{New Network Algorithm} is faster than the \textit{Netw
 \begin{figure}
 \centering
 \input{fig4_example_sharing_vertices.tex}
-\caption{A case where decomposition of induced subgraph by partitioning edges (shared vertices) is not feasible \label{fig:fig51} }
+\caption{A case where decomposition of induced subgraph by partitioning edges (shared vertices) is not feasible \label{fig:fig6} }
 \end{figure}
 
 %% Induced graphs can only be decomposed by edge cutting 
@@ -209,6 +209,6 @@ This results in a \textit{New Network Algorithm} is faster than the \textit{Netw
 \begin{figure}
 \centering
 \input{fig5_example_cutting_edges.tex}
-\caption{A case where decomposition of subgraph by partitioning vertices (cutting edges) is not feasible \label{fig:fig61} }
+\caption{A case where decomposition of subgraph by partitioning vertices (cutting edges) is not feasible \label{fig:fig7} }
 \end{figure}
 

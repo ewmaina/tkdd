@@ -89,7 +89,7 @@ Induced subgraph & feasible & sometimes  infeasible \\ \hline
 \centering
 \input{Fig3_decompose_a_graph_into_subgraphs.tex}
 \caption{Two ways to decompose a graph, (I) \textit{Decomposition to induced subgraph} by partitioning the set vertices (interconnecting edge cutting). (II) \textit{Decomposition to subgraph} by partitioning the set of edges (common vertex sharing).}
-\label{fig:fig5}
+\label{fig:fig55}
 \end{figure}
 
 \begin{enumerate}
@@ -119,14 +119,14 @@ Then, we define a new decomposition method by partitioning edges, that is suited
 Table. \ref{tab:table1} summarizes feasible approaches to decomposition. 
 In the \textit{Network Algorithm}, graphs are decomposed by partitioning vertices (cutting edges).
 In order to extend the \textit{Network Algorithm} to non-induced subgraph query, we implement \textit{decomposition to subgraph} by partitioning edges (shared vertices). 
-Fig.\ref{fig:fig5} shows the difference between two methods of decomposition. 
+Fig.\ref{fig:fig55} shows the difference between two methods of decomposition. 
 We now describe the rationale for the difference in decomposition described above.
 
 For induced subgraph query, we have to decompose a graph partitioning vertices to form two induced subgraphs and store the information about the interconnecting cut edges. 
 Both the resulting children must be induced subgraphs of their parent to enable the processing of induced subgraph queries in a divide and conquer fashion. 
 However, Decomposing an arbitrary graph into its induced subgraph and rest graph by shared vertices such that both children are induced subgraphs of the parent cannot be assured.
 
-In Fig.\ref{fig:fig6} we see an example where the decomposition of a graph into two induced subgraphs is infeasible by partitioning edges (sharing vertices).
+In Fig.\ref{fig:fig66} we see an example where the decomposition of a graph into two induced subgraphs is infeasible by partitioning edges (sharing vertices).
 If we decompose $g$ by partitioning edges, the rest graph is $s_{rest}$. But $s_{rest}$ must be an induced subgraph of $g$, so the edge is complemented as $s_{rest}'$ and $s_{rest}'$ is equal to $g$. 
 This indicates that we cannot decompose a graph $g$ any further as $g$ is a complete graph.
 The subtraction of induced subgraph by partitioning vertices (vertex subtraction)  is defined in \textit{Definition \ref{def:def37}}.
@@ -195,7 +195,7 @@ This results in a \textit{New Network Algorithm} is faster than the \textit{Netw
 \begin{figure}
 \centering
 \input{fig4_example_sharing_vertices.tex}
-\caption{A case where decomposition of induced subgraph by partitioning edges (shared vertices) is not feasible \label{fig:fig6} }
+\caption{A case where decomposition of induced subgraph by partitioning edges (shared vertices) is not feasible \label{fig:fig66} }
 \end{figure}
 
 %% Induced graphs can only be decomposed by edge cutting 

@@ -47,12 +47,26 @@ In Fig.\ref{fig:fig2} part(III), if \textit{node 8} is not an induced subgraph o
 \subsection{Our Contributions}
 We have two main contributions. First, we propose a new search strategy for the graph database. We use this new algorithm to implement a framework for fast and scalable graph database creation and subgraph query processing. Secondly, we propose modifications to the $DAG$ data structure to enable processing both subgraph query search and induced subgraph query search on the modified $DAG$ data structure. We call the new framework for database creation and subgraph search \textit{Fast Network Method}. The details of the proposed \textit{Fast Network Method} are described below.
 
+
 %\begin{figure}[t]
 %\centering
 %\epsfig{file=partition.eps, height=2.3in, width=3in}
 %\caption{Two ways to decompose a graph into two subgraphs}
 %\label{fig:fig2}
 %\end{figure}
+
+
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{dag_search_optimize.pdf}
+\caption{The search strategy for the \textit{New Network Algorithm}: For a simplified database composed of model graphs $g_1$ and $g_2$, given a query graph $g_3$ each model graph is processed locally by starting at the top of the $DAG$ in a depth first search (DFS) fashion. 
+The search concludes when the first \textit{dead} state is encountered. 
+Specifically, we conclude that nodes 1,13,19, 22 (hence model graph $g_1$) are in \textit{dead} state as soon as node 1 is processed. 
+After processing $g_1$ and $g_2$ we have the result in spite of nodes 2,3,4, and 14 remaining in \textit{unsolved} state. 
+In contrast, the \textit{Network Algorithm} processes \textit{all} the nodes in the $DAG$ in the order of the numbers on the top right of the nodes before any output is delivered.}
+\label{fig:fig7}
+\end{figure}
 
 \begin{figure}
         \centering
@@ -79,6 +93,12 @@ Induced subgraph & feasible & sometimes  infeasible \\ \hline
 \end{figure}
 
 \begin{enumerate}
+\item A Fast Search Strategy for graph database Search
+\begin{enumerate}
+\item{Localized subgraph Search}
+\item{Rapid State Propagation}
+\end{enumerate}
+
 \item  Subgraph query processing using \textit{Fast Network Method}
 
 \begin{enumerate}
@@ -107,7 +127,7 @@ Both the resulting children must be induced subgraphs of their parent to enable 
 However, Decomposing an arbitrary graph into its induced subgraph and rest graph by shared vertices such that both children are induced subgraphs of the parent cannot be assured.
 
 In Fig.\ref{fig:fig51} we see an example where the decomposition of a graph into two induced subgraphs is infeasible by partitioning edges (sharing vertices).
-If we decompose $g$ by partitioning edges, the rest graph is $s_{rest}$. But $s_{rest}$ must be induced subgraph of $g$, so the edge is complemented as $s_{rest}'$ and $s_{rest}'$ is equal to $g$. 
+If we decompose $g$ by partitioning edges, the rest graph is $s_{rest}$. But $s_{rest}$ must be an induced subgraph of $g$, so the edge is complemented as $s_{rest}'$ and $s_{rest}'$ is equal to $g$. 
 This indicates that we cannot decompose a graph $g$ any further as $g$ is a complete graph.
 The subtraction of induced subgraph by partitioning vertices (vertex subtraction)  is defined in \textit{Definition \ref{def:def37}}.
 

@@ -65,13 +65,13 @@ The search concludes when the first \textit{dead} state is encountered.
 Specifically, we conclude that nodes 1,13,19, 22 (hence model graph $g_1$) are in \textit{dead} state as soon as node 1 is processed. 
 After processing $g_1$ and $g_2$ we have the result in spite of nodes 2,3,4, and 14 remaining in \textit{unsolved} state. 
 In contrast, the \textit{Network Algorithm} processes \textit{all} the nodes in the $DAG$ in the order of the numbers on the top right of the nodes before any output is delivered.}
-\label{fig:fig7}
+\label{fig:fig3}
 \end{figure}
 
 \begin{figure}
         \centering
         \input{fig6_explosion_of_matchings.tex}
-        \caption{An example of the explosion of number of matchings \label{fig:fig3} }
+        \caption{An example of the explosion of number of matchings \label{fig:fig4} }
 \end{figure}
 
 \begin{table}
@@ -89,7 +89,7 @@ Induced subgraph & feasible & sometimes  infeasible \\ \hline
 \centering
 \input{Fig3_decompose_a_graph_into_subgraphs.tex}
 \caption{Two ways to decompose a graph, (I) \textit{Decomposition to induced subgraph} by partitioning the set vertices (interconnecting edge cutting). (II) \textit{Decomposition to subgraph} by partitioning the set of edges (common vertex sharing).}
-\label{fig:fig4}
+\label{fig:fig5}
 \end{figure}
 
 \begin{enumerate}
@@ -158,7 +158,7 @@ In addition to the specialized routines for subgraph decomposition mentioned in 
 The \textit{Network Algorithm} decomposes a graph at random and without any restriction on the resulting subgraphs other than that they be connected graphs.
 Therefore the decomposition result possibly creates multiple connected graph composed of many small graph fragments.
 However the number of matchings from number of smaller graphs to a query graph can easily become intractable.
-Fig.\ref{fig:fig3} shows an extreme example of the rapid increase of the matchings that results when a graph is decomposed to singletons.
+Fig.\ref{fig:fig4} shows an extreme example of the rapid increase of the matchings that results when a graph is decomposed to singletons.
 The number of matchings correlate with processing time as well as memory requirements, hence the need to restrict them. We reformulate the decomposition algorithm with the restriction that a connected graph must be decomposed to strictly result in only two connected subgraphs. When decomposition results in one or both graph disconnected, we post-process the resulting subgraphs by redistributing one or both components between the children  at random until two connected graphs result.
 
 %\begin{figure}

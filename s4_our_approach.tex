@@ -49,9 +49,9 @@ We have two main contributions.
 First, we propose a new search strategy for the graph database that can be used for both induced and non-induced subgraphs. 
 We use this new algorithm to implement a framework for fast and scalable graph database creation and subgraph query processing. 
 Secondly, we propose modifications to the $DAG$ data structure to enable processing both subgraph query search and induced subgraph query search on the modified $DAG$ data structure. 
-We implement these proposals in a framework where we create a graph database and evaluate the performance for subgraph isomorphism query search on the database. This is different from \textit{Network Method} which processes induced subgraph isomorphism queries only. 
-We observe an order of magnitude improvement in processing time over the state-of-the-art .  
-We also 
+We implement these proposals in a framework where we create a graph database and evaluate the performance of subgraph isomorphism query search on the database. This is different from \textit{Network Method} which can only processes induced subgraph isomorphism queries. 
+We observe an order of magnitude improvement in processing time over the state-of-the-art isomorphism test algorithm VF2.  
+We also evaluate the performance of induced subgraph query search where we observe several order of magnitude improvement in processing time for random graphs. 
 We call the new framework for database creation and subgraph search \textit{Fast Network Method}. 
 The details of the proposed \textit{Fast Network Method} are described below where we contrast it with the \textit{Network Method}.
 

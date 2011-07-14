@@ -45,7 +45,7 @@ In Fig.\ref{fig:fig2} part(III), if \textit{node 8} is not an induced subgraph o
 \end{enumerate}
 
 \subsection{Our Contributions}
-We have two main contributions. First, we propose a new search strategy for the graph database. We use this new algorithm to implement a framework for fast and scalable graph database creation and subgraph query processing. Secondly, we propose modifications to the $DAG$ data structure to enable processing both subgraph query search and induced subgraph query search on the modified $DAG$ data structure. We call the new framework for database creation and subgraph search \textit{Fast Network Method}. We describe the details of the proposed \textit{Fast Network Method} below.
+We have two main contributions. First, we propose a new search strategy for the graph database. We use this new algorithm to implement a framework for fast and scalable graph database creation and subgraph query processing. Secondly, we propose modifications to the $DAG$ data structure to enable processing both subgraph query search and induced subgraph query search on the modified $DAG$ data structure. We call the new framework for database creation and subgraph search \textit{Fast Network Method}. The details of the proposed \textit{Fast Network Method} are described below.
 
 %\begin{figure}[t]
 %\centering
@@ -85,9 +85,7 @@ Induced subgraph & feasible & sometimes  infeasible \\ \hline
 
 \item Data structure
 
-We modify the $DAG$ data structure to 
-
-The \textit{Network Method} implements only processing of induced subgraph queries. We implement an extension of the method enable processing of subgraph queries. This limitation in the \textit{Network Algorithm} occurs due to the method of decomposition by vertex partition used to facilitate induced subgraph isomorphism query. A provision is required for a similar facility suited to subgraph isomorphism query. To do so, we use the algorithms intended for processing induced subgraphs, mostly by replacing the term \textit{induced subgraph} with \textit{subgraph} in the next section. Then, we define a new decomposition method by partitioning edges, that is suited for processing subgraphs.
+The data structure used in the \textit{Network Method} only implements only processing of induced subgraph queries. We implement an extension of the method enable processing of subgraph queries. This limitation in the \textit{Network Algorithm} occurs due to the method of decomposition by vertex partition used to facilitate induced subgraph isomorphism query. A provision is required for a similar facility suited to subgraph isomorphism query. To do so, we use the algorithms intended for processing induced subgraphs, mostly by replacing the term \textit{induced subgraph} with \textit{subgraph} in the next section. Then, we define a new decomposition method by partitioning edges, that is suited for processing subgraphs.
 
 
 Table. \ref{tab:table1} summarizes feasible approaches to decomposition. In the \textit{Network Algorithm}, graphs are decomposed by partitioning vertices (cutting edges).

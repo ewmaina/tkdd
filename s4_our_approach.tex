@@ -125,7 +125,7 @@ To process a query over a graph database, the query is performed for each model 
 The processing subgraph matchings for isomorphism for each model graph terminates as soon a non-isomorphic subgraph that is, a \textit{dead} state, is encountered or the model graph is found to be isomorphic. 
 
 
-On termination, all the ancestors of the non-isomorphic subgraph as set to \textit{dead} state. In Fig.\ref{fig:fig3} the label for node 1 does not appear in $g_3$ therefore the node is not a match. The state of node 1 is \textit{dead}. Since we arrived at node 1 by repeated recursive calls from nodes 13, 19 and 22, we return the \textit{dead} state to each of these nodes as the recursion terminates.
+On termination, all the ancestors of the non-isomorphic subgraph as set to \textit{dead} state. In Fig.\ref{fig:fig3} the label for node 1 does not appear in $g_3$ therefore the node is not a match. It is in \textit{dead} state. Since we arrived at node 1 by repeated recursive calls from nodes 13, 19 and 22, we return the \textit{dead} state to each of these nodes as the recursion terminates.
 By processing each model graph to completion, the \textit{Fast Network Algorithm} is potentially more efficient as the state of larger common subgraphs is known with each model subgraph. When the shared larger subgraph is non isomorphic to the query, the potential search space is reduced significantly.
 
 

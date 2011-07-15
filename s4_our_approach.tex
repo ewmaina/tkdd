@@ -119,9 +119,11 @@ By localizing subgraph search, the minimum processing required to determine a Mo
 
 Once the state of a subgraph of the model graph is determined, further subgraph isormorphism processing terminates. When the result is negative this usually results in some subgraphs of the model graph remaining in unprocessed state. This is a very desirable situation as a unnecessary computation effort is avoided. In the case of \ref{fig:fig3} node 2,3,4,and 14 remain in \textit{unsolved state} while the model graph $g_1$ is determined to be in \textit{dead} state, hence not subgraph isomorphic to the query graph $g_3$.
 
-Further, by processing each model graph to completion, the \textit{Fast Network Algorithm} is potentially more efficient as larger common subgraphs would processed sooner, further reducing the potential search space.
+Further, by processing each model graph to completion, the \textit{Fast Network Algorithm} is potentially more efficient as the state of larger common subgraphs is known with each model subgraph. When the shared larger subgraph is non isomorphic to the query, the potential search space is reduced significantly.
 
 \item{Rapid propagation of subgraph search state}
+
+
 
 The \textit{Network Algorithm} searches all nodes in $DAG$ from the leaf nodes in a bottom up fashion.
 As a result, all the child nodes in the $DAG$ will get processed before the parent nodes. 

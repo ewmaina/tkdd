@@ -128,24 +128,24 @@ The processing subgraph matchings for isomorphism for each model graph terminate
 On termination, all the ancestors of the subgraph that failed the isomorphism test are set to \textit{dead} state. 
 In Fig.\ref{fig:fig3} the label for node 1 does not appear in $g_3$ therefore the node is not a match. 
 It is in \textit{dead} state. Since we arrived at node 1 by repeated recursive calls from nodes 13, 19 and 22, we return the \textit{dead} state to each of these nodes as the recursion terminates. 
-This process of Rapid Propagating of the subgraph states up the \textit{parent} graph, all the way to the Model graph that enables early discovery of the state of larger common subgraphs sooner. When the common subgraphs are not isomorphic to a query, potentially large savings in computation are possible.
+This process of Rapid Propagating of the subgraph states up the \textit{parent} graph, all the way to the Model graph that enables early discovery of the state of larger common subgraphs sooner. When the common subgraphs are not isomorphic to a query, the mimimun large savings in computation are possible.
 
 By processing each model graph to completion, the \textit{Fast Network Algorithm} is potentially more efficient as the state of larger common subgraphs is known with each model subgraph. When the shared larger subgraph is non isomorphic to the query, the potential search space is reduced significantly.
 
 
 
-The \textit{Network Algorithm} searches all nodes in $DAG$ from the leaf nodes in a bottom up fashion.
-As a result, all the child nodes in the $DAG$ will get processed before the parent nodes. 
-The state of the parent nodes is computed after all the child nodes have been computed. 
-This results in some unnecessary computation in the case that one or more of the children are found not to be isomorphic to a query because a parent graph state determined as non isomorphic if at least one children is not isomorphic to a query.  
-In fact when the isomorphism state is negative, only one test is sufficient to discover the state of all the ancestral graphs. 
-We use a simple example in Fig.\ref{fig:fig2} (III) to illustrate this.
-Assume that we know that $node$ 6 is not a subgraph of query $g_3$ in advance. 
-This implies that $g_1$ is not a subgraph of the query $g_3$.
-Hence we need not check $node$ 8 and its descendants to know the status of $g_1$ which we propagate. 
-Further, the potential computation savings increase when a non isomorphic subgraph is common to multiple parents. 
-We propose a recursive algorithm for subgraph search with state propagation of subgraph status to avoid the needless calculations. 
-This results in a \textit{New Network Algorithm} is faster than the \textit{Network Algorithm}.
+%% The \textit{Network Algorithm} searches all nodes in $DAG$ from the leaf nodes in a bottom up fashion.
+%% As a result, all the child nodes in the $DAG$ will get processed before the parent nodes. 
+%% The state of the parent nodes is computed after all the child nodes have been computed. 
+%% This results in some unnecessary computation in the case that one or more of the children are found not to be isomorphic to a query because a parent graph state determined as non isomorphic if at least one children is not isomorphic to a query.  
+%% In fact when the isomorphism state is negative, only one test is sufficient to discover the state of all the ancestral graphs. 
+%% We use a simple example in Fig.\ref{fig:fig2} (III) to illustrate this.
+%% Assume that we know that $node$ 6 is not a subgraph of query $g_3$ in advance. 
+%% This implies that $g_1$ is not a subgraph of the query $g_3$.
+%% Hence we need not check $node$ 8 and its descendants to know the status of $g_1$ which we propagate. 
+%% Further, the potential computation savings increase when a non isomorphic subgraph is common to multiple parents. 
+%% We propose a recursive algorithm for subgraph search with state propagation of subgraph status to avoid the needless calculations. 
+%% This results in a \textit{New Network Algorithm} is faster than the \textit{Network Algorithm}.
 
 \end{enumerate}
 

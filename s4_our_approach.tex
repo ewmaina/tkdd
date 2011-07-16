@@ -122,7 +122,7 @@ Once the state of a subgraph of the model graph is determined to be \textit{dead
 \item{Rapid propagation of subgraph search state}
 
 To process a query over a graph database, the query is performed for each model graph stored in the $DAG$. 
-The processing of subgraph matchings for isomorphism for each model graph terminates as soon a non-isomorphic subgraph that is, a \textit{dead} state, is encountered or the model graph is found to be isomorphic. 
+The processing of subgraph matchings for isomorphism for each model graph terminates as soon a non-isomorphic subgraph or a \textit{dead} state, is encountered or the model graph is found to be isomorphic. 
 
 
 On termination, all the ancestors of the subgraph that failed the isomorphism test are set to \textit{dead} state. 

@@ -125,7 +125,7 @@ To process a query over a graph database, the query is performed for each model 
 The processing of subgraph matchings for isomorphism for each model graph terminates as soon a non-isomorphic subgraph or a subgraph with a \textit{dead} state is encountered, or the processing of an isomorphic model graph completes. 
 
 
-On early termination, all the ancestors of the subgraph that failed the isomorphism test are set to \textit{dead} state. 
+On failed termination, all the ancestors of the subgraph that failed the isomorphism test are set to \textit{dead} state. 
 In Fig.\ref{fig:fig3} the label for node 1 does not appear in $g_3$ therefore the node is not a match. 
 It is in \textit{dead} state. Since we arrived at node 1 by repeated recursive calls from nodes 13, 19 and 22, we return the \textit{dead} state to each of these nodes as the recursion terminates. 
 This process of Rapid Propagating of the subgraph states up the \textit{parent} graph, all the way to the Model graph that enables early discovery of the state of larger common subgraphs sooner. When the common subgraphs are not isomorphic to a query, large savings in computation are possible.

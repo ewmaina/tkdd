@@ -130,7 +130,7 @@ As an example, in Fig.\ref{fig:fig3} the label for the singleton subgraph, node 
 We assign a \textit{dead} state. Since we arrived at node 1 by repeated recursive calls from nodes 13, 19 and 22, we return the \textit{dead} state to each of these nodes as the recursion terminates. 
 This process of Rapid Propagating of the subgraph states up the \textit{parent} graph, all the way to the Model graph that enables early discovery of the state of larger common subgraphs sooner. When the common subgraphs are not isomorphic to a query, large savings in computation are possible.
 
-By processing each model graph to completion, the \textit{Fast Network Algorithm} is potentially more efficient as the state of larger common subgraphs is known with each model subgraph. When the shared larger subgraph is non isomorphic to the query, the potential search space is reduced significantly.
+By processing each model graph to completion, the \textit{Fast Network Algorithm} is potentially more efficient as the state of larger common subgraphs is known with each model subgraph. When the shared larger subgraph is non-isomorphic to a query, the potential search space is reduced significantly.
 
 
 

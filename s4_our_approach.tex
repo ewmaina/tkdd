@@ -130,7 +130,7 @@ As an example, in Fig.\ref{fig:fig3} the label for the singleton subgraph, node 
 We assign a \textit{dead} state. Since we arrived at node 1 by repeated recursive calls from nodes 13, 19 and 22, we return the \textit{dead} state to each of these nodes as the recursion terminates. 
 This process of Rapid Propagating of the subgraph states up the \textit{parent} graph, all the way to the Model graph that enables early discovery of the state of larger common subgraphs sooner. When the common subgraphs are not isomorphic to a query, large savings in computation are possible.
 
-By processing each model graph to completion, the \textit{Fast Network Algorithm} is more efficient as the state of larger common subgraphs is known for each model subgraph. When the shared larger subgraph is non-isomorphic to a query, the potential search space is reduced significantly.
+By processing each model graph to completion, the \textit{Fast Network Algorithm} allows more processing efficiency as the state of larger common subgraphs is known for each model subgraph. When the shared larger subgraph is non-isomorphic to a query, the potential search space is reduced significantly.
 
 
 
@@ -156,8 +156,9 @@ By processing each model graph to completion, the \textit{Fast Network Algorithm
 \item Data structure
 
 The data structure used for subgraph storage in both the \textit{Network Method} as well as the \textit{Fast Network Method} consists of a directed acyclic graph($DAG$). 
-A simplified schematic of the $DAG$ is show in Fig.\ref{fig:fig2}. 
-The nodes in the $DAG$ represent decomposed subgraphs of the model graphs that are stored in a database. 
+A simplified schematic of the $DAG$ is show in Fig.\ref{fig:fig2}.  
+A decomposed subgraph of the model graph is stored in each node of the $DAG$ starting with the complete Model graph at the top.
+The nodes in the $DAG$ represent decomposed subgraphs of the model graphs at various degrees of decomposition. 
 only implements only processing of induced subgraph queries. 
 We implement an extension of the method enable processing of subgraph queries. 
 This limitation in the \textit{Network Algorithm} occurs due to the method of decomposition by vertex partition used to facilitate induced subgraph isomorphism query. 

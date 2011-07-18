@@ -161,13 +161,14 @@ By processing each model graph to completion, the \textit{Fast Network Algorithm
 The data structure used for subgraph storage in both the \textit{Network Method} as well as the \textit{Fast Network Method} consists of a directed acyclic graph($DAG$). 
 A simplified schematic of the $DAG$ is show in Fig.\ref{fig:fig2}.  
 A decomposed subgraph of the model graph is stored in each node of the $DAG$ starting with the complete Model graph at the top.
-The nodes in the $DAG$ represent decomposed subgraphs of the model graphs at various degrees of decomposition. 
-only implements only processing of induced subgraph queries. 
-We implement an extension of the method enable processing of subgraph queries. 
-This limitation in the \textit{Network Algorithm} occurs due to the method of decomposition by vertex partition used to facilitate induced subgraph isomorphism query. 
-A provision is required for a similar facility suited to subgraph isomorphism query. 
-To do so, we use the algorithms intended for processing induced subgraphs, mostly by replacing the term \textit{induced subgraph} with \textit{subgraph} in the next section.
-Then, we define a new decomposition method by partitioning edges, that is suited for processing subgraphs.
+The nodes in the $DAG$ represent decomposed subgraphs of the model graphs at various degrees of decomposition. To implement a $DAG$ suitable for induced subgraphs as well as subgraphs we need to provide one or multiple methods that are suitable for decomposition of the subgraphs.
+
+%% only implements only processing of induced subgraph queries. 
+%% We implement an extension of the method enable processing of subgraph queries. 
+%% This limitation in the \textit{Network Algorithm} occurs due to the method of decomposition by vertex partition used to facilitate induced subgraph isomorphism query. 
+%% A provision is required for a similar facility suited to subgraph isomorphism query. 
+%% To do so, we use the algorithms intended for processing induced subgraphs, mostly by replacing the term \textit{induced subgraph} with \textit{subgraph} in the next section.
+%% Then, we define a new decomposition method by partitioning edges, that is suited for processing subgraphs.
 
 
 Table. \ref{tab:table1} summarizes feasible approaches to decomposition. 

@@ -117,7 +117,7 @@ As shown in Fig.\ref{fig:fig3} for each model graph in the database, the search 
 By localizing subgraph search, the minimum processing required to determine a Model Graph to be in \textit{dead} state is processing of a single singleton mode. This case is illustrated in Fig.\ref{fig:fig3} where node 1 is found to be in \textit{dead} state on processing.
 
 
-Once the state of a subgraph of the model graph is determined to be \textit{dead}, further subgraph isomorphism processing terminates. This usually results in some subgraphs of the model graph remaining in unprocessed state which is a very desirable situation as a unnecessary computation effort is avoided. In the case of Fig.\ref{fig:fig3}, in spite of node 2,3,4,and 14 being in \textit{unsolved state},  model graph $g_1$ is conclusively determined to be in \textit{dead} state, hence not isomorphic subgraph of the query graph, $g_3$.
+Once a subgraph of the model graph is determined to be in \textit{dead} state, further subgraph isomorphism processing terminates. This usually results in some subgraphs of the model graph remaining in unprocessed state which is a very desirable situation as a unnecessary computation effort is avoided. In the case of Fig.\ref{fig:fig3}, in spite of node 2,3,4,and 14 being in \textit{unsolved state},  model graph $g_1$ is conclusively determined to be in \textit{dead} state, hence not isomorphic subgraph of the query graph, $g_3$.
 
 \item{Rapid propagation of subgraph search state}
 

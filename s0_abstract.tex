@@ -9,7 +9,7 @@ Recently, there have been several studies on efficiency of retrieval of graph is
 Notably, Messmer et al. studied an interesting method for retrieval of induced subgraph isomorphisms of a query graph.
 They proposed a so-called \textit{Network Method} that stores graphs  in a network structure  by recursively decomposing the individual graphs, and the algorithms to facilitate retrieval using the structure.
 
-In this paper, we extend the Network Method to cover retrieval of non-induced subgraph isomorphisms of a query graph. We also propose a  \textit{ Fast  Network Method} featuring recursive graph decomposing and recombining of the graph fragments. 
+In this paper, we extend the Network Method to cover retrieval of non-induced subgraph isomorphisms of a query graph. We also propose a  \textit{Fast  Network Method} featuring recursive graph decomposing and recombining of the graph fragments. 
 We present experimental results where we compare our proposed algorithms with two well known subgraph isomorphism detection algorithms: Messmer's Network Method that efficiently aggregates multiple graphs in a database
  and VF2 Algorithm, based on sequential one-on-one isomorphism tests. 
 The results show that the proposed improvements result in an order of magnitude increase in scalability over the original  NA Method  for query graphs of up to 500 nodes to a database of 20,000 graphs.  

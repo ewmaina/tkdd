@@ -91,17 +91,17 @@ recently become a  active area of research \cite{chen2007_cindex} \cite{zhang_ga
 %%Messmer et al.\cite{messmer_bunke2000_ieee_kde} proposed an interesting so-called \textit{Network Method, NA} to facilitate the retrieval of induced subgraph isomorphisms to a query graph from \textit{model graphs}. We refer to the Messmer et al.'s algorithm for constructing the network structure as \textit{NA method} in this paper and we call a graph stored in the graph database a \textit{model graph}. This structure is constructed by decomposing graphs recursively, hence allowing the query can be processed in a divide and conquer fashion.
 
 In this paper, we extend the method proposed by Messer et al.\cite{messmer_bunke2000}, so-called \textit{Network Method,(NA)}, to support \textit{subgraph isomorphism} queries.
-Fig.\ref{fig:fig11} shows an example of a subgraph isomorphism query. We also reformulate a  \textit{New Network Method (NNA)} to increase the scalability of this method.
+Fig.\ref{fig:fig11} shows an example of a subgraph isomorphism query. We also reformulate a  \textit{Fast Network Method } to increase the scalability of this method.
 Our main contributions are as follows.
 
 \begin{enumerate}
-\item The \textit{NA method} originally only supports induced subgraph isomorphism query. We extend it  cover \textit{subgraph isomorphism} queries.
+\item The \textit{Network Method} originally only supports induced subgraph isomorphism query. We extend it  cover \textit{subgraph isomorphism} queries.
 \item  In the \textit{Network algorithm}, much of graph decomposition is performed on graphs at random potentially creating many graph fragments. We add a new recombining 
 process after each decomposition which is active when more than a pair of  subgraphs result from the decomposition.  Recombining results in exactly  two larger 
 graphs for each decomposition step, where possible.  As a consequence, we are able to drastically reduce the potential rapid increase in matchings. 
-\item We formulate and implement  a  \textit{New Network Method} on the offline preparation of the database. The new algorithm performs recombination 
+\item We formulate and implement  a  \textit{Fast Network Method} on the offline preparation of the database. The new algorithm performs recombination 
 on  each recursive decomposition in the  preprocessing during database creation. as well as during the actual query processing. 
-\item We formulate and implement the \textit{New Network Method} for recombination of the decomposed query during  online query processing on the database.
+\item We formulate and implement the \textit{Fast Network Method} for recombination of the decomposed query during  online query processing on the database.
 %Random decomposition of graphs results in the generation of multiple graph fragments. The recombining step swaps nodes and  edges until only two graphs result from each decomposition.  
 \end{enumerate}
 

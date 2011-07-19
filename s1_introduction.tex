@@ -1,8 +1,76 @@
-Graphs have become increasingly important structures for representing and understanding complex structures in a wide range of applications.
-In computational biology, graph models of protein molecules are used to mine frequent substructural motifs\cite{Huan2005}. In chemical informatics, graphs are used to model the molecular structure of chemical compounds. Graphs are also used in diverse fields such as pattern recognition, computer vision, social networks and so on. Such applications require that graph queries are solved efficiently.
+%%Efficient algorithms for supergrap query processing on graph databases Shou Zhang, Xiaofeng Gao, Weili Wu, Jianzhong Li, Hong Gao, 2009.
+The power and importance of graph structures is clearly evident in the numerous and varied use of graphs in such applications as: modeling of proteins
+\cite{chi_muntz_nijssen2005}, molecular structures of compounds in chemistry\cite{willet_barnard_john1998}\cite{agrafiotis2007}, organization of entities 
+in images\cite{petrakis_faloutsos1997} \cite{burge_kropatsch1999}, representation of components in computer aided design (CAD) drawings \cite{cordella2000}, 
+topology of sensor networks\cite{li_wan_wang2003},and social and information networks\cite{cai_he_yan2005}. As a result a tremendous amount of structured 
+data is being accumulated in large databases. An essential problem in managing the large amount of graphs and graph queries is the efficiency of query 
+processing. In this article we address the problem of scalable enumeration of all subgraph isomorphisms existing in a database of graphs.
 
-Deciding whether a graph contains another graph is called the \textit{subgraph isomorphism problem}. That is, a subgraph isomorphism exist between two graphs if there exists one-to-one mapping between the smaller graph and a subgraph of the larger graph such that edge the adjacencies are preserved. Testing for subgraph isomorphism for an $n$-node graph in an $m$-node larger graph is a combinatorial matching with $m^n$ possibilities, hence is expensive. Therefore for a given query, evaluating a database for subgraph  isomorphism by individually testing each graph  in the database is inefficient.  In fact, the subgraph isomorphism problem is known to be NP-complete\cite{np-complete}. In  many 
-cases, the graph database is also very large. This makes it necessary to build a framework to facilitate efficient graph search.
+A subproblem of the subgraph isomorphism enumeration problem is the issue of deciding whether a graph contains another graph, which is called the 
+\textit{subgraph isomorphism problem}. A subgraph isomorphism exist between two 
+graphs if there exists one-to-one mapping between the smaller graph and a subgraph of the larger graph such that edge the adjacencies are preserved. 
+Testing for subgraph isomorphism for an $n$-node graph in an $m$-node larger graph is a combinatorial matching exercise with $m^n$ possibilities, hence it is 
+expensive. Therefore for a given query, evaluating a database for subgraph  isomorphism by individually testing each graph  in the database is 
+inefficient.  In fact, the subgraph isomorphism problem is known to be NP-complete \cite{cook1971_np}. Enumeration of all subgraph isomorphisms clearly requires 
+solving the subgraph isomorphism problem multiple times, one for each instance of isomorphism at the very least. In  many cases, the graph database is also very 
+large which makes it necessary to build a framework to facilitate efficient query processing.
+
+There are two basic approaches that past research has taken regarding the problem of finding graph and subgraph isomorphisms. The first approach is based on 
+group theoretic concepts and aims to classify the adjacency matrices of graphs into permutation groups. With this, it is possible to prove that there exists 
+a moderately exponential bound for the general graph isomorphism problem \cite{babai1981}. Also, by imposing certain restrictions on graphs it is possible to 
+derive algorithms that have polynomial bound on complexity. For example  Luks and Hoffman\cite{hoffmann1982} describe a polynomially bound method for the 
+isomorphism detection of graphs with bounded valence. These methods, though theoretically interesting, in practice they have a large constant overhead and 
+are therefore impractical. They also apply only to graph isomorphism detection, but not the detection and enumeration of subgraph isomorphism which is 
+required for a wide range of applications.
+
+The second approach to graph and subgraph isomorphism is the use of heuristics for graph matching. This approach is  more practically oriented and aims 
+directly at developing practical procedures. Most of the algorithms are based on search tree with backtracking. One of the first publications in this 
+field was Corniel and Gotlieb \cite{corneil1970}. A major improvement of the bactracking method was then presented by Ullmann, who introduced  a refinement 
+method which reduces the search space of the backtracking procedure remarkably \cite{ullmann1976}.
+
+The methods for subgraph isomorphism  detection mentioned so far work only with two graphs at a time. However in many applications there is more than 
+one model that must be matched with the input graph. Consequently it is necessary to apply the subgraph isomorphism algorithm to each input pair 
+resulting in a computation time that is linearly dependent on the size of the database. This dependency becomes prohibitive when the number of graphs 
+in the database is large.  
+%%'On the separable-homogeneous decomposition of graphs', Babel, Luipold and Olariu, Stephan.pg 25-37. in 'Graph Theoretic concepts in computer science:23rd international workshop', Mohring, Rolf (Eds.), 1997. 
+%%Many problems in communications, VLSIdesign, database design, network protocol design and many other areas of computer science and engineering  can be expressed as graph with the hope that the resulting problem can be solved fast. 
+We can classify a third, more recent and interesting  Approach. This is represented by the network based approach to graph detection proposed by Messmer and  Bunke
+\cite{messmer_bunke2000} . In the new approach the tree is replaced by a network whose nodes contain subgraphs of the model graphs and traversing the 
+network is equivalent to constructing a graph from the subgraphs. In this method, a powerful tool for obtaining efficient solutions to graph isomorphism 
+detection, enumeration  and  problems is divide and conquer, which is expressed in the form of random graph decomposition. Decomposition techniques are 
+an instantiation of the divide and conquer paradigm to overcome redundant work for independent partial problems. The main features of the Network based 
+approach are as follows:
+
+\begin{enumerate}
+\item Offline decomposition of the model graphs into smaller graphs using  random decomposition
+\item Decomposed subgraphs of model graph are saved in a network structure as the database. The process is repeated for all the model graphs in the database.
+\item Subgraphs that appear in the same or multiple model graphs multiple times are represented in the network structure only once.
+\item During graph matching the subgraphs are matched only once to the input graphs, the algorithm is only sublinearly dependent on the number of model graphs.
+\end{enumerate}
+
+For the above algorithms, given a database $D$ comprising of a set of graphs $g=g_1 ,g_2 ,\ldots g_n$ and query $Q$ consisting of a set of graphs 
+$q=q_1 ,q_2 ,\ldots q_n$, there are, in general, two kinds of graph search problems that we can define. By far the traditional and the most popular 
+one is the subgraph query. Given a graph database $D$ and a subgraph query $Q$ with  a query graph $q$, the answer to $Q$ is the set of $\{g \| g\in D$ 
+and $q$ is a subgraph of $g\} $. The second search problem is a graph containment search where Given a graph database $D$ and a subgraph query $Q$ with  
+a query graph $q$, the answer to $Q$ is the set of $\{g\ | g\in D$ and $q$ is a supergraph of $g\}$. Graph containment search with exclusion logic has 
+recently become a  active area of research \cite{chen2007_cindex} \cite{zhang_gao_wu2011}.  
+
+%%The divide and conquer strategy solves a problem by first breaking it into subproblems that are themselves smaller instances of the same type of problem, solving recursively these subproblems and finally appropriately combining their answers. 
+
+%%Decomposing a graph $G$ in general means splitting it at separating sets of vertices into smaller subgraphs. The vertices of the seperator are attached to the connected components generated. If te splitting is done repeatedly the result can be represented by a \textb{decomposition tree}. Its nodes are the final components, its edges join different components. More precisely, two components are neighbours in the tree if they containe two copies of a separator aded in one of the splits.
+%%An appealing approach to graph decomposition involves associating the graph with a rooted tree $T(G)$ whose leaves are subgraphs of $G$(e.g. vertices edges,cliques,stable sets, cut sets) and whose internal nodes correspond to certain prescribed graph operations. In applications it is most desireable that the corresponding tree representation be unique and be obtained efficiently, in time polynomial in the size of the graph $G$. Tree representations satisfying these conditions are important especially for solving the graph isomorphism problem.
+%%Graph Theoretical methods for the design of parallel algorithms', Reischul, Rudiger. in Lecture notes in computer science, 1991, volume 529/1991. 61-67
+%%Decomposing a graph $G$ in general means splitting it at separateing sets of vertices into smaller subgraphs. The vertices of the seperator are attached to the connected components generated. If te splitting is done repeatedly the result can be represented by a \textb{decomposition tree}. Its nodes are the final components, its edges join different components. More precisely, two components are neighbours in the tree if they containe two copies of a separator aded in one of the splits.
+%%Let $n$ and $m$ represent the number of vertices and edges of the graph respectively. If the graph is a tree, it can be decomposed completely by separators of size 1. The final components are of size 2, one for each edge of $G$. We define the tree width of a graph as follows. A graph has tree width at most $k$ if one can find a decomposition in which each component is not larger than $k + 1$ (counting only the number of vertices). Thus trees have tree width 1.
+%%Given a graph together with a decomposition tree one can solve various optimization problems quite efficiently. The time typically grows only linearly with the size of the graph, but at least exponentially in the parameter $k$.
+%%The power and importance of graph structures is clearly eveident in the varied application of graphs in  drug design, protein structure comparison, video indexing, topology of sensor networks \cite{in_zang2011} and social and information networks\cite{in_williams2007} \cite{in_chen2007}. As a result a tremendous amount of structured data is being accumulated in large databases. An essential problem in managing the large amount of graphs and graph queries is the efficiency of query processing.
+%%A graph database can  be viewed as either a large single graph(e.g. social network) or a collection of labelled graphs (protein database). Graph searching then refers to (sub)graph-to-graph matching in datagraphs\cite{sasha2002}. In general, two methods of (sub)graph-to-graph search have been used. The first is fast (sub)graph-to-graph search algorithms. Examples of these are \cite{ullmann1976}\cite{cordella2004_vf2}. More recentresearch has focused on the use of indexing techniques\cite{sasha2002} \cite{yan2005} \cite{he_singh2006} \cite{zhang2007} \cite{jiang2007} \cite{cheng2007} \cite{zhao2007} to close the speed gap with traditional text search. The use of indexing is attractive as a means to overcome the inherent exponential worst case complexity of graph search. The general view is that most indexing graph search is based on filter-and-verify methodology\cite{sasha}. Relatively few, highly discriminative features are selected to index a large graph database. When a query is given, the search space is reduced first by finding the most relevant graphs or, for a single graph database, most relevant subgraphs, using the feature index. Next the query is formulated into simple structures (set of nodes, edges or paths). And finally graph matching, the verification stage, which is implemented by either (sub)graph-to-graph matching techniques or by combining paths from path processing path expressions in the query, through the database. Verification is necessary because to speed up the fitering process, non graph techniques are used reduce candidate graphs.  
+%%Classical graph matching can be viewed as the final, verification step in the indexed graph search. In its simplest form an enumeration algorithm to find occurences of a query graph $G_a$ in a data graph $G_b$ is to generate all possible maps between the nodes of the two graphs and then to verify if each generated map is a match. All maps can be represented using a \textit{state space representation} tree  where a node represents a match between a pair of vertices and a path from the root to the leaf represents a map between two graphs. Paths from the root to an intemediary level represent a partial match indicating that only a subset of the vertices have been matched. The complexity of such an enumeration algorithm is exponential and subgraph isomorphism is proven to be NP-complete\cite{garey_johnson1979_in_sasha2002(42)}.
+%%There have been many attempts to reduce the cost of (sub)graph graph searching, by loosening the criteria by approximate algorithms\cite{sasha2002} which have polynomial complexity, but not guarantee to find the correct solution. Two further categories are exact and inexact (or error correcting) algorithms that are guaranteed to find the correct answer and have therefore exponential worst case complexity.
+%%The most popular exact(and inexact) subgraph matching algorithms are based on heuristics on the state space representation tree that corresponds to a subisomorphism\cite{ullmann}. The performance of ullmann's  \textit{state-space representation  with backtracking} algoritm is improved by a refinement procedure called \textit{forward checking} where in order to insert a node  in the tree two conditions must be met. Submorphism must hold and a possible matching must exist for \textit{all} unmatched vertices. 
+%%Largly uninvestigated is the problem of efficiently searching for (sub)graphs directly in large graph databases. But the But it is also an expression of the lack of more efficient algorithms. 
+%%In computational biology, graph models of protein molecules are used to mine frequent substructural motifs\cite{Huan2005}. In chemical informatics, graphs are used to model the molecular structure of chemical compounds. Graphs are also used in diverse fields such as pattern recognition, computer vision, social networks and so on. Such applications require that graph queries are solved efficiently.
+
 
 %\begin{figure}
 %\centering
@@ -20,20 +88,30 @@ cases, the graph database is also very large. This makes it necessary to build a
 \end{figure}
 
 
-Messmer et al.\cite{messmer_bunke2000_ieee_kde} proposed an interesting so-called \textit{Network Algorithm, NA} to facilitate the retrieval of induced subgraph isomorphisms 
-to a query graph from \textit{model graphs}. We refer to the Messmer et al.'s algorithm for constructing the network structure as \textit{NA method} in this paper and we call a graph stored in the graph database a \textit{model graph}.
-This structure is constructed by decomposing graphs recursively, hence allowing the query can be processed in a divide and conquer fashion.
+%%Messmer et al.\cite{messmer_bunke2000_ieee_kde} proposed an interesting so-called \textit{Network Algorithm, NA} to facilitate the retrieval of induced subgraph isomorphisms to a query graph from \textit{model graphs}. We refer to the Messmer et al.'s algorithm for constructing the network structure as \textit{NA method} in this paper and we call a graph stored in the graph database a \textit{model graph}. This structure is constructed by decomposing graphs recursively, hence allowing the query can be processed in a divide and conquer fashion.
 
-In this paper, we extend the \textit{NA method} to support \textit{non-induced subgraph isomorphism} queries.
-Fig.\ref{fig:fig11} shows an example of a subgraph isomorphism query. We also reformulate the \textit{Network Algorithm} to increase the scalability of this method.
+In this paper, we extend the method proposed by Messer et al.\cite{messmer_bunke2000}, so-called \textit{Network Algorithm,(NA)}, to support \textit{subgraph isomorphism} queries.
+Fig.\ref{fig:fig11} shows an example of a subgraph isomorphism query. We also reformulate a  \textit{New Network Algorithm (NNA)} to increase the scalability of this method.
 Our main contributions are as follows.
 
 \begin{enumerate}
-\item The \textit{network Method} originally only supports induced subgraph isomorphism query. We implement a version to process \textit{non-induced subgraph isomorphism} queries.
-\item  In the Network Method, much of graph decomposition is performed on graphs at random potentially creating many graph fragments. We add a new recombining process after each decomposition which is active when more than a pair of  subgraphs result from the decomposition.  Recombining results in exactly  two larger graphs for each decomposition step, where possible.  As a consequence, we are able to reduce the potential  explosion in matchings. 
-\item We formulate and implement  a  \textit{Fast Network Method}. The new algorithm decomposes only two connected subgraphs. 
+\item The \textit{NA method} originally only supports induced subgraph isomorphism query. We extend it  cover \textit{subgraph isomorphism} queries.
+\item  In the \textit{Network algorithm}, much of graph decomposition is performed on graphs at random potentially creating many graph fragments. We add a new recombining 
+process after each decomposition which is active when more than a pair of  subgraphs result from the decomposition.  Recombining results in exactly  two larger 
+graphs for each decomposition step, where possible.  As a consequence, we are able to drastically reduce the potential rapid increase in matchings. 
+\item We formulate and implement  a  \textit{New  Network Algorithm} on the offline preparation of the database. The new algorithm performs recombination 
+on  each recursive decomposition in the  preprocessing during database creation. as well as during the actual query processing. 
+\item We formulate and implement the \textit{New  Network Algorithm} for recombination of the decomposed query during  online query processing on the database.
 %Random decomposition of graphs results in the generation of multiple graph fragments. The recombining step swaps nodes and  edges until only two graphs result from each decomposition.  
 \end{enumerate}
 
-We present experimental results where we compare our proposed algorithms with two well known subgraph isomorphism algorithms: Messmer et. al 's\cite{messmer} Network Algorithm that efficiently aggregates multiple graphs in a and VF2\cite{vf} Algorithm, based on sequential one-on-one graph isomorphism tests. 
-%The results show that the proposed improvements result in an order of magnitude increase in scalability over the original  NA Method  for query graphs of up to 500 nodes to a database of 20,000 graphs.  Our method is particularly suited to larger query graphs or very larger graph databases.
+In this work we refer to Messmer's formulation as the \textit{Network Algorithm} or the \textit{NA Method} interchangably.
+
+%%We present experimental results where we compare our proposed algorithms with two well known subgraph isomorphism algorithms: Messmer et. al 's\cite{messmer} Network Algorithm that efficiently aggregates multiple graphs in a database and VF2\cite{cordella2001_vf2} Algorithm, based on sequential one-on-one graph isomorphism tests. 
+
+We present experimental results where we compare our proposed algorithms with two well known algorithms: Messmer's\cite{messmer_bunke2000} all subgraph isomorphism 
+detection Algorithm that efficiently aggregates multiple graphs in a database and the isomorphism detection only algorithm, VF2\cite{cordella2001_vf2}, which is the 
+state-of-the-art on sequential one-on-one isomorphism testing. The results show that the proposed improvements result in an order of magnitude increase in scalability 
+over the original \textit{NA Method}  for query graphs of up to 500 nodes to a database of 20,000 graphs. We also show a substantial improvement over the VF2 
+algorithm despite the increased workload of detecting all subgraph isomorphisms. Our method is particularly suited to larger query graphs or very larger graph 
+databases.

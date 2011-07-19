@@ -37,7 +37,7 @@ In the second part an induced subgraph isomorphism query is processed using the 
 First, all induced subgraph isomorphisms from all singleton graphs in the $DAG$ to query graph are detected.
 Based on the induced subgraph isomorphisms, induced subgraph isomorphisms of the respective parent graphs are calculated by combining the induced subgraph isomorphisms of its child graphs. This process repeats until finally, all induced subgraph isomorphisms of model graphs to the query are detected.
 The \textit{Network Methood} makes use of the fact that if a graph in $DAG$ is not an induced subgraph of query graph, its ancestors are also not induced subgraphs.
-In Fig.\ref{fig:fig2} part(III), if \textit{node 8} is not an induced subgraph of $g_3$, we know each of $g_1$ and $g_2$ are also not induced subgraph of $g_3$without performing any additional computation. Using this knowledge the time required to process the induced subgraph query is reduced by avoiding this unnecessary computation. The main advantages of the \textit{Network Algorithm}  are:  
+In Fig.\ref{fig:fig2} part(III), if \textit{node 8} is not an induced subgraph of $g_3$, we know each of $g_1$ and $g_2$ are also not induced subgraph of $g_3$without performing any additional computation. Using this knowledge the time required to process the induced subgraph query is reduced by avoiding this unnecessary computation. The main advantages of the \textit{Network Method}  are:  
 
 \begin{enumerate}
 \item The $DAG$ is constructed by decomposing graphs recursively which allows efficient solution of queries by divide and conquer.
@@ -75,11 +75,11 @@ The details of the proposed \textit{Fast Network Method} are described below whe
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{dag_search_optimize.pdf}
-\caption{The search strategy for the \textit{New Network Algorithm}: For a simplified database composed of model graphs $g_1$, $g_2$ and  given a query graph $g_3$, each model graph is processed locally by starting at the top of the $DAG$ in a depth first search (DFS) fashion. 
+\caption{The search strategy for the \textit{New Network Method}: For a simplified database composed of model graphs $g_1$, $g_2$ and  given a query graph $g_3$, each model graph is processed locally by starting at the top of the $DAG$ in a depth first search (DFS) fashion. 
 The search concludes when the first \textit{dead} state is encountered. 
 Specifically, we conclude that nodes 1,13,19, 22 (hence model graph $g_1$) are in \textit{dead} state as soon as node 1 is processed. 
 After processing $g_1$ and $g_2$ we have the result in spite of nodes 2,3,4, and 14 remaining in \textit{unsolved} state. 
-In contrast, the \textit{Network Algorithm} processes \textit{all} the nodes in the $DAG$ in the order of the numbers on the top right of the nodes before any output is delivered.}
+In contrast, the \textit{Network Method} processes \textit{all} the nodes in the $DAG$ in the order of the numbers on the top right of the nodes before any output is delivered.}
 \label{fig:fig3}
 \end{figure}
 
@@ -133,11 +133,11 @@ As an example, in Fig.\ref{fig:fig3} the label for the singleton subgraph, node 
 We assign a \textit{dead} state. Since we arrived at node 1 by repeated recursive calls from nodes 13, 19 and 22, we return the \textit{dead} state to each of these nodes as the recursion terminates. 
 This process of Rapid Propagating of the subgraph states up the \textit{parent} graph, all the way to the Model graph that enables early discovery of the state of larger common subgraphs sooner. When the common subgraphs are not isomorphic to a query, large savings in computation are possible.
 
-By processing each model graph to completion, the \textit{Fast Network Algorithm} allows for progressively more processing efficiency as the state of larger common subgraphs is determined for each model subgraph. When the shared larger subgraph is non-isomorphic to a query, the potential search space is reduced significantly.
+By processing each model graph to completion, the \textit{Fast Network Method} allows for progressively more processing efficiency as the state of larger common subgraphs is determined for each model subgraph. When the shared larger subgraph is non-isomorphic to a query, the potential search space is reduced significantly.
 
 
 
-%% The \textit{Network Algorithm} searches all nodes in $DAG$ from the leaf nodes in a bottom up fashion.
+%% The \textit{Network Method} searches all nodes in $DAG$ from the leaf nodes in a bottom up fashion.
 %% As a result, all the child nodes in the $DAG$ will get processed before the parent nodes. 
 %% The state of the parent nodes is computed after all the child nodes have been computed. 
 %% This results in some unnecessary computation in the case that one or more of the children are found not to be isomorphic to a query because a parent graph state determined as non isomorphic if at least one children is not isomorphic to a query.  
@@ -148,7 +148,7 @@ By processing each model graph to completion, the \textit{Fast Network Algorithm
 %% Hence we need not check $node$ 8 and its descendants to know the status of $g_1$ which we propagate. 
 %% Further, the potential computation savings increase when a non isomorphic subgraph is common to multiple parents. 
 %% We propose a recursive algorithm for subgraph search with state propagation of subgraph status to avoid the needless calculations. 
-%% This results in a \textit{New Network Algorithm} is faster than the \textit{Network Algorithm}.
+%% This results in a \textit{New Network Method} is faster than the \textit{Network Method}.
 
 \end{enumerate}
 
@@ -170,7 +170,7 @@ The nodes in the $DAG$ represent decomposed subgraphs of the model graphs at var
 
 %% only implements only processing of induced subgraph queries. 
 %% We implement an extension of the method enable processing of subgraph queries. 
-%% This limitation in the \textit{Network Algorithm} occurs due to the method of decomposition by vertex partition used to facilitate induced subgraph isomorphism query. 
+%% This limitation in the \textit{Network Method} occurs due to the method of decomposition by vertex partition used to facilitate induced subgraph isomorphism query. 
 %% A provision is required for a similar facility suited to subgraph isomorphism query. 
 %% To do so, we use the algorithms intended for processing induced subgraphs, mostly by replacing the term \textit{induced subgraph} with \textit{subgraph} in the next section.
 
@@ -178,8 +178,8 @@ We define decomposition method by partitioning edges, that is suited for process
 
 Fig.\ref{fig:fig55} shows the difference between two methods of decomposition.
 Table.\ref{tab:table1} summarizes feasible approaches to decomposition.
-In the \textit{Network Algorithm}, graphs are decomposed by partitioning vertices (cutting edges).
-In order to extend the \textit{Network Algorithm} to non-induced subgraph query, we implement \textit{decomposition to subgraph} by partitioning edges (shared vertices). 
+In the \textit{Network Method}, graphs are decomposed by partitioning vertices (cutting edges).
+In order to extend the \textit{Network Method} to non-induced subgraph query, we implement \textit{decomposition to subgraph} by partitioning edges (shared vertices). 
  
 We now describe the rationale for the difference in decomposition described above.
 
@@ -204,7 +204,7 @@ The subtraction of subgraphs by partitioning edges (edge subtraction)is defined 
 We use the appropriate decomposition for both decompositions and also reform corresponding algorithms.
 
 \item Connected Graphs
-The \textit{Network Algorithm} decomposes a graph at random and without any restriction on the resulting subgraphs other than that they be connected graphs.
+The \textit{Network Method} decomposes a graph at random and without any restriction on the resulting subgraphs other than that they be connected graphs.
 Therefore the decomposition result possibly creates multiple connected graph composed of many small graph fragments.
 However the number of matchings from number of smaller graphs to a query graph can easily become intractable.
 Fig.\ref{fig:fig4} shows an extreme example of the rapid increase of the matchings that results when a graph is decomposed to singletons.
@@ -225,7 +225,7 @@ In addition to the specialized routines for subgraph decomposition mentioned in 
 \begin{enumerate}
 \item Decomposing a graph into two connected subgraphs.
 
-The \textit{Network Algorithm} decomposes a graph at random and without any restriction on the resulting subgraphs other than that they be connected graphs.
+The \textit{Network Method} decomposes a graph at random and without any restriction on the resulting subgraphs other than that they be connected graphs.
 Therefore the decomposition result possibly creates multiple connected graph composed of many small graph fragments.
 However the number of matchings from number of smaller graphs to a query graph can easily become intractable.
 Fig.\ref{fig:fig4} shows an extreme example of the rapid increase of the matchings that results when a graph is decomposed to singletons.
@@ -240,7 +240,7 @@ The number of matchings correlate with processing time as well as memory require
 
 \item Early propagation of subgraph search state.
 
-The \textit{Network Algorithm} searches all nodes in $DAG$ from the leaf nodes in a bottom up fashion.
+The \textit{Network Method} searches all nodes in $DAG$ from the leaf nodes in a bottom up fashion.
 As a result, all the child nodes in the $DAG$ will get processed before the parent nodes. 
 The state of the parent nodes is computed after all the child nodes have been computed. 
 This results in some unnecessary computation in the case that one or more of the children are found not to be isomorphic to a query because a parent graph state determined as non isomorphic if at least one children is not isomorphic to a query.  
@@ -251,7 +251,7 @@ This implies that $g_1$ is not a subgraph of the query $g_3$.
 Hence we need not check $node$ 8 and its descendants to know the status of $g_1$ which we propagate. 
 Further, the potential computation savings increase when a non isomorphic subgraph is common to multiple parents. 
 We propose a recursive algorithm for subgraph search with state propagation of subgraph status to avoid the needless calculations. 
-This results in a \textit{New Network Algorithm} is faster than the \textit{Network Algorithm}.
+This results in a \textit{New Network Method} is faster than the \textit{Network Method}.
 \end{enumerate}
 
 %\begin{figure}[t]

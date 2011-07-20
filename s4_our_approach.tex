@@ -177,12 +177,12 @@ When the shared larger subgraph is non-isomorphic to a query, the potential sear
 
 \begin{enumerate}
 
-\item Data structure
+\item Data structure: Method of Decomposition
 
 In the processing of the $DAG$ we have made two proposals.
 
-\begin{enumerate}[(i)] 
-\item Method of Decomposition
+%%\begin{enumerate}[(i)] 
+%%\item Method of Decomposition
 
 
 The data structure used for subgraph storage in both the \textit{Network Method} as well as the \textit{Fast Network Method} consists of a directed acyclic graph($DAG$). 
@@ -228,7 +228,7 @@ In order to extend the \textit{Network Method} to non-induced subgraph query, we
 
 We use the appropriate decomposition for both decompositions and also reform corresponding algorithms.
 
-\item Connected Subgraphs
+\item Data Structure:Connected Subgraphs
 
 We formulate the decomposition algorithm with the restriction that only a connected graphs can be processed and  it must be decomposed to strictly result in only two connected subgraphs. 
 When decomposition results in one or both graph disconnected, we post-process the resulting subgraphs by redistributing one or both components between the children at random until two connected graphs result.
@@ -238,7 +238,7 @@ This in turn may result in number of matchings from a large number of small grap
 Fig.\ref{fig:fig4} shows an extreme example of the rapid increase of the matchings that results when a graph is decomposed to singletons.
 The number of matchings correlate with processing time as well as memory requirements, hence the need to restrict number of required matchings. 
 
-\end{enumerate}
+%%\end{enumerate}
 
 \item Combining Subgraphs
 

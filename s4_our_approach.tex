@@ -230,10 +230,10 @@ We use the appropriate decomposition for both decompositions and also reform cor
 
 \item Data Structure: Connected Subgraphs
 
-We formulate the decomposition algorithm with the restriction that only a connected graphs can be processed and  it must be decomposed to strictly result in only two connected subgraphs. 
+We formulate the decomposition algorithm with the restriction that only a connected graphs can be processed and it must be decomposed to strictly result in only two connected subgraphs. 
 When decomposition results in one or both graph disconnected, we post-process the resulting subgraphs by redistributing one or both components between the children at random until two connected graphs result.
-The \textit{Network Method} however decomposes a graph at random and without any restriction on the resulting subgraphs that maybe disconnected.
-As a result, decomposition possibly creates multiple connected graphs composed of many disconnected graph fragments. 
+Decomposing a graph at random and without any restriction on the resulting subgraphs risks that the result may be multiple disconnected subgraphs.
+Hence, decomposition possibly creates multiple connected graphs composed of many disconnected graph fragments. 
 This in turn may result in number of matchings from a large number of small graphs to the query graph to become intractable.
 Fig.\ref{fig:fig4} shows an extreme example of the rapid increase of the matchings that results when a graph is decomposed to singletons.
 The number of matchings correlate with processing time as well as memory requirements, hence the need to restrict number of required matchings. 

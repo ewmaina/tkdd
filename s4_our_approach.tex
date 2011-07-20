@@ -337,3 +337,17 @@ The number of matchings correlate with processing time as well as memory require
 \caption{A case where decomposition of subgraph by partitioning vertices (cutting edges) is not feasible \label{fig:fig7} }
 \end{figure}
 
+
+\begin{table}
+\begin{center}\begin{tabular}{|c|c|c|}
+\hline
+  & Method 1  & Method 2  \\ \hline
+Algorithm & Network Method & Fast Network Method \\ \hline
+Data Structure & DAG (Induced Subgraph) & DAG (Subgraph and Induced Subgraph) \\ \hline
+Decomposition & Partition to Subgraph & Partition to Induced Subgraph \\ \hline
+Search Strategy & Single Pass Whole Database & Local search and aggregate \\ \hline
+Search type & Induced Graph & Subgraph and Induced Graph \\ \hline
+\end{tabular}
+\caption{Appropriate method for decompositions \label{tab:table1} }
+\end{center}
+\end{table}

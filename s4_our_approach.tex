@@ -249,10 +249,9 @@ The number of matchings correlate with processing time as well as memory require
 
 
 We implement the all the contributions that are mentioned above in the induced subgraph query processing as well. The detailed algorithms are shown in Section 5. As the \textit{Network Method} is able to process 
-induced subgraphs, we perform a comparision of the processing times and show the results is section 6. 
+induced subgraphs, we perform a comparison of the processing times and show the results is section 6. 
 
 \begin{enumerate}
-
 
 
 \item Data Structure: Method of Decomposition
@@ -302,7 +301,7 @@ When decomposition results in one or both induced graph being disconnected, we p
 The \textit{Network Method} however decomposes an induced graph at random and without any restriction on the resulting subgraphs that maybe disconnected.
 As a result, decomposition may create multiple connected graphs composed of many disconnected graph fragments. 
 This in turn may result in number of matchings from a large number of small graphs to the query graph to become intractable.
-Fig.\ref{fig:fig4} shows an extreme example of the rapid increase of the matchings that results when a graph is decomposed to singletons.
+As an extreme example, Fig.\ref{fig:fig4} shows the rapid increase of the matchings that results when a graph is decomposed to singletons.
 The number of matchings correlate with processing time as well as memory requirements, hence the need to restrict number of required matchings. 
 
 

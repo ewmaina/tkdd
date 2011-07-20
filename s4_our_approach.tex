@@ -83,7 +83,7 @@ The details of the proposed \textit{Fast Network Method} are described below whe
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{dag_search_optimize.pdf}
-\caption{The search strategy for the \textit{New Network Method}: For a simplified database composed of model graphs $g_1$, $g_2$ and  given a query graph $g_3$, each model graph is processed locally by starting at the top of the $DAG$ in a depth first search (DFS) fashion. 
+\caption{The search strategy for the \textit{Fast Network Method}: For a simplified database composed of model graphs $g_1$, $g_2$ and  given a query graph $g_3$, each model graph is processed locally by starting at the top of the $DAG$ in a depth first search (DFS) fashion. 
 The search concludes when the first \textit{dead} state is encountered. 
 Specifically, we conclude that nodes 1,13,19, 22 (hence model graph $g_1$) are in \textit{dead} state as soon as node 1 is processed. 
 After processing $g_1$ and $g_2$ we have the result in spite of nodes 2,3,4, and 14 remaining in \textit{unsolved} state. 
@@ -241,6 +241,10 @@ The number of matchings correlate with processing time as well as memory require
 \end{enumerate}
 
 \item Combining Subgraphs
+
+
+As with the decomposition of graph, combining of subgraphs also results in 
+
 %\item Subgraph processing algorithms
 %In addition to the specialized routines for subgraph decomposition mentioned in the previous section, we have also developed a parallel set of routines for both the construction of the $DAG$ and query processing. 
 %% Non induced subgraphs can only be decomposed by shared vertices  

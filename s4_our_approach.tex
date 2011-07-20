@@ -110,7 +110,8 @@ Induced subgraph & feasible & sometimes  infeasible \\ \hline
 
 \centering
 \input{Fig3_decompose_a_graph_into_subgraphs.tex}
-\caption{Two ways to decompose a graph, (I) \textit{Decomposition to induced subgraph} by partitioning the set vertices (interconnecting edge cutting). (II) \textit{Decomposition to subgraph} by partitioning the set of edges (common vertex sharing).}
+\caption{Two ways to decompose a graph, (I) \textit{Decomposition to induced subgraph} by partitioning the set vertices (interconnecting edge cutting). 
+(II) \textit{Decomposition to subgraph} by partitioning the set of edges (common vertex sharing).}
 \label{fig:fig55}
 \end{figure}
 
@@ -122,12 +123,20 @@ The search strategy works by minimizing the search space as follows.
 \begin{enumerate}
 \item{Localized subgraph Search}
 
-As shown in Fig.\ref{fig:fig3} for each model graph in the database, the search process begins at the top, say $g_1$ and proceeds recursively in a depth first search(DFS) fashion until the state of the present node is in \textit{unsolved} or \textit{dead} state, or until the subgraph at the node is a singleton. When a node in \textit{dead} state is encountered, the processing terminates and the current model graph assigned \textit{dead} state. This is different from the \textit{network method} where the search proceeds by first processing all leaf nodes in the $DAG$. It then proceeds to the second level in the $DAG$ in the order of the number on top of the nodes till the model graphs at the top of the $DAG$ are reached. Only after processing the nodes in the $DAG$ is the isomorphism of the model graphs determined for those that are in  \textit{alive} state. As a consequence, processing of the whole $DAG$ continues regardless of some of the subgraphs being determined to be in \textit{dead} state.
+As shown in Fig.\ref{fig:fig3} for each model graph in the database, the search process begins at the top, say $g_1$ and proceeds recursively in a depth first search(DFS) fashion until the state of the present node is in \textit{unsolved} or \textit{dead} state, or until the subgraph at the node is a singleton. 
+When a node in \textit{dead} state is encountered, the processing terminates and the current model graph assigned \textit{dead} state. 
+This is different from the \textit{network method} where the search proceeds by first processing all leaf nodes in the $DAG$. 
+It then proceeds to the second level in the $DAG$ in the order of the number on top of the nodes till the model graphs at the top of the $DAG$ are reached. 
+Only after processing the nodes in the $DAG$ is the isomorphism of the model graphs determined for those that are in  \textit{alive} state. 
+As a consequence, processing of the whole $DAG$ continues regardless of some of the subgraphs being determined to be in \textit{dead} state.
 
-By localizing subgraph search, the minimum processing required to determine a Model Graph to be in \textit{dead} state is processing of a single singleton mode. This case is illustrated in Fig.\ref{fig:fig3} where node 1 is found to be in \textit{dead} state on processing.
+By localizing subgraph search, the minimum processing required to determine a Model Graph to be in \textit{dead} state is processing of a single singleton mode. 
+This case is illustrated in Fig.\ref{fig:fig3} where node 1 is found to be in \textit{dead} state on processing.
 
 
-Once a subgraph of the model graph is determined to be in \textit{dead} state, further subgraph isomorphism processing terminates. This usually results in some subgraphs of the model graph remaining in unprocessed state which is a very desirable situation as unnecessary computation effort is avoided. In the case of Fig.\ref{fig:fig3}, in spite of node 2,3,4,and 14 being in \textit{unsolved} state, model graph $g_1$ is conclusively determined to be in \textit{dead} state, hence it is not isomorphic subgraph of the query graph, $g_3$.
+Once a subgraph of the model graph is determined to be in \textit{dead} state, further subgraph isomorphism processing terminates. 
+This usually results in some subgraphs of the model graph remaining in unprocessed state which is a very desirable situation as unnecessary computation effort is avoided. 
+In the case of Fig.\ref{fig:fig3}, in spite of node 2,3,4,and 14 being in \textit{unsolved} state, model graph $g_1$ is conclusively determined to be in \textit{dead} state, hence it is not isomorphic subgraph of the query graph, $g_3$.
 
 \item{Rapid propagation of subgraph search state}
 
@@ -138,9 +147,11 @@ The processing of subgraph matchings for isomorphism for each model graph termin
 On failed termination or a \textit{dead} state encounter, all the ancestors of the subgraph are set to \textit{dead} state. 
 As an example, in Fig.\ref{fig:fig3} the label for the singleton subgraph, node 1 does not appear in any vertex in the query $g_3$, therefore the node 1 is not a match. 
 We assign a \textit{dead} state. Since we arrived at node 1 by repeated recursive calls from nodes 13, 19 and 22, we return the \textit{dead} state to each of these nodes as the recursion terminates. 
-This process of Rapid Propagating of the subgraph states up the \textit{parent} graph, all the way to the Model graph that enables early discovery of the state of larger common subgraphs sooner. When the common subgraphs are not isomorphic to a query, large savings in computation are possible.
+This process of Rapid Propagating of the subgraph states up the \textit{parent} graph, all the way to the Model graph that enables early discovery of the state of larger common subgraphs sooner. 
+When the common subgraphs are not isomorphic to a query, large savings in computation are possible.
 
-By processing each model graph to completion, the \textit{Fast Network Method} allows for progressively more processing efficiency as the state of larger common subgraphs is determined for each model subgraph. When the shared larger subgraph is non-isomorphic to a query, the potential search space is reduced significantly.
+By processing each model graph to completion, the \textit{Fast Network Method} allows for progressively more processing efficiency as the state of larger common subgraphs is determined for each model subgraph. 
+When the shared larger subgraph is non-isomorphic to a query, the potential search space is reduced significantly.
 
 
 

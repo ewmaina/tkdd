@@ -190,14 +190,14 @@ A simplified schematic of the $DAG$ is show in Fig.\ref{fig:fig2}.
 A decomposed subgraph of the model graph is stored in each node of the $DAG$ starting with the complete Model graph at the top.
 The nodes in the $DAG$ represent decomposed subgraphs of the model graphs at various degrees of decomposition. 
 To implement a $DAG$ suitable for storage and search of subgraphs as well as induced subgraphs we need to provide procedures that are suitable for decomposition of the subgraphs.
-
+We now describe the rationale for the difference in decomposition described above.
 %% only implements only processing of induced subgraph queries. 
 %% We implement an extension of the method enable processing of subgraph queries. 
 %% This limitation in the \textit{Network Method} occurs due to the method of decomposition by vertex partition used to facilitate induced subgraph isomorphism query. 
 %% A provision is required for a similar facility suited to subgraph isomorphism query. 
 %% To do so, we use the algorithms intended for processing induced subgraphs, mostly by replacing the term \textit{induced subgraph} with \textit{subgraph} in the next section.
 
-We now define a decomposition method by partitioning edges, that is suited for processing subgraphs on the $DAG$.
+We define a decomposition method by partitioning edges, that is suited for processing subgraphs on the $DAG$.
 For subgraph query, we need to decompose graphs by partitioning edges. 
 This is due to the requirement that both children must be subgraphs of their parent graphs.
 We also face the limitation that we are unable to decompose a graph into an arbitrary subgraph and the rest graph by partitioning vertices so that rest graph becomes subgraph of its parent.
@@ -212,18 +212,6 @@ Table.\ref{tab:table1} summarizes feasible approaches to decomposition.
 In the \textit{Network Method}, graphs are decomposed by partitioning vertices (cutting edges).
 In order to extend the \textit{Network Method} to non-induced subgraph query, we implement \textit{decomposition to subgraph} by partitioning edges (shared vertices). 
  
-We now describe the rationale for the difference in decomposition described above.
-
-
-
-For subgraph query, we need to decompose graphs by partitioning edges. 
-This is due to the requirement that both children must be subgraphs of their parent graphs
-and the limitation that we are unable to decompose a graph into an arbitrary subgraph and the rest graph by partitioning vertices so that rest graph becomes subgraph of its parent.
-Fig.\ref{fig:fig7} shows an example where a decomposition of a graph into two subgraphs is not feasible by partitioning vertices.
-If we subtract $s$ from $g$ by partitioning vertices, $s_{rest}$ cannot be represented as a graph as only an edge remains. 
-We need to subtract the subgraphs by partitioning edges and then including the vertices on the edges as $s_{rest}'$ shows. 
-Hence subgraph query processing we decompose the graphs by partitioning edges and including the corresponding vertices.
-The subtraction of subgraphs by partitioning edges (edge subtraction)is defined in \textit{Definition \ref{def:def310}}.
 
 
 For induced subgraph query, we have to decompose a graph partitioning vertices to form two induced subgraphs and store the information about the interconnecting cut edges. 

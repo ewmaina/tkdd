@@ -216,7 +216,7 @@ In order to extend the \textit{Network Method} to non-induced subgraph query, we
 
 For induced subgraph query, we have to decompose the graph by partitioning vertices to form two induced subgraphs and store the information about the interconnecting cut edges. 
 Both the resulting children must be induced subgraphs of their parent to enable processing of induced subgraph queries in a divide and conquer fashion. 
-However, Decomposing an arbitrary graph into its induced subgraph and rest graph by shared vertices such that both children are induced subgraphs of the parent cannot be assured.
+However, Decomposing an arbitrary graph into its induced subgraph and rest graph by shared vertices such that both children are induced subgraphs of the parent is not assured.
 
 In Fig.\ref{fig:fig66} we see an example where the decomposition of a graph into two induced subgraphs is infeasible by partitioning edges (sharing vertices).
 If we decompose $g$ by partitioning edges, the rest graph is $s_{rest}$. But $s_{rest}$ must be an induced subgraph of $g$, so the edge is complemented as $s_{rest}'$ and $s_{rest}'$ is equal to $g$. 

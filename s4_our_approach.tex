@@ -37,7 +37,8 @@ If $g_2$ contains an induced subgraph $8$, $g_2$ is decomposed into graph $8$ an
 
 In the second part an induced subgraph isomorphism query is processed using the $DAG$ constructed in first part.
 First, all induced subgraph isomorphisms from all singleton graphs in the $DAG$ to query graph are detected.
-Based on the induced subgraph isomorphisms, induced subgraph isomorphisms of the respective parent graphs are calculated by combining the induced subgraph isomorphisms of its child graphs. This process repeats until finally, all induced subgraph isomorphisms of model graphs to the query are detected.
+Based on the induced subgraph isomorphisms, induced subgraph isomorphisms of the respective parent graphs are calculated by combining the induced subgraph isomorphisms of its child graphs. 
+This process repeats until finally, all induced subgraph isomorphisms of model graphs to the query are detected.
 The \textit{Network Methood} makes use of the fact that if a graph in $DAG$ is not an induced subgraph of query graph, its ancestors are also not induced subgraphs.
 In Fig.\ref{fig:fig2} part(III), if \textit{node 8} is not an induced subgraph of $g_3$, we know each of $g_1$ and $g_2$ are also not induced subgraph of $g_3$without performing any additional computation. Using this knowledge the time required to process the induced subgraph query is reduced by avoiding this unnecessary computation. The main advantages of the \textit{Network Method}  are:  
 

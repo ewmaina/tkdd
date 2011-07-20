@@ -209,19 +209,19 @@ Hence for subgraph query processing we decompose the subgraphs by partitioning e
 The subtraction of subgraphs by partitioning edges (edge subtraction)is defined in \textit{Definition \ref{def:def310}}.
 
 
-For induced subgraph query, we have to decompose the graph by partitioning vertices to form two induced subgraphs and store the information about the interconnecting cut edges. 
-Both the resulting children must be induced subgraphs of their parent to enable processing of induced subgraph queries in a divide and conquer fashion. 
-However, Decomposing an arbitrary graph into its induced subgraph and rest graph by shared vertices such that both children are induced subgraphs of the parent is not assured.
+%% For induced subgraph query, we have to decompose the graph by partitioning vertices to form two induced subgraphs and store the information about the interconnecting cut edges. 
+%% Both the resulting children must be induced subgraphs of their parent to enable processing of induced subgraph queries in a divide and conquer fashion. 
+%% However, Decomposing an arbitrary graph into its induced subgraph and rest graph by shared vertices such that both children are induced subgraphs of the parent is not assured.
 
 
-In Fig.\ref{fig:fig66} we see an example where the decomposition of a graph into two induced subgraphs is infeasible by partitioning edges (sharing vertices).
-If we decompose $g$ by partitioning edges, the rest graph is $s_{rest}$. But $s_{rest}$ must be an induced subgraph of $g$, so the edge is complemented as $s_{rest}'$ and $s_{rest}'$ is equal to $g$. 
-This indicates that we cannot decompose a graph $g$ any further as $g$ is a complete graph.
-The subtraction of induced subgraph by partitioning vertices (vertex subtraction)  is defined in \textit{Definition \ref{def:def37}}.
+%% In Fig.\ref{fig:fig66} we see an example where the decomposition of a graph into two induced subgraphs is infeasible by partitioning edges (sharing vertices).
+%% If we decompose $g$ by partitioning edges, the rest graph is $s_{rest}$. But $s_{rest}$ must be an induced subgraph of $g$, so the edge is complemented as $s_{rest}'$ and $s_{rest}'$ is equal to $g$. 
+%% This indicates that we cannot decompose a graph $g$ any further as $g$ is a complete graph.
+%% The subtraction of induced subgraph by partitioning vertices (vertex subtraction)  is defined in \textit{Definition \ref{def:def37}}.
 
 
 Fig.\ref{fig:fig55} shows the difference between two methods of decomposition.
-Table.\ref{tab:table1} Here we see the feasible approach to subgraph decomposition.
+In table.\ref{tab:table1} Here we see the feasible approach to subgraph decomposition.
 In the \textit{Network Method}, graphs are only decomposed by partitioning vertices (cutting edges).
 In order to extend the \textit{Network Method} to non-induced subgraph query, we implement \textit{decomposition to subgraph} by partitioning edges (shared vertices). 
 

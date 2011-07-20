@@ -300,7 +300,7 @@ We formulate the decomposition algorithm with the restriction that only a connec
 When decomposition results in one or both induced graph being disconnected, we post-process the resulting subgraphs by redistributing one or both components between the children at random until two connected induced graphs result.
 The \textit{Network Method} however decomposes an induced graph at random and without any restriction on the resulting subgraphs that maybe disconnected.
 As a result, decomposition may create multiple connected graphs composed of many disconnected graph fragments. 
-This in turn may result in number of matchings from a large number of small graphs to the query graph to become intractable.
+This in turn may result in the number of matchings from a large number of small graphs to the query graph to become intractable.
 As an extreme example, Fig.\ref{fig:fig4} shows the rapid increase of the matchings that results when a graph is decomposed to singletons.
 The number of matchings correlate with processing time as well as memory requirements, hence the need to restrict number of required matchings. 
 

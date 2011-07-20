@@ -203,7 +203,7 @@ This is due to the requirement that both children must be subgraphs of their par
 We also face the limitation that we are unable to decompose a graph into an arbitrary subgraph and the rest graph by partitioning vertices so that rest graph becomes subgraph of its parent.
 Fig.\ref{fig:fig7} shows an example where a decomposition of a graph into two subgraphs is not feasible by partitioning vertices.
 If we subtract $s$ from $g$ by partitioning vertices, $s_{rest}$ cannot be represented as a graph as only an edge remains. 
-We need to subtract the subgraphs by partitioning edges and then including the vertices on the edges as $s_{rest}'$ shows. 
+We need to subtract the subgraphs by partitioning edges and then include the vertices on the edges as $s_{rest}'$ shows. 
 Hence subgraph query processing we decompose the graphs by partitioning edges and including the corresponding vertices.
 The subtraction of subgraphs by partitioning edges (edge subtraction)is defined in \textit{Definition \ref{def:def310}}.
 

@@ -225,6 +225,7 @@ We need to subtract the subgraphs by partitioning edges and then including the v
 Hence subgraph query processing we decompose the graphs by partitioning edges and including the corresponding vertices.
 The subtraction of subgraphs by partitioning edges (edge subtraction)is defined in \textit{Definition \ref{def:def310}}.
 
+
 For induced subgraph query, we have to decompose a graph partitioning vertices to form two induced subgraphs and store the information about the interconnecting cut edges. 
 Both the resulting children must be induced subgraphs of their parent to enable the processing of induced subgraph queries in a divide and conquer fashion. 
 However, Decomposing an arbitrary graph into its induced subgraph and rest graph by shared vertices such that both children are induced subgraphs of the parent cannot be assured.

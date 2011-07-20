@@ -228,16 +228,15 @@ In order to extend the \textit{Network Method} to non-induced subgraph query, we
 
 We use the appropriate decomposition for both decompositions and also reform corresponding algorithms.
 
-\item Connected Subgraphs and Induced Subgraphs
+\item Connected Subgraphs
 
-
+We formulate the decomposition algorithm with the restriction that only a connected graphs can be processed and  it must be decomposed to strictly result in only two connected subgraphs. 
+When decomposition results in one or both graph disconnected, we post-process the resulting subgraphs by redistributing one or both components between the children at random until two connected graphs result.
 The \textit{Network Method} decomposes a graph at random and without any restriction on the resulting subgraphs other than that they be connected graphs.
 Therefore the decomposition result possibly creates multiple connected graph composed of many small graph fragments.
 However the number of matchings from number of smaller graphs to a query graph can easily become intractable.
 Fig.\ref{fig:fig4} shows an extreme example of the rapid increase of the matchings that results when a graph is decomposed to singletons.
 The number of matchings correlate with processing time as well as memory requirements, hence the need to restrict them. 
-We reformulate the decomposition algorithm with the restriction that a connected graph must be decomposed to strictly result in only two connected subgraphs. 
-When decomposition results in one or both graph disconnected, we post-process the resulting subgraphs by redistributing one or both components between the children at random until two connected graphs result.
 
 \end{enumerate}
 
@@ -254,7 +253,7 @@ In addition to the specialized routines for subgraph decomposition mentioned in 
 \begin{enumerate}
 \item Decomposing a graph into two connected subgraphs.
 
-We formulate the decomposition algorithm with the restriction that a connected graph must be decomposed to strictly result in only two connected subgraphs. 
+We decomposition algorithm with the restriction that a connected graph must be decomposed to strictly result in only two connected subgraphs. 
 When decomposition results in one or both graph disconnected, we post-process the resulting subgraphs by redistributing one or both components between the children  at random until two connected graphs result.
 The \textit{Network Method} decomposes a graph at random and without any restriction on the resulting subgraphs other than that they be connected graphs.
 Therefore the decomposition result possibly creates multiple connected graph composed of many small graph fragments.

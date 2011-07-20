@@ -275,20 +275,20 @@ The number of matchings correlate with processing time as well as memory require
 %\label{fig:fig102}
 %\end{figure}
 
-\item Early propagation of subgraph search state.
+%% \item Early propagation of subgraph search state.
 
-The \textit{Network Method} searches all nodes in $DAG$ from the leaf nodes in a bottom up fashion.
-As a result, all the child nodes in the $DAG$ will get processed before the parent nodes. 
-The state of the parent nodes is computed after all the child nodes have been computed. 
-This results in some unnecessary computation in the case that one or more of the children are found not to be isomorphic to a query because a parent graph state determined as non isomorphic if at least one children is not isomorphic to a query.  
-In fact when the isomorphism state is negative, only one test is sufficient to discover the state of all the ancestral graphs. 
-We use a simple example in Fig.\ref{fig:fig2} (III) to illustrate this.
-Assume that we know that $node$ 6 is not a subgraph of query $g_3$ in advance. 
-This implies that $g_1$ is not a subgraph of the query $g_3$.
-Hence we need not check $node$ 8 and its descendants to know the status of $g_1$ which we propagate. 
-Further, the potential computation savings increase when a non isomorphic subgraph is common to multiple parents. 
-We propose a recursive algorithm for subgraph search with state propagation of subgraph status to avoid the needless calculations. 
-This results in a \textit{Fast Network Method} is faster than the \textit{Network Method}.
+%% The \textit{Network Method} searches all nodes in $DAG$ from the leaf nodes in a bottom up fashion.
+%% As a result, all the child nodes in the $DAG$ will get processed before the parent nodes. 
+%% The state of the parent nodes is computed after all the child nodes have been computed. 
+%% This results in some unnecessary computation in the case that one or more of the children are found not to be isomorphic to a query because a parent graph state determined as non isomorphic if at least one children is not isomorphic to a query.  
+%% In fact when the isomorphism state is negative, only one test is sufficient to discover the state of all the ancestral graphs. 
+%% We use a simple example in Fig.\ref{fig:fig2} (III) to illustrate this.
+%% Assume that we know that $node$ 6 is not a subgraph of query $g_3$ in advance. 
+%% This implies that $g_1$ is not a subgraph of the query $g_3$.
+%% Hence we need not check $node$ 8 and its descendants to know the status of $g_1$ which we propagate. 
+%% Further, the potential computation savings increase when a non isomorphic subgraph is common to multiple parents. 
+%% We propose a recursive algorithm for subgraph search with state propagation of subgraph status to avoid the needless calculations. 
+%% This results in a \textit{Fast Network Method} is faster than the \textit{Network Method}.
 
 \item Connected Graphs
 

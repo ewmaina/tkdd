@@ -106,6 +106,7 @@
 %\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
       \begin{semilogyaxis}[yticklabel pos=right,
         scaled ticks=false
+         xlabel={Query Graph Size(vertices)},
         ]
           \addplot[mark=o] table[x=Query,y=NNA] \ninducedrealdata;
           \addplot[mark=square] table[x=Query,y=VF2]  \ninducedrealdata;

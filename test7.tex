@@ -70,7 +70,7 @@
 %\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
       \begin{semilogyaxis}[yticklabel pos=right,
           xticklabel pos=upper, 
-          xticklabels={,,},
+%          xticklabels={,,},
 ]
         \addplot table[x=Q,y=NNA]  \inducedrealdata;
         \addplot table[x=Q,y=VF2]  \inducedrealdata;

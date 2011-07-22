@@ -67,8 +67,8 @@
 ]
 %\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
        \addplot table[x=Q,y=NNA] \inducedrealdata;
-        \addplot table[x=Q,y=VF2]  \inducedrealdata;
-        \addplot[mark=x] table[x=Q,y=Messmer]  \inducedmessmerrealdata ;
+        \addplot[mark=x] table[x=Q,y=VF2]  \inducedrealdata;
+        \addplot table[x=Q,y=Messmer]  \inducedmessmerrealdata ;
      \end{axis}
     & 
 %\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
@@ -77,8 +77,8 @@
 %          xticklabels={,,},
 ]
         \addplot table[x=Q,y=NNA]  \inducedrealdata;
-        \addplot table[x=Q,y=VF2]  \inducedrealdata;
-        \addplot[mark=x] table[x=Q,y=Messmer] \inducedmessmerrealdata;
+        \addplot[mark=x] table[x=Q,y=VF2]  \inducedrealdata;
+        \addplot table[x=Q,y=Messmer] \inducedmessmerrealdata;
       \end{semilogyaxis}
       \\ 
 };
@@ -99,7 +99,7 @@
           yticklabels={-0.25e8,2.0e8,4.0e8,6.0e8,8.0e8,1.0e9,1.2e9}
        ]
         \addplot table[x=Query,y=NNA] \ninducedrealdata;
-        \addplot table[x=Query,y=VF2]  \ninducedrealdata;  
+        \addplot[mark=x] table[x=Query,y=VF2]  \ninducedrealdata;  
       \end{axis}
     &
 %\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
@@ -107,7 +107,7 @@
         scaled ticks=false
         ]
           \addplot table[x=Query,y=NNA] \ninducedrealdata;
-          \addplot table[x=Query,y=VF2]  \ninducedrealdata;
+          \addplot[mark=x] table[x=Query,y=VF2]  \ninducedrealdata;
       \end{semilogyaxis}
 \\
   };

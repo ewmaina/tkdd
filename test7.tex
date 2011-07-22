@@ -68,7 +68,7 @@
 %\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
        \addplot[mark=o] table[x=Q,y=NNA] \inducedrealdata;
         \addplot[mark=square] table[x=Q,y=VF2]  \inducedrealdata;
-        \addplot[mark=*] table[x=Q,y=Messmer]  \inducedmessmerrealdata ;
+        \addplot[mark=asterix] table[x=Q,y=Messmer]  \inducedmessmerrealdata ;
      \end{axis}
     & 
 %\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
@@ -78,7 +78,7 @@
 ]
         \addplot[mark=o] table[x=Q,y=NNA]  \inducedrealdata;
         \addplot[mark=square] table[x=Q,y=VF2]  \inducedrealdata;
-        \addplot[mark=*] table[x=Q,y=Messmer] \inducedmessmerrealdata;
+        \addplot[mark=asterix] table[x=Q,y=Messmer] \inducedmessmerrealdata;
       \end{semilogyaxis}
       \\ 
 };

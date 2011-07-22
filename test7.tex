@@ -1,0 +1,102 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{plotmarks}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.3}
+\usetikzlibrary{calc}
+\usepgfplotslibrary{groupplots}
+\usetikzlibrary{pgfplots.units}
+%\usepgfplotslibrary{groupplots}
+
+
+\begin{document}
+   \pgfplotstableread[col sep=&,row sep=\\]{
+      Q &  NNA  &  VF2 \\
+      10 & 400391 & 30917760 \\
+      20 & 1919648 & 102039169 \\
+      30 & 9883433 & 234524256 \\
+      40 & 12475437 & 465056798 \\
+      50 & 24249592  & 614153242 \\
+      60 & 39273662 & 1083145839 \\
+    }\inducedrealdata
+
+    \pgfplotstableread[col sep=&,row sep=\\]{
+      Q &  Messmer & VF2 \\
+      10 & 509499 & 34655051 \\
+      20 & 2319550 & 109153271 \\
+      30 & 10238520 & 244282083 \\
+      40 & 14226889 & 455319328 \\
+      50 & 23967028 & 626567799 \\
+      60 & 39208161 & 1095361792 \\
+    }\inducedmessmerrealdata
+ 
+   \pgfplotstableread[col sep=&,row sep=\\]{
+      Query & NNA & VF2 \\
+      10 & 335998 & 18964666 \\
+      20 & 1517706 & 75140850 \\
+      30 & 6232611 & 153872224 \\
+      40 & 9378092 & 315600441 \\
+      50 & 17296627 & 416698578 \\
+      60 & 26084195 & 891339716 \\
+    }\ninducedrealdata
+
+\begin{tikzpicture}
+  \pgfplotsset{small}
+  \matrix {
+    
+    \begin{axis}[
+%          scaled y ticks=manual:{$1$}{%
+%          \pgfmathfloatcreate{1}{1.0}{6}%
+%          \pgfmathdivide{#1}{\pgfmathresult}%
+%          },
+%        yticklabel style={
+%          /pgf/number format/fixed,
+%          /pgf/number format/precision=1},
+         xticklabel pos=upper,
+         xticklabels={,,},
+         scaled ticks=false,
+         yticklabels={-0.25e8,2.0e8,4.0e8,6.0e8,8.0e8,1.0e9,1.2e9}
+%%         ylabel={$Processing$ $Time$, ($s$)}
+]
+%\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
+       \addplot table[x=Q,y=NNA] \inducedrealdata;
+        \addplot table[x=Q,y=VF2]  \inducedrealdata;
+        \addplot table[x=Q,y=Messmer]  \inducedmessmerrealdata ;
+     \end{axis}
+    &
+%\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
+      \begin{semilogyaxis}[yticklabel pos=right,
+          xticklabel pos=upper, 
+          xticklabels={,,},
+]
+        \addplot table[x=Q,y=NNA]  \inducedrealdata;
+        \addplot table[x=Q,y=VF2]  \inducedrealdata;
+        \addplot table[x=Q,y=Messmer] \inducedmessmerrealdata;
+      \end{semilogyaxis}
+      \\
+    % differently large labels are aligned automatically:
+%\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
+     \begin{axis}[
+          yticklabel pos=left,
+ %%         ylabel style={font=\Huge},
+          ylabel={Processing Time},
+          scaled ticks=false,
+          yticklabels={-0.25e8,2.0e8,4.0e8,6.0e8,8.0e8,1.0e9,1.2e9}
+       ]
+        \addplot table[x=Query,y=NNA] \ninducedrealdata;
+        \addplot table[x=Query,y=VF2]  \ninducedrealdata;  
+      \end{axis}
+    &
+%\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
+      \begin{semilogyaxis}[yticklabel pos=right,
+        scaled ticks=false
+        ]
+          \addplot table[x=Query,y=NNA] \ninducedrealdata;
+          \addplot table[x=Query,y=VF2]  \ninducedrealdata;
+      \end{semilogyaxis}
+\\
+  };
+\end{tikzpicture}
+\end{document}
+
+% LocalWords:  pgf xticklabel xticklabels yticklabels

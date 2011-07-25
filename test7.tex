@@ -45,7 +45,7 @@
 \pgfplotsset{small}
 \begin{tikzpicture}
 %%  \pgfplotsset{small}
-  \matrix {
+  \matrix[row sep={3mm}] {
     
     \begin{axis}[
 %          scaled y ticks=manual:{$1$}{%
@@ -70,7 +70,7 @@
         \addplot[mark=square] table[x=Q,y=VF2]  \inducedrealdata;
         \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmessmerrealdata ;
      \end{axis}
-    & 
+    &[2mm] 
 %\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
       \begin{semilogyaxis}[yticklabel pos=right,
           xticklabel pos=upper, 
@@ -81,12 +81,12 @@
         \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmessmerrealdata;
       \end{semilogyaxis}
       \\ 
-};
-\end{tikzpicture}
+%};
+%\end{tikzpicture}
 
-\begin{tikzpicture}
+%\begin{tikzpicture}
 %%  \pgfplotsset{small}
-  \matrix{
+%  \matrix{
 %    \\
 
     % differently large labels are aligned automatically:
@@ -102,9 +102,7 @@
         \addplot[mark=o] table[x=Query,y=NNA] \ninducedrealdata;
         \addplot[mark=square] table[x=Query,y=VF2]  \ninducedrealdata;  
       \end{axis}
-    &
-\mbox{}
-&
+    &[2mm]
 %\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
       \begin{semilogyaxis}[yticklabel pos=right,
         scaled ticks=false,

@@ -93,7 +93,7 @@
 780 & 37816671 & 2667354
 790 & 53024522 & 2698332
 800 & 61312625 & 2845719             
-    }\inducedrealdata
+    }\inducedsyndata
 
     \pgfplotstableread[col sep=&,row sep=\\]{
       Q &  Messmer & VF2 \\
@@ -113,9 +113,88 @@
       40 & 9378092 & 315600441 \\
       50 & 17296627 & 416698578 \\
       60 & 26084195 & 891339716 \\
-
-
-    }\ninducedrealdata
+# Q DB_sz DB_grps NNA VF2
+10 & 1108 & 115585
+20 & 1733 & 141924
+30 & 1975 & 185498
+40 & 2247 & 203244
+50 & 2647 & 265139
+60 & 2880 & 287218
+70 & 3467 & 282135
+80 & 3532 & 309996
+90 & 4232 & 432790
+100 & 4209 & 450479
+110 & 4723 & 359410
+120 & 4770 & 409098
+130 & 5120 & 583920
+140 & 6044 & 496857
+150 & 6212 & 491332
+160 & 6490 & 518549
+170 & 6827 & 536228
+180 & 6919 & 543215
+190 & 7626 & 588039
+200 & 8165 & 621883
+210 & 8543 & 672441
+220 & 8532 & 784864
+230 & 9231 & 725878
+240 & 9637 & 755487
+250 & 11311 & 765555
+260 & 11465 & 803947
+270 & 11977 & 854705
+280 & 12140 & 907859
+290 & 12521 & 870605
+300 & 14461 & 948579
+310 & 13564 & 1844279
+320 & 13530 & 1074060
+330 & 13997 & 1035640
+340 & 15178 & 1027903
+350 & 14798 & 1099294
+360 & 15088 & 2019444
+370 & 36168 & 1122375
+380 & 41568 & 1229511
+390 & 47311 & 1224264
+400 & 68709 & 1241669
+410 & 69584 & 1220643
+420 & 75648 & 1539058
+430 & 79791 & 1402377
+440 & 93276 & 1478314
+450 & 90972 & 1359179
+460 & 109953 & 1498074
+470 & 125674 & 1515597
+480 & 113670 & 1644272
+490 & 129903 & 1554077
+500 & 152538 & 1691936
+510 & 164897 & 1686482
+520 & 351330 & 1643944
+530 & 386960 & 2352246
+540 & 416428 & 1731930
+550 & 416414 & 1707209
+560 & 568961 & 1808345
+570 & 627558 & 1854651
+580 & 640126 & 1924002
+590 & 879291 & 1947406
+600 & 1118470 & 2007393
+610 & 1067706 & 2029212
+620 & 1259681 & 2045480
+630 & 2554424 & 2085745
+640 & 4928517 & 2162389
+650 & 8248594 & 2215853
+660 & 14277412 & 2255396
+670 & 14670748 & 2218016
+680 & 33870559 & 2186441
+690 & 32264679 & 2276758
+700 & 44490792 & 2296664
+710 & 48143923 & 2524696
+720 & 57593061 & 2375743
+730 & 118314778 & 2482321
+740 & 196526892 & 2507489
+750 & 232547353 & 2592800
+760 & 296819555 & 2651382
+770 & 356974610 & 2693289
+780 & 418130166 & 2753804
+790 & 559174099 & 2900321
+800 &  721908173 & 2985740
+    }\ninducedsyndata
 
 
 \pgfplotsset{small}
@@ -142,9 +221,9 @@
 %%         ylabel={$Processing$ $Time$, ($s$)}
 ]
 %\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
-       \addplot[mark=o] table[x=Q,y=NNA] \inducedrealdata;
-        \addplot[mark=square] table[x=Q,y=VF2]  \inducedrealdata;
-        \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmessmerrealdata ;
+       \addplot[mark=o] table[x=Q,y=NNA] \inducedsyndata;
+        \addplot[mark=square] table[x=Q,y=VF2]  \inducedsyndata;
+%%     \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmessmerrealdata ;
      \end{axis}
     &[1mm] 
 %\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
@@ -152,9 +231,9 @@
           xticklabel pos=upper, 
 %          xticklabels={,,},
 ]
-        \addplot[mark=o] table[x=Q,y=NNA]  \inducedrealdata;
-        \addplot[mark=square] table[x=Q,y=VF2]  \inducedrealdata;
-        \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmessmerrealdata;
+        \addplot[mark=o] table[x=Q,y=NNA]  \inducedsyndata;
+        \addplot[mark=square] table[x=Q,y=VF2]  \inducedsyndata;
+%%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmessmerrealdata;
       \end{semilogyaxis}
       \\ 
 %};

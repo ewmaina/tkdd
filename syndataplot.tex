@@ -239,10 +239,12 @@ Query & NNA & VF2 \\
           xmin=-10,
           xmax=820, 
           ymax=1000,
+         mark size=2pt,
+         mark repeat=5,
 %          xticklabels={,,},
 ]
-        \addplot[mark=o,mark repeat=5] table[x=Q,y=NNA]  \inducedsyndata;
-        \addplot[mark=square,mark repeat=5] table[x=Q,y=VF2]  \inducedsyndata;
+        \addplot[mark=o] table[x=Q,y=NNA]  \inducedsyndata;
+        \addplot[mark=square] table[x=Q,y=VF2]  \inducedsyndata;
      \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
       \end{semilogyaxis}
       \\ 

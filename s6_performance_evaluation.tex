@@ -47,6 +47,16 @@ We vary average size of query graphs and evaluate query processing time.
 For each plot, 100 query graphs are extracted from $W$.
 Query processing time is time to process the all query graphs and the time to construct the DAG is excluded.
 
+We now analyse the results shown in Fig.\ref{fig:fig81}
+
+\textbf{ Top left:}Linear-linear plot of  induced subgraph query processing time for increasing size of query graph.The smallest query graph contains 10 vertices while the largest query graph contains 60 vertices. The \textit{Fast Network Method} and the textit{Network Method} show almost identical processing times. The \textit{VF2} method takes more than 50s to process query graphs large than 10 vertices. 
+
+\textbf{Top Right:} Linear-log plot of the induce subgraph graph query processing time with query graph size. We observe that both the \textit{Fast Network Method} and the textit{Network Method} while almost indistinguishable, show an order of magnitude advantage in processing time over the state-of-the-art \textit{VF2} Method 
+
+\textbf{ Bottom left:}Linear-linear plot of  query processing time for increasing size of graph query.The smallest query graph contains 10 vertices while the largest query graph contains 60 vertices. The \textit{Fast Network Method} is faster than \textit{VF2} for subgraphs too. Here too, \textit{VF2} method takes more than 50s to process query graphs large than 10 vertices. 
+
+\textbf{Bottom Right:} Linear-log plot of the graph query processing time with query graph size. We observe that both the \textit{Fast Network Method} and the textit{Network Method} while almost indistinguishable, show better than an order of magnitude advantage in processing time over the state-of-the-art \textit{VF2} Method.}
+
 Fig.\ref{fig:fig3} shows the processing time for induced subgraph isomorphism query.
 Fig.\ref{fig:fig3} indicates that proposed algorithm has no improvements from Messmer et al.'s algorithm.
 It is because that their are originally few decompositions that creates disconnected graphs and also few redundant subgraph isomorphism detections in DAG.

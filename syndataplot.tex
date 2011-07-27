@@ -251,7 +251,8 @@ mark size=2pt,
           xmin=-10,
           xmax=840, 
           ymax=1000,
-         
+         mark size=2pt,
+         mark repeat=5,
 %          xticklabels={,,},
 ]
         \addplot[mark=o] table[x=Q,y=NNA]  \inducedsyndata;
@@ -297,7 +298,7 @@ mark size=2pt,
           xmin=-10,
           xmax=840,
         ]
-          \addplot[mark=o,mark] table[x=Query,y=NNA] \ninducedsyndata;
+          \addplot[mark=o,mark repeat=5] table[x=Query,y=NNA] \ninducedsyndata;
           \addplot[mark=square] table[x=Query,y=VF2]  \ninducedsyndata;
       \end{semilogyaxis}
 \\

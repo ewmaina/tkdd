@@ -243,7 +243,7 @@ legend style={font=\footnotesize},
 %\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
       \begin{semilogyaxis}[yticklabel pos=right,
           xticklabel pos=upper,
-          xmin=-10,
+          xmin=-20,
           xmax=820, 
           ymax=1000,
          mark size=2pt,
@@ -290,7 +290,7 @@ legend style={font=\footnotesize},
       \begin{semilogyaxis}[yticklabel pos=right,
         scaled ticks=false,
          xlabel={Query Graph Size(# of vertices)},
-          xmin=-10,
+          xmin=-20,
           xmax=820,
         ]
           \addplot[mark=o,mark repeat=5] table[x=Query,y=NNA] \ninducedsyndata;

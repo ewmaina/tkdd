@@ -232,7 +232,9 @@ Query & NNA & VF2 \\
     &[1mm] 
 %\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
       \begin{semilogyaxis}[yticklabel pos=right,
-          xticklabel pos=upper, 
+          xticklabel pos=upper,
+          xmin=0,
+          xmax=800, 
           ymax=1000,
 %          xticklabels={,,},
 ]

@@ -214,7 +214,7 @@ Query & NNA & VF2 \\
 %%         xticklabels={,,},
          scaled ticks=false,
 %         yticklabels={-0.25e8,1.0e6,2.0e6,3.0e6,4.0e6,5.0e6,6.0e6},
-          xmin=0,
+          xmin=-10,
           xmax=820,
           ymin=-0.2,
           ymax=5.0,
@@ -233,7 +233,7 @@ Query & NNA & VF2 \\
 %\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
       \begin{semilogyaxis}[yticklabel pos=right,
           xticklabel pos=upper,
-          xmin=0,
+          xmin=-10,
           xmax=820, 
           ymax=1000,
 %          xticklabels={,,},
@@ -262,7 +262,7 @@ Query & NNA & VF2 \\
           scaled ticks=false,
          xlabel={Query Graph Size(# of vertices)},
 %          yticklabels={-0.25e8,2.0e8,4.0e8,6.0e8,8.0e8,1.0e9,1.2e9},
-          xmin=0,
+          xmin=-10,
           xmax=820,
           ymax=5.0,
           ymin=-0.2,
@@ -276,7 +276,7 @@ Query & NNA & VF2 \\
       \begin{semilogyaxis}[yticklabel pos=right,
         scaled ticks=false,
          xlabel={Query Graph Size(# of vertices)},
-          xmin=0,
+          xmin=-10,
           xmax=820,
         ]
           \addplot[mark=o] table[x=Query,y=NNA] \ninducedsyndata;

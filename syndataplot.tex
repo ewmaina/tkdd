@@ -225,8 +225,8 @@ Query & NNA & VF2 \\
 %%         ylabel={$Processing$ $Time$, ($s$)}
 ]
 %\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
-       \addplot[mark=o] table[x=Q,y=NNA] \inducedsyndata;
-        \addplot[mark=triangle] table[x=Q,y=VF2]  \inducedsyndata;
+       \addplot[mark=o,mark repeat=50] table[x=Q,y=NNA] \inducedsyndata;
+        \addplot[mark=triangle,mark repeat=50] table[x=Q,y=VF2]  \inducedsyndata;
       \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
      \end{axis}
     &[1mm] 
@@ -238,8 +238,8 @@ Query & NNA & VF2 \\
           ymax=1000,
 %          xticklabels={,,},
 ]
-        \addplot[mark=o] table[x=Q,y=NNA]  \inducedsyndata;
-        \addplot[mark=triangle] table[x=Q,y=VF2]  \inducedsyndata;
+        \addplot[mark=o,mark repeat=50] table[x=Q,y=NNA]  \inducedsyndata;
+        \addplot[mark=triangle,mark repeat=50] table[x=Q,y=VF2]  \inducedsyndata;
      \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
       \end{semilogyaxis}
       \\ 
@@ -255,7 +255,7 @@ Query & NNA & VF2 \\
 %\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
      \begin{axis}[
         use units,
-        y unit= seconds, 
+        y unit= seconds,
          yticklabel pos=left,
  %%         ylabel style={font=\Huge},
           ylabel={Processing Time},
@@ -268,8 +268,8 @@ Query & NNA & VF2 \\
           ymin=-0.2,
           enlargelimits=false,
        ]
-        \addplot[mark=o] table[x=Query,y=NNA] \ninducedsyndata;
-        \addplot[mark=triangle] table[x=Query,y=VF2]  \ninducedsyndata;  
+        \addplot[mark=o,mark repeat=50] table[x=Query,y=NNA] \ninducedsyndata;
+        \addplot[mark=triangle,mark repeat=50] table[x=Query,y=VF2]  \ninducedsyndata;  
       \end{axis}
     &[1mm]
 %\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
@@ -279,8 +279,8 @@ Query & NNA & VF2 \\
           xmin=-10,
           xmax=820,
         ]
-          \addplot[mark=o] table[x=Query,y=NNA] \ninducedsyndata;
-          \addplot[mark=triangle] table[x=Query,y=VF2]  \ninducedsyndata;
+          \addplot[mark=o,mark repeat=50] table[x=Query,y=NNA] \ninducedsyndata;
+          \addplot[mark=triangle,mark repeat=50] table[x=Query,y=VF2]  \ninducedsyndata;
       \end{semilogyaxis}
 \\
   };

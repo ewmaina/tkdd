@@ -254,6 +254,8 @@ Query & NNA & VF2 \\
     % differently large labels are aligned automatically:
 %\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
      \begin{axis}[
+        use units,
+        y unit= seconds,
          yticklabel pos=left,
           ylabel style={font=\normalsize},
           ylabel={Processing Time},

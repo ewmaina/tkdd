@@ -276,6 +276,8 @@ Query & NNA & VF2 \\
       \begin{semilogyaxis}[yticklabel pos=right,
         scaled ticks=false,
          xlabel={Query Graph Size(# of vertices)},
+          xmin=0,
+          xmax=800,
         ]
           \addplot[mark=o] table[x=Query,y=NNA] \ninducedsyndata;
           \addplot[mark=square] table[x=Query,y=VF2]  \ninducedsyndata;

@@ -1,0 +1,145 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{plotmarks}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.3}
+\usetikzlibrary{calc}
+\usepgfplotslibrary{groupplots}
+\usetikzlibrary{pgfplots.units}
+%\usepgfplotslibrary{groupplots}
+
+
+
+\begin{document}
+\begin{center}
+   \pgfplotstableread[col sep=&,row sep=\\]{
+      Q &  NNA  &  VF2 \\
+      0  & 0  & 0 \\
+      10 & 400391e-6 & 30917760e-6 \\
+      20 & 1919648e-6 & 102039169e-6 \\
+      30 & 98834336-6 & 234524256e-6 \\
+      40 & 12475437e-6 & 465056798e-6 \\
+      50 & 24249592e-6  & 614153242e-6 \\
+      60 & 39273662e-6 & 1083145839e-6 \\
+    }\inducedrealdata
+
+    \pgfplotstableread[col sep=&,row sep=\\]{
+      Q &  Messmer & VF2 \\
+      0 & 0 & 0 \\
+      10 & 509499e-6 & 34655051e-6 \\
+      20 & 2319550e-6 & 109153271e-6 \\
+      30 & 10238520e-6 & 244282083e-6 \\
+      40 & 14226889e-6 & 455319328e-6 \\
+      50 & 23967028e-6 & 626567799e-6 \\
+      60 & 39208161e-6 & 1095361792e-6 \\
+    }\inducedmessmerrealdata
+ 
+   \pgfplotstableread[col sep=&,row sep=\\]{
+      Query & NNA & VF2 \\
+      0 &  0 & 0 \\
+      10 & 335998e-6 & 18964666e-6 \\
+      20 & 1517706e-6 & 75140850e-6 \\
+      30 & 6232611e-6 & 153872224e-6 \\
+      40 & 9378092e-6 & 315600441e-6 \\
+      50 & 17296627e-6 & 416698578e-6 \\
+      60 & 26084195e-6 & 891339716e-6 \\
+    }\ninducedrealdata
+
+
+\pgfplotsset{small}
+\pgfplotsset{every axis/.append style={
+font=\footnotesize,
+thin,
+%%tick style={thin}
+tick label style={font=\footnotesize},
+label style={font=\footnotesize},
+legend style={font=\footnotesize},
+}}
+\begin{tikzpicture}
+%%  \pgfplotsset{small}
+  \matrix[row sep={1mm}] {
+    
+    \begin{axis}[
+        use units,
+        y unit= seconds,
+%          scaled y ticks=manual:{$1$}{%
+%          \pgfmathfloatcreate{1}{1.0}{6}%
+%          \pgfmathdivide{#1}{\pgfmathresult}%
+%          },
+%        yticklabel style={
+%          /pgf/number format/fixed,
+%          /pgf/number format/precision=1},
+         ylabel={Processing Time},
+         ymax=50,
+         xmin=-1,
+         xmax=61,
+         xticklabel pos=upper,
+%%         xticklabels={,,},
+         scaled ticks=false,
+%         yticklabels={-0.25e8,2.0e8,4.0e8,6.0e8,8.0e8,1.0e9,1.2e9},
+         legend columns=-1,
+         legend entries={Fast Network Method  ,$VF2$  ,Network Method},
+         legend to name={named},
+%%         ylabel={$Processing$ $Time$, ($s$)}
+]
+%\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
+       \addplot[mark=o] table[x=Q,y=NNA] \inducedrealdata;
+        \addplot[mark=square] table[x=Q,y=VF2]  \inducedrealdata;
+        \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmessmerrealdata ;
+     \end{axis}
+    &[1mm] 
+%\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
+      \begin{semilogyaxis}[yticklabel pos=right,
+          xticklabel pos=upper, 
+%          xticklabels={,,},
+]
+        \addplot[mark=o] table[x=Q,y=NNA]  \inducedrealdata;
+        \addplot[mark=square] table[x=Q,y=VF2]  \inducedrealdata;
+        \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmessmerrealdata;
+      \end{semilogyaxis}
+      \\ 
+%};
+%\end{tikzpicture}
+
+%\begin{tikzpicture}
+%%  \pgfplotsset{small}
+%  \matrix{
+%    \\
+
+    % differently large labels are aligned automatically:
+%\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
+     \begin{axis}[
+        use units,
+        y unit= seconds,
+          yticklabel pos=left,
+ %%         ylabel style={font=\Huge},
+          ylabel={Processing Time},
+          scaled ticks=false,
+         ymax=50,
+         xmin=-1,
+         xmax=61,
+         xlabel={Query Graph Size(vertices)},
+ %         yticklabels={-0.25e8,2.0e8,4.0e8,6.0e8,8.0e8,1.0e9,1.2e9}
+       ]
+        \addplot[mark=o] table[x=Query,y=NNA] \ninducedrealdata;
+        \addplot[mark=square] table[x=Query,y=VF2]  \ninducedrealdata;  
+      \end{axis}
+    &[1mm]
+%\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
+      \begin{semilogyaxis}[yticklabel pos=right,
+        scaled ticks=false,
+         xlabel={Query Graph Size(vertices)},
+        ]
+          \addplot[mark=o] table[x=Query,y=NNA] \ninducedrealdata;
+          \addplot[mark=square] table[x=Query,y=VF2]  \ninducedrealdata;
+      \end{semilogyaxis}
+\\
+  };
+\end{tikzpicture}
+\pgfplotslegendfromname{named}
+
+\end{center}
+\end{document}
+
+
+% LocalWords:  pgf xticklabel xticklabels yticklabels

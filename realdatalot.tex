@@ -52,6 +52,8 @@
   \matrix[row sep={1mm}] {
     
     \begin{axis}[
+        use units,
+        y unit= seconds,
 %          scaled y ticks=manual:{$1$}{%
 %          \pgfmathfloatcreate{1}{1.0}{6}%
 %          \pgfmathdivide{#1}{\pgfmathresult}%
@@ -99,6 +101,8 @@
     % differently large labels are aligned automatically:
 %\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
      \begin{axis}[
+        use units,
+        y unit= seconds,
           yticklabel pos=left,
  %%         ylabel style={font=\Huge},
           ylabel={Processing Time},

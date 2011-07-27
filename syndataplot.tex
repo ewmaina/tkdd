@@ -226,7 +226,7 @@ Query & NNA & VF2 \\
 ]
 %\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
        \addplot[mark=o] table[x=Q,y=NNA] \inducedsyndata;
-        \addplot[mark=square] table[x=Q,y=VF2]  \inducedsyndata;
+        \addplot[mark=triangle] table[x=Q,y=VF2]  \inducedsyndata;
       \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
      \end{axis}
     &[1mm] 
@@ -239,7 +239,7 @@ Query & NNA & VF2 \\
 %          xticklabels={,,},
 ]
         \addplot[mark=o] table[x=Q,y=NNA]  \inducedsyndata;
-        \addplot[mark=square] table[x=Q,y=VF2]  \inducedsyndata;
+        \addplot[mark=triangle] table[x=Q,y=VF2]  \inducedsyndata;
      \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
       \end{semilogyaxis}
       \\ 
@@ -269,7 +269,7 @@ Query & NNA & VF2 \\
           enlargelimits=false,
        ]
         \addplot[mark=o] table[x=Query,y=NNA] \ninducedsyndata;
-        \addplot[mark=square] table[x=Query,y=VF2]  \ninducedsyndata;  
+        \addplot[mark=triangle] table[x=Query,y=VF2]  \ninducedsyndata;  
       \end{axis}
     &[1mm]
 %\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
@@ -280,7 +280,7 @@ Query & NNA & VF2 \\
           xmax=820,
         ]
           \addplot[mark=o] table[x=Query,y=NNA] \ninducedsyndata;
-          \addplot[mark=square] table[x=Query,y=VF2]  \ninducedsyndata;
+          \addplot[mark=triangle] table[x=Query,y=VF2]  \ninducedsyndata;
       \end{semilogyaxis}
 \\
   };

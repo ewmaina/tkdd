@@ -155,7 +155,7 @@ mark size=2pt,
          scaled ticks=false,
 %         yticklabels={-0.25e8,1.0e6,2.0e6,3.0e6,4.0e6,5.0e6,6.0e6},
           xmin=-10,
-          xmax=840,
+          xmax=20000,
           ymin=-0.2,
           ymax=5.2,
           enlargelimits=false,
@@ -174,7 +174,7 @@ mark size=2pt,
       \begin{semilogyaxis}[yticklabel pos=right,
           xticklabel pos=upper,
           xmin=-10,
-          xmax=840, 
+          xmax=20000, 
           ymax=1000,
          mark size=2pt,
          mark repeat=5,
@@ -185,16 +185,7 @@ mark size=2pt,
 %%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
       \end{semilogyaxis}
       \\ 
-%};
-%\end{tikzpicture}
-
-%\begin{tikzpicture}
-%%  \pgfplotsset{small}
-%  \matrix{
-%    \\
  
-    % differently large labels are aligned automatically:
-%\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
      \begin{axis}[
         use units,
         y unit= seconds,
@@ -203,7 +194,6 @@ mark size=2pt,
           ylabel={Processing Time},
           scaled ticks=false,
          xlabel={Query Graph Size(vertices)},
-%          yticklabels={-0.25e8,2.0e8,4.0e8,6.0e8,8.0e8,1.0e9,1.2e9},
           xmin=-10,
           xmax=840,
           ymax=5.2,
@@ -213,8 +203,9 @@ mark size=2pt,
         \addplot[mark=o] table[x=Query,y=NNA] \ninducedsyndata;
         \addplot[mark=square] table[x=Query,y=VF2]  \ninducedsyndata;  
       \end{axis}
+
     &[0.5mm]
-%\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
+
       \begin{semilogyaxis}[yticklabel pos=right,
         scaled ticks=false,
          xlabel={Query Graph Size(vertices)},

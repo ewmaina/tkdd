@@ -175,36 +175,46 @@ mark size=2pt,
 %%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
       \end{semilogyaxis}
       \\ 
- 
-     \begin{axis}[
-        use units,
-        y unit= seconds,
-         yticklabel pos=left,
-          ylabel style={font=\normalsize},
-          ylabel={Processing Time},
-          scaled ticks=false,
-         xlabel={Query Graph Size(vertices)},
+
+    \begin{axis}[
+        change y base,axis base prefix={axis y base -6 prefix s},
+        change x base,axis base prefix={axis x base -3 prefix k},
+%        y SI prefix=micro,
+%        y unit= s, 
+        y unit prefix=s,
+         ylabel={Processing Time},
+         xticklabel pos=upper,
+%%         xticklabels={,,},
+         scaled ticks=false,
           xmin=-10,
-          xmax=840,
-          ymax=5.2,
+          xmax=20000,
           ymin=-0.2,
-          enlargelimits=false,
-       ]
-        \addplot[mark=o] table[x=Query,y=NNA] \ninducedsyndata;
-        \addplot[mark=square] table[x=Query,y=VF2]  \ninducedsyndata;  
-      \end{axis}
-
-    &[0.5mm]
-
+          ymax=50000,
+%          enlargelimits=true,
+]
+%\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
+       \addplot[mark=o] table[x=DBGraphCount,y=NNA] \inducedsynDBdata;
+        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdata;
+%%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
+     \end{axis}
+    &[0.5mm] 
+%\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
       \begin{semilogyaxis}[yticklabel pos=right,
-        scaled ticks=false,
-         xlabel={Query Graph Size(vertices)},
+          xticklabel pos=upper,
           xmin=-10,
-          xmax=840,
-        ]
-          \addplot[mark=o] table[x=Query,y=NNA] \ninducedsyndata;
-          \addplot[mark=square] table[x=Query,y=VF2]  \ninducedsyndata;
+          xmax=20000, 
+          ymax=1000000,
+         mark size=2pt,
+         mark repeat=5,
+         enlargelimits=true,
+%          xticklabels={,,},
+]
+        \addplot[mark=o] table[x=DBGraphCount,y=NNA]  \inducedsynDBdata;
+        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdata;
+%%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
       \end{semilogyaxis}
+ 
+    
 \\
   };
 \end{tikzpicture}

@@ -139,20 +139,10 @@ mark size=2pt,
 %        y SI prefix=micro,
 %        y unit= s, 
         y unit prefix=s,
-%          scaled y ticks=manual:{$1$}{%
-%          \pgfmathfloatcreate{1}{1.0}{6}%
-%          \pgfmathdivide{#1}{\pgfmathresult}%
-%          },
-%        yticklabel style={
-%          /pgf/number format/fixed,
-%          /pgf/number format/precision=1},
          ylabel={Processing Time},
-%         ylabel style={font=\footnotesize},
-%         xlabel style={font=\footnotesize},
          xticklabel pos=upper,
 %%         xticklabels={,,},
          scaled ticks=false,
-%         yticklabels={-0.25e8,1.0e6,2.0e6,3.0e6,4.0e6,5.0e6,6.0e6},
           xmin=-10,
           xmax=20000,
           ymin=-0.2,

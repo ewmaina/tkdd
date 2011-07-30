@@ -114,7 +114,7 @@ struct & QuerySize & DBGraphSize & DBGraphCount &  NNA & VF2 \\
 14329756 & 10 & 10 & 19600 & 955 & 150674 \\
 14752078 & 10 & 10 & 19800 & 963 & 164060 \\
 15022896 & 10 & 10 & 20000 & 976 & 158337 \\
- }\isynDBdataTen
+ }\inducedsynDBdataQTen
 
 \pgfplotstableread[col sep=&,row sep=\\]{
 struct & QuerySize & DBGraphSize & DBGraphCount &  NNA & VF2 \\
@@ -218,7 +218,8 @@ struct & QuerySize & DBGraphSize & DBGraphCount &  NNA & VF2 \\
 14354345 & 200 & 10 & 19600 21032 692973
 14829174 & 200 & 10 & 19800 20285 707957
 15074241 & 200 & 10 & 20000 19541 697394
- }\isynDBdataTH
+ }\inducedsynDBdataQTwoHundred
+
 
 \pgfplotstableread[col sep=&,row sep=\\]{
 struct & QuerySize & DBGraphSize & DBGraphCount & NNA & VF2 \\
@@ -322,7 +323,8 @@ struct & QuerySize & DBGraphSize & DBGraphCount & NNA & VF2 \\
 17296425 & 400 & 10 & 19600 & 143080 & 1348331 \\
 14853962 & 400 & 10 & 19800 & 153552 & 1318547 \\
 17317767 & 400 & 10 & 20000 & 155193 & 1337604 \\
- }\isynDBdataFH
+ }\inducedsynDBdataQFourHundred
+
 
 \pgfplotstableread[col sep=&,row sep=\\]{
 struct & QuerySize & DBGraphSize & DBGraphCount &  NNA & VF2 \\
@@ -426,7 +428,7 @@ struct & QuerySize & DBGraphSize & DBGraphCount &  NNA & VF2 \\
 17104398 & 600 & 10 & 19600 & 1177416 & 2151395 \\
 17298821 & 600 & 10 & 19800 & 1185371 & 2155512 \\
 18817241 & 600 & 10 & 20000 & 1217531 & 2106087 \\
- }\isynDBdataSH
+ }\inducedsynDBdataQSixHundred
 
 \pgfplotstableread[col sep=&,row sep=\\]{
 struct & QuerySize & DBGraphSize & DBGraphCount & NNA & VF2 \\
@@ -530,7 +532,8 @@ struct & QuerySize & DBGraphSize & DBGraphCount & NNA & VF2 \\
 28148984 & 800 & 10 & 19600 & 58438007 & 2946495 \\
 30039855 & 800 & 10 & 19800 & 59972147 & 3040398 \\
 30270370 & 800 & 10 & 20000 & 60792805 & 3036020 \\
- }\isynDBdataEH
+ }\inducedsynDBdataQEightHundred
+
 
 \pgfplotsset{small}
 \pgfplotsset{every axis/.append style={
@@ -567,8 +570,8 @@ mark size=2pt,
          legend entries={Fast Network Method  ,$VF2$  ,Network Method},
          legend to name={named},
 ]
-       \addplot[mark=o] table[x=DBGraphCount,y=NNA] \isynDBdataTen;
-        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \isynDBdataTen;
+       \addplot[mark=o] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTen;
+        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTen;
 %%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
      \end{axis}
 
@@ -583,12 +586,12 @@ mark size=2pt,
          mark repeat=5,
          enlargelimits=true,
 ]
-        \addplot[mark=o] table[x=DBGraphCount,y=NNA]  \isynDBdataTen;
-        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \isynDBdataTen;
+        \addplot[mark=o] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQTen;
+        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTen;
 %%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
       \end{semilogyaxis}
 
- \\ 
+  \\ 
 
     \begin{axis}[
         change y base,axis base prefix={axis y base -6 prefix s},
@@ -607,8 +610,8 @@ mark size=2pt,
 %          enlargelimits=true,
 ]
 %\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
-       \addplot[mark=o] table[x=DBGraphCount,y=NNA] \isynDBdataTH;
-        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \isynDBdataTH;
+       \addplot[mark=o] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTwoHundred;
+        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTwoHundred;
 %%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
      \end{axis}
 
@@ -625,48 +628,8 @@ mark size=2pt,
          enlargelimits=true,
 %          xticklabels={,,},
 ]
-        \addplot[mark=o] table[x=DBGraphCount,y=NNA]  \isynDBdataTH;
-        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \isynDBdataTH;
-%%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
-      \end{semilogyaxis}
-    
-\\
-
-    \begin{axis}[
-        change y base,axis base prefix={axis y base -6 prefix s},
-        change x base,axis base prefix={axis x base -3 prefix k},
-%        y SI prefix=micro,
-%        y unit= s, 
-        y unit prefix=s,
-         ylabel={Processing Time},
-         xticklabel pos=lower,
-%%         xticklabels={,,},
-         scaled ticks=false,
-          xmin=-10,
-          xmax=20000,
-          ymin=-0.2,
-          ymax=50000,
-%          enlargelimits=true,
-]
-%\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
-       \addplot[mark=o] table[x=DBGraphCount,y=NNA] \isynDBdataFH;
-        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \isynDBdataFH;
-%%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
-     \end{axis}
-    &[0.5mm] 
-%\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
-      \begin{semilogyaxis}[yticklabel pos=right,
-          xticklabel pos=lower,
-          xmin=-10,
-          xmax=20000, 
-          ymax=1000000,
-         mark size=2pt,
-         mark repeat=5,
-         enlargelimits=true,
-%          xticklabels={,,},
-]
-        \addplot[mark=o] table[x=DBGraphCount,y=NNA]  \isynDBdataFH;
-        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \isynDBdataFH;
+        \addplot[mark=o] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQTwoHundred;
+        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTwoHundred;
 %%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
       \end{semilogyaxis}
     
@@ -689,8 +652,8 @@ mark size=2pt,
 %          enlargelimits=true,
 ]
 %\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
-       \addplot[mark=o] table[x=DBGraphCount,y=NNA] \isynDBdataSH;
-        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \isynDBdataSH;
+       \addplot[mark=o] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQFourHundred;
+        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQFourHundred;
 %%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
      \end{axis}
     &[0.5mm] 
@@ -705,8 +668,8 @@ mark size=2pt,
          enlargelimits=true,
 %          xticklabels={,,},
 ]
-        \addplot[mark=o] table[x=DBGraphCount,y=NNA]  \isynDBdataSH;
-        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \isynDBdataSH;
+        \addplot[mark=o] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQFourHundred;
+        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQFourHundred;
 %%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
       \end{semilogyaxis}
     
@@ -729,8 +692,8 @@ mark size=2pt,
 %          enlargelimits=true,
 ]
 %\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
-       \addplot[mark=o] table[x=DBGraphCount,y=NNA] \isynDBdataEH;
-        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \isynDBdataEH;
+       \addplot[mark=o] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQSixHundred;
+        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQSixHundred;
 %%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
      \end{axis}
     &[0.5mm] 
@@ -745,8 +708,48 @@ mark size=2pt,
          enlargelimits=true,
 %          xticklabels={,,},
 ]
-        \addplot[mark=o] table[x=DBGraphCount,y=NNA]  \isynDBdataEH;
-        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \isynDBdataEH;
+        \addplot[mark=o] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQSixHundred;
+        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQSixHundred;
+%%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
+      \end{semilogyaxis}
+    
+\\
+
+    \begin{axis}[
+        change y base,axis base prefix={axis y base -6 prefix s},
+        change x base,axis base prefix={axis x base -3 prefix k},
+%        y SI prefix=micro,
+%        y unit= s, 
+        y unit prefix=s,
+         ylabel={Processing Time},
+         xticklabel pos=lower,
+%%         xticklabels={,,},
+         scaled ticks=false,
+          xmin=-10,
+          xmax=20000,
+          ymin=-0.2,
+          ymax=50000,
+%          enlargelimits=true,
+]
+%\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
+       \addplot[mark=o] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQEightHundred;
+        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQEightHundred;
+%%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
+     \end{axis}
+    &[0.5mm] 
+%\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
+      \begin{semilogyaxis}[yticklabel pos=right,
+          xticklabel pos=lower,
+          xmin=-10,
+          xmax=20000, 
+          ymax=1000000,
+         mark size=2pt,
+         mark repeat=5,
+         enlargelimits=true,
+%          xticklabels={,,},
+]
+        \addplot[mark=o] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQEightHundred;
+        \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQEightHundred;
 %%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
       \end{semilogyaxis}
     

@@ -570,13 +570,12 @@ mark size=2pt,
          legend entries={Fast Network Method  ,$VF2$  ,Network Method},
          legend to name={named},
 ]
-%\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
        \addplot[mark=o] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTen;
         \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTen;
 %%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
      \end{axis}
     &[0.5mm] 
-%\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
+
       \begin{semilogyaxis}[yticklabel pos=right,
           xticklabel pos=upper,
           xmin=-10,

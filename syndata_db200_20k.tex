@@ -431,7 +431,7 @@ struct & QuerySize & DBGraphSize & DBGraphCount &  NNA & VF2 \\
  }\inducedsynDBdataQ600
 
 \pgfplotstableread[col sep=&,row sep=\\]{
-struct & QuerySize & DBGraphSize & DBGraphCount &  NNA & VF2 \\
+struct & QuerySize & DBGraphSize & DBGraphCount & NNA & VF2 \\
 56174 & 800 & 10 & 200 & 368857 & 25231 \\
 391985 & 800 & 10 & 400 & 661196 & 54555 \\
 1143558 & 800 & 10 & 600 & 956254 & 81958 \\
@@ -614,7 +614,9 @@ mark size=2pt,
         \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQ200;
 %%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
      \end{axis}
+
     &[0.5mm] 
+
 %\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
       \begin{semilogyaxis}[yticklabel pos=right,
           xticklabel pos=lower,

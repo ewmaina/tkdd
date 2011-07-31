@@ -594,11 +594,9 @@ mark size=2pt,
   \\ 
 
     \begin{axis}[
-        change y base,axis base prefix={axis y base -6 prefix s},
-        change x base,axis base prefix={axis x base -3 prefix k},
-%        y SI prefix=micro,
-%        y unit= s, 
-        y unit prefix=s,
+%%        change y base,axis base prefix={axis y base -6 prefix s},
+%%        change x base,axis base prefix={axis x base -3 prefix k},
+%%        y unit prefix=s,
          ylabel={Processing Time},
          xticklabel pos=lower,
 %%         xticklabels={,,},
@@ -747,7 +745,6 @@ mark size=2pt,
          mark size=2pt,
          mark repeat=5,
          enlargelimits=true,
-%          xticklabels={,,},
 ]
         \addplot[mark=o] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQEightHundred;
         \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQEightHundred;

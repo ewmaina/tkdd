@@ -635,7 +635,6 @@ mark size=2pt,
          mark size=2pt,
          mark repeat=5,
          enlargelimits=true,
-%          xticklabels={,,},
 ]
         \addplot[mark=o] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQTwoHundred;
         \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTwoHundred;
@@ -668,7 +667,6 @@ mark size=2pt,
          mark size=2pt,
          mark repeat=5,
          enlargelimits=true,
-%          xticklabels={,,},
 ]
         \addplot[mark=o] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQFourHundred;
         \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQFourHundred;
@@ -714,7 +712,6 @@ mark size=2pt,
         y unit prefix=s,
          ylabel={Processing Time},
          xticklabel pos=lower,
-%%         xticklabels={,,},
          scaled ticks=false,
           xmin=-10,
           xmax=20000,
@@ -729,7 +726,6 @@ mark size=2pt,
 
     &[0.5mm] 
 
-%\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
       \begin{semilogyaxis}[yticklabel pos=right,
           xticklabel pos=lower,
           xmin=-10,

@@ -613,12 +613,8 @@ mark size=2pt,
   \\ 
 
     \begin{axis}[
-%%        change y base,axis base prefix={axis y base -6 prefix s},
-%%        change x base,axis base prefix={axis x base -3 prefix k},
-%%        y unit prefix=s,
          ylabel={Processing Time},
          xticklabel pos=lower,
-%%         xticklabels={,,},
          scaled ticks=false,
           xmin=-10,
           xmax=20000,
@@ -626,15 +622,11 @@ mark size=2pt,
           ymax=1,
           enlargelimits=true,
 ]
-%\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
        \addplot[mark=o] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTwoHundred;
         \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTwoHundred;
 %%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
      \end{axis}
-
     &[0.5mm] 
-
-%\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
       \begin{semilogyaxis}[yticklabel pos=right,
           xticklabel pos=lower,
           xmin=-10,

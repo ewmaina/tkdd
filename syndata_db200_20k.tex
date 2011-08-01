@@ -653,14 +653,9 @@ mark size=2pt,
 \\
 
     \begin{axis}[
-%        change y base,axis base prefix={axis y base -6 prefix s},
-%        change x base,axis base prefix={axis x base -3 prefix k},
-%        y SI prefix=micro,
-%        y unit= s, 
         y unit prefix=s,
          ylabel={Processing Time},
          xticklabel pos=lower,
-%%         xticklabels={,,},
          scaled ticks=false,
           xmin=-10,
           xmax=20000,
@@ -668,13 +663,11 @@ mark size=2pt,
           ymax=2,
 %          enlargelimits=true,
 ]
-%\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
        \addplot[mark=o] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQFourHundred;
         \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQFourHundred;
 %%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
      \end{axis}
     &[0.5mm] 
-%\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
       \begin{semilogyaxis}[yticklabel pos=right,
           xticklabel pos=lower,
           xmin=-10,
@@ -693,10 +686,6 @@ mark size=2pt,
 \\
 
     \begin{axis}[
-%        change y base,axis base prefix={axis y base -6 prefix s},
-%        change x base,axis base prefix={axis x base -3 prefix k},
-%        y SI prefix=micro,
-%        y unit= s, 
         y unit prefix=s,
          ylabel={Processing Time},
          xticklabel pos=lower,
@@ -708,13 +697,11 @@ mark size=2pt,
           ymax=3,
 %          enlargelimits=true,
 ]
-%\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
        \addplot[mark=o] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQSixHundred;
         \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQSixHundred;
 %%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
      \end{axis}
     &[0.5mm] 
-%\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
       \begin{semilogyaxis}[yticklabel pos=right,
           xticklabel pos=lower,
           xmin=-10,
@@ -723,7 +710,6 @@ mark size=2pt,
          mark size=2pt,
          mark repeat=5,
          enlargelimits=true,
-%          xticklabels={,,},
 ]
         \addplot[mark=o] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQSixHundred;
         \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQSixHundred;
@@ -733,10 +719,6 @@ mark size=2pt,
 \\
 
     \begin{axis}[
-%        change y base,axis base prefix={axis y base -6 prefix s},
-%        change x base,axis base prefix={axis x base -3 prefix k},
-%        y SI prefix=micro,
-%        y unit= s, 
         y unit prefix=s,
          ylabel={Processing Time},
          xticklabel pos=lower,

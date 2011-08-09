@@ -1,11 +1,10 @@
-In this section, we evaluate our algorithms on two datasets, a set of synthetic graphs and a set of graphs modeling active ingredients in antiviral drugs for the 
-treatment of AIDS. We call the former the synthetic graph dataset and the later the real graph dataset. We perform two sets of tests; In the first set, we evaluate 
-our algorithms on the retrieval of induced subgraph to query and In the second set, we evaluate retrieval of non induced sugraph to query.  To test the efficacy 
-of our algorithm with regard to induced subgraph query, we evaluate the proposed algorithm in comparison with Messmer's Network Algorithm and a sequential SCAN 
-using the state-of-the-art subgraph isomorphism detection algorithm VF2\cite{cordella2001_vf2}.
+In this section, we evaluate our algorithms on two  datasets. The first dataset is a set of synthetic data consisting of graphs of several edge densities and label counts. We call his the synthetic dataset. The second dataser coonsists of a set of graphs modeling active ingredients in antiviral drugs for the treatment of AIDS. 
+We call the former the synthetic graph dataset and the later the real graph dataset. 
+We perform two sets of tests; In the first set, we evaluate 
+our algorithms on the retrieval of induced subgraph to query and In the second set, we evaluate retrieval of non induced sugraph to query.  
+To test the efficacy of our algorithm with regard to induced subgraph query, we evaluate the proposed algorithm in comparison with Messmer's Network Algorithm and a sequential SCAN using the state-of-the-art subgraph isomorphism detection algorithm VF2\cite{cordella2001_vf2}.
 We also evaluate our algorithm with regard to non-induced subgraph query, where we compare proposed algorithm with the sequential scan only.
-All the algorithms were implemented using the C++ programming language and run on a Intel Core i-3 CPU 3.09 GHZ, 16 Gbyte memory, Personal Computer running 
-Windows 7 Professional Operating system.
+All the algorithms were implemented using the C++ programming language and run on a Intel Core i-3 CPU 3.09 GHZ, 16 Gbyte memory, Personal Computer running Windows 7 Professional Operating system.
 
 \subsection{Graph Datasets}
 We evaluate our algorithms by processing the retrieval of descriptors from the compounds dataset.
@@ -16,7 +15,9 @@ We denote this dataset as ``AIDS'' in our experiment.
 The graphs of AIDS have an average number of 25 vertices and 27 edges, a maximum of 438 vertices and 441 edges,
 63 distinct vertex labels and 3 distinct edge labels.
 
-In order to evaluate our algorithms over a larger database to test scalability, we use synthetic large dataset. The graph generator is configured to emit only connected graphs thathave an edge probability of 50 percent. Except where explicitly stated, 10 distinct vertex labels and 10 distinct.
+In order to evaluate our algorithms over a larger database to test scalability, we use synthetic large dataset. 
+The graph generator is configured to emit only connected graphs thathave an edge probability of 50 percent. 
+Except where explicitly stated, 10 distinct vertex labels and 10 distinct.
 
 \begin{figure}[h]
 \centering

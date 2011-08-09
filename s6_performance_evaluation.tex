@@ -1,9 +1,8 @@
 In this section, we evaluate the proposed algorithms on two  datasets and compare the results to two well known graph isomorphism detection algorithms. The first dataset is a set of synthetic data consisting of several graph databases featuring one of several fixed edge densities, label counts and total database graph count. We call his the synthetic dataset. The second dataset is  a set of graphs modeling active ingredients in antiviral drugs for the treatment of AIDS. We call this the AIDS dataset. 
 
 We perform tests to evaluate the effect of several dataset parameters on the processing time.
+We perform two sets of tests; In the first set, we evaluate our algorithms on the retrieval of induced subgraph to query and In the second set, we evaluate retrieval of non induced sugraph to query.
 
-We perform two sets of tests; In the first set, we evaluate 
-our algorithms on the retrieval of induced subgraph to query and In the second set, we evaluate retrieval of non induced sugraph to query.  
 To test the efficacy of our algorithm with regard to induced subgraph query, we evaluate the proposed algorithm in comparison with Messmer's Network Algorithm and a sequential SCAN using the state-of-the-art subgraph isomorphism detection algorithm VF2\cite{cordella2001_vf2}.
 We also evaluate our algorithm with regard to non-induced subgraph query, where we compare proposed algorithm with the sequential scan only.
 All the algorithms were implemented using the C++ programming language and run on a Intel Core i-3 CPU 3.09 GHZ, 16 Gbyte memory, Personal Computer running Windows 7 Professional Operating system.

@@ -13,7 +13,7 @@
 \begin{document}
 \begin{center}
    \pgfplotstableread[col sep=&,row sep=\\]{
-struct & QuerySize & DBGraphSize & DBGraphCount &  NNA & VF2 \\
+%% filemane ind_syn_10L10_100Q_20kDB_026p.txt
 QuerySize & DBsize & DBGraphCount & NNA & VF2 \\ 
 10 10 20000 929 106421
 20 10 20000 2491 194585
@@ -25,7 +25,22 @@ QuerySize & DBsize & DBGraphCount & NNA & VF2 \\
 80 10 20000 733946 11842964
 90 10 20000 2041499 21074907
 100 10 20000 6152317 32363240
- }\inducedsynDBdataQTen
+ }\indsynLargeDBLowEdgeDensity
+
+   \pgfplotstableread[col sep=&,row sep=\\]{
+%% filemane ind_syn_10L10_100Q_20kDB_026p.txt
+QuerySize & DBsize & DBGraphCount & NNA & VF2 \\ 
+10 10 20000 929 106421
+20 10 20000 2491 194585
+30 10 20000 7020 420947
+40 10 20000 22467 968921
+50 10 20000 52279 1814252
+60 10 20000 136767 3716064
+70 10 20000 330415 7264610
+80 10 20000 733946 11842964
+90 10 20000 2041499 21074907
+100 10 20000 6152317 32363240
+ }\indsynLargeDBLowEdgeDensity
 
 \pgfplotstableread[col sep=&,row sep=\\]{
 struct & QuerySize & DBGraphSize & DBGraphCount &  NNA & VF2 \\

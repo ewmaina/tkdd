@@ -132,16 +132,9 @@ mark options={scale=1,fill=gray,draw=black},
          mark repeat=5,
          enlargelimits=true,
 ]
-       \addplot[mark=triangle] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTen;
-        \addplot[mark=triangle*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTen;
-       \addplot[mark=x] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTwoHundred;
-        \addplot[mark=otimes] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTwoHundred;
-       \addplot[mark=diamond] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQFourHundred;
-        \addplot[mark=diamond*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQFourHundred;
-        \addplot[mark=pentagon] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQSixHundred;
-        \addplot[mark=pentagon*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQSixHundred;
-        \addplot[mark=+] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQEightHundred;
-        \addplot[mark=oplus] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQEightHundred;
+       \addplot[mark=triangle] table[x=Density,y=NNA] \indsynQTenVsDensity;
+       \addplot[mark=triangle] table[x=Density,y=VF2] \indsynQTenVsDensity;
+
 
       \end{semilogyaxis}
 

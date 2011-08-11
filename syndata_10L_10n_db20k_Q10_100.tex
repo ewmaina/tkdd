@@ -106,7 +106,7 @@ mark options={scale=1,fill=gray,draw=black},
          legend columns=2,
 %        legend entries={Fast Network Method  ,$VF2$  ,Network Method},
          mark options={scale=1,fill=gray,draw=black},
-         legend entries={$F10$,$V10$,$F200$,$V200$,$F400$,$V400$,$F600$,$V600$,$F800$, $V800$},
+%%         legend entries={$F10$,$V10$,$F200$,$V200$,$F400$,$V400$,$F600$,$V600$,$F800$, $V800$},
          legend to name={named},
 ]
        \addplot[mark=triangle] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTen;
@@ -119,8 +119,7 @@ mark options={scale=1,fill=gray,draw=black},
         \addplot[mark=pentagon*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQSixHundred;
         \addplot[mark=+] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQEightHundred;
         \addplot[mark=oplus] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQEightHundred;
-%%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
-%%        \legend{$F10$,$V10$,$F200$,$V200$,$F400$,$V400$,$F600$,$V600$,$F800$, $V800$ }
+
      \end{axis}
 
     &[0.5mm] 
@@ -145,7 +144,6 @@ mark options={scale=1,fill=gray,draw=black},
         \addplot[mark=+] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQEightHundred;
         \addplot[mark=oplus] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQEightHundred;
 
-%%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
       \end{semilogyaxis}
 
 %% \\ 

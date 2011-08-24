@@ -20,6 +20,24 @@ We also evaluate our algorithm with regard to non-induced subgraph query, where 
 
 \subsubsection{Influence of size of query and Database graph on processing time}
 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{images/syndataplot.pdf}
+\caption{\textbf{Results of the Experiments on the Synthetic Graph Data Set} 
+
+\textbf{ Top left:}Linear-linear plot of induced subgraph query processing time against query graph vertex count. The query graph size ranges from 10 vertices to 800 vertices. The \textit{Fast Network Method} and the \textit{Network Method} show the fastest processing time for induced subgraph queries of up to 600 vertices. For larger query graphs, the \textit{VF2} method is faster. The \textit{Network Method} takes more than 5sec for any induced subgraph query graph greater than 10 vertices. The \textit{VF2} method shows an almost linear time dependency of query graph vertex count, an advantage for induced subgraph queries larger than 600 vertices. 
+
+\textbf{Top Right:} Linear-log plot of the induce subgraph graph query processing time with query graph size. We observe that for induced subgraph query size less than 400 Vertices, there is an order of magnitude or better advantage to the \textit{Fast Network Method}. Beyond query graphs of about 600 vertices the \textit{VF2} method is clearly superior. We observe that the \textit{Network Method} is slowest, taking about 15min for an induced subgraph query of just 80 vertices.
+
+\textbf{ Bottom left:}Linear-linear plot of  query processing time for increasing size of graph query.The smallest query graph contains 10 vertices while the largest query graph contains 800 vertices. The \textit{Fast Network Method} processes query graphs faster than \textit{VF2} for subgraphs not larger than 600 vertices. Here too, \textit{VF2} method shows an almost linear processing time  dependency with query graph size.  
+
+\textbf{Bottom Right:} Linear-log plot of the induce subgraph graph query processing time with query graph size. For subgraph query size less than about 400 Vertices, there is an order of magnitude or better advantage to the \textit{Fast Network Method}. For synthetic graphs of less that 50 vertices, the advantage is about two orders of magnitude. Beyond query graphs of about 600 vertices the \textit{VF2} method is superior.
+}
+\label{fig:fig91}
+\end{figure}
+
+
 \subsubsection{Influence of Number of Labels in Query and Database Graphs on processing time}
 
 \subsubsection{Influence of Number of Edge Density in Query and Database Graphs on processing time}
@@ -52,6 +70,10 @@ We also evaluate our algorithm with regard to non-induced subgraph query, where 
 \subsubsection{Influence of number of graphs on processing time}
 
 \subsubsection{Influence of number of Labels on processing time}
+
+
+
+END
 
 In this section we perform experiments on two datasets to evaluate the performance of the new algorithm in practice.
 

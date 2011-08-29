@@ -156,8 +156,10 @@ legend style={font=\footnotesize},
          xlabel={Query Graph Size(vertices)},
  %         yticklabels={-0.25e8,2.0e8,4.0e8,6.0e8,8.0e8,1.0e9,1.2e9}
        ]
-        \addplot[mark=o] table[x=Query,y=NNA] \ninducedrealdata;
-        \addplot[mark=square] table[x=Query,y=VF2]  \ninducedrealdata;  
+%%        \addplot[mark=o] table[x=Query,y=NNA] \ninducedrealdata;
+%%        \addplot[mark=square] table[x=Query,y=VF2]  \ninducedrealdata;  
+        \addplot[mark=o] table[x=QVertexAve, y=NNAPerQGraph] \ninducedrealdataAve;
+         \addplot[mark=square] table[x=QVertexAve, y=VF2PerQGraph] \ninducedrealdataAve;
       \end{axis}
     &[1mm]
 %\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}

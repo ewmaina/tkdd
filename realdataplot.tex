@@ -56,7 +56,7 @@
       600 & 35.33 & 36.81 & 6.53e-2 & 180.50e-2 \\
     }\inducedrealdataAve
    \pgfplotstableread[col sep=&,row sep=\\]{
-      Query & QVertexAve & QEdgeAve  &MessmerPerQGraph & VF2PerQGraph \\
+      Query & QVertexAve & QEdgeAve  & MessmerPerQGraph & VF2PerQGraph \\
       0 & 0 & 0 & 0 & 0 \\
       100 & 12.1 & 12.24 & 509499e-8 & 34655051e-8 \\
       200 & 16.5 & 16.80 & 579888e-8 & 27288318e-8 \\
@@ -105,7 +105,7 @@ legend style={font=\footnotesize},
 %\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
 %%       \addplot[mark=o] table[x=Q,y=NNA] \inducedrealdata;
 %%        \addplot[mark=square] table[x=Q,y=VF2]  \inducedrealdata;
-        \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmessmerrealdata ;
+        \addplot[mark=asterisk] table[x=Query,y=Messmer]  \inducedmessmerrealdataAve ;
         \addplot[mark=o] table[x=QVertexAve, y=NNAPerQGraph] \inducedrealdataAve;
          \addplot[mark=square] table[x=QVertexAve, y=VF2PerQGraph] \inducedrealdataAve;
      \end{axis}

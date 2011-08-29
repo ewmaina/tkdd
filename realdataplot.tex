@@ -93,11 +93,11 @@ legend style={font=\footnotesize},
 %%         ylabel={$Processing$ $Time$, ($s$)}
 ]
 %\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
-       \addplot[mark=o] table[x=Q,y=NNA] \inducedrealdata;
-        \addplot[mark=square] table[x=Q,y=VF2]  \inducedrealdata;
+%%       \addplot[mark=o] table[x=Q,y=NNA] \inducedrealdata;
+%%        \addplot[mark=square] table[x=Q,y=VF2]  \inducedrealdata;
         \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmessmerrealdata ;
-        \addplot[mark=o] table[x=QVertexAve, y=NNAPerQGraph] \inducedrealdataAve
-         \addplot[mark=o] table[x=QVertexAve, y=VF2PerQGraph] \inducedrealdataAve
+        \addplot[mark=o] table[x=QVertexAve, y=NNAPerQGraph] \inducedrealdataAve;
+         \addplot[mark=o] table[x=QVertexAve, y=VF2PerQGraph] \inducedrealdataAve;
      \end{axis}
     &[1mm] 
 %\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
@@ -105,9 +105,11 @@ legend style={font=\footnotesize},
           xticklabel pos=upper, 
 %          xticklabels={,,},
 ]
-        \addplot[mark=o] table[x=Q,y=NNA]  \inducedrealdata;
-        \addplot[mark=square] table[x=Q,y=VF2]  \inducedrealdata;
-        \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmessmerrealdata;
+%        \addplot[mark=o] table[x=Q,y=NNA]  \inducedrealdata;
+%        \addplot[mark=square] table[x=Q,y=VF2]  \inducedrealdata;
+        \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmessmerrealdata ;
+        \addplot[mark=o] table[x=QVertexAve, y=NNAPerQGraph] \inducedrealdataAve;
+         \addplot[mark=o] table[x=QVertexAve, y=VF2PerQGraph] \inducedrealdataAve;
       \end{semilogyaxis}
       \\ 
 %};

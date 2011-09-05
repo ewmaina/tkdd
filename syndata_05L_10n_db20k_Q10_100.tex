@@ -178,7 +178,7 @@ mark options={scale=1,fill=gray,draw=black},
       \end{semilogyaxis}
     
 \\
-
+%% Using addplot with indexing to get the exact point from a dataset
     \begin{axis}[
          ylabel={Processing Time},
          xticklabel pos=lower,
@@ -191,6 +191,7 @@ mark options={scale=1,fill=gray,draw=black},
           enlargelimits=true,
 ]
        \addplot[mark=o] table[x=Density,y=DBStruct] \indsynDBStructVsDensity ;
+       \addplot+[only marks] table[header=false,o index=0,y index=0] {\myscatter};
 %%       \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTwoHundred;
 %%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
      \end{axis}

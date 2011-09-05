@@ -190,7 +190,9 @@ mark options={scale=1,fill=gray,draw=black},
           mark size=1pt,
           enlargelimits=true,
 ]
-       \addplot[mark=o] table[x=Density,y=DBStruct] \indsynDBStructVsDensity ;
+       \addplot[mark=o] table[x=Density,y=NNA] \indsynQTenVsDensity;
+       \addplot[mark=square] table[x=Density,y=VF2] \indsynQTenVsDensity;
+
        \addplot+[only marks] table[header=false,
                                    x index=0,
                                    y index=0,

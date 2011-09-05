@@ -17,25 +17,33 @@ The random decomposition affects the processing time such that each individual r
 
 \begin{table}
 \begin{center}
-\begin{tabular}{|l|l|l|}
-\hline
-Experiment  & Vertices  & Edges (Density) & Vertex Labels & DB Size &  Query Vertex Size \\ \hline
-Algorithm & Network Method & Fast Network Method \\ \hline
-Data Structure & DAG                 & DAG                            \\ 
-               &  (Induced Subgraph) &  (Subgraph \& Induced Subgraph) \\ \hline
-Method of graph  & Partition to Subgraph  & Partition to Subgraph \\ 
-Decomposition    &                        & Partition to Induced Subgraph \\ \hline
-Processing    & No Restriction  & Connected graph input                     \\ 
-Optimization      &                   & Connected graph Output                 \\ \hline 
-Search Strategy & Whole DAG           & Local Depth First Search(LDFS) \\ 
-                & bottom-up search          &  of Model Graphs in DAG   \\ \hline
-Search graph type & Induced Graph & Subgraph and Induced Graph \\ \hline
-
+\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}  \hline
+\multirow{3}[1]{Experiment} & \multicolumn{5}{c|}{Database} & \multicolumn{4}{c|}{Query}  \\ \cline{2-2} \cline{3-3} \cline{4-4} \cline{5-5} \cline{6-6} \cline{7-7} \cline{8-8} \cline{9-9} \cline{10-10}
+       & \multicolumn{2}{c|}{Vertices} & \multicolumn{2}{c|}{Edges} & Graphs & \multicolumn{2}{c|}{Vertices} & \multicolumn{2}{c|}{Edges} \\ \cline{2-2} \cline{3-3} \cline{4-4} \cline{5-5}  \cline{7-7} \cline{8-8} \cline{9-9} \cline{10-10} 
+ & \#  & Labels & \# & Labels &  & \#  & Labels & \# & Labels  \\ \hline
+Fig 9 & 10 & 10 & 26\% & 1 & 100 ~ 20K & 10 & 10 & 26\% & 1 \\ \hline
+  & 10 & 10 & 50\% & 1 & 100 \to 20K & 10 & 10 & 50\% & 1 \\ \hline
+ & 10 & 10 & 75\% & 1 & 100 \to 20K & 10 & 10 & 75\% & 1 \\ \hline
+ & 10 & 10 & 100\% & 1 & 100 \to 20K & 10 & 10 & 100\% & 1 \\ \hline
+ & 10 & 5 & 26\% & 1 & 100 \to 20K & 10 & 5 & 26\% & 1 \\ \hline
+ & 10 & 5 & 50\% & 1 & 100 \to 20K & 10 & 5 & 50\% & 1 \\ \hline
+ & 10 & 5 & 75\% & 1 & 100 \to 20K & 10 & 5 & 75\% & 1 \\ \hline
+ & 10 & 5 & 100\% & 1 & 100 \to 20K & 10 & 5 & 100\% & 1 \\ \hline
 \end{tabular}
 \caption{ Synthetic Graph Generation Parameters \label{tab:table2} }
 \end{center}
 \end{table}
 
+%Algorithm & Network Method & Fast Network Method \\ \hline
+%Data Structure & DAG                 & DAG                            \\ 
+%               &  (Induced Subgraph) &  (Subgraph \& Induced Subgraph) \\ \hline
+%Method of graph  & Partition to Subgraph  & Partition to Subgraph \\ 
+%Decomposition    &                        & Partition to Induced Subgraph \\ \hline
+%Processing    & No Restriction  & Connected graph input                     \\ 
+%Optimization      &                   & Connected graph Output                 \\ \hline 
+%Search Strategy & Whole DAG           & Local Depth First Search(LDFS) \\ 
+%                & bottom-up search          &  of Model Graphs in DAG   \\ \hline
+%Search graph type & Induced Graph & Subgraph and Induced Graph \\ \hline
 
 We test the performance of our algorithm with regard to induced subgraph query by evaluating the proposed algorithm and comparing it with Messmer's Network Algorithm and the state-of-the-art sequential scan algorithm for subgraph isomorphism, VF2\cite{cordella2001_vf2}.
 We also evaluate our algorithm with regard to non-induced subgraph query, where we compare proposed algorithm with the sequential scan(VF2) only.

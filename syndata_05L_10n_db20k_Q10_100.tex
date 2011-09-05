@@ -191,7 +191,10 @@ mark options={scale=1,fill=gray,draw=black},
           enlargelimits=true,
 ]
        \addplot[mark=o] table[x=Density,y=DBStruct] \indsynDBStructVsDensity ;
-       \addplot+[only marks] table[header=false,o index=0,y index=0] {\myscatter};
+       \addplot+[only marks] table[header=false,
+                                   x index=0,
+                                   y index=0,
+                                   ] {\myscatter};
 %%       \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTwoHundred;
 %%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
      \end{axis}

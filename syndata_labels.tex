@@ -1,0 +1,286 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{plotmarks}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.3}
+\usetikzlibrary{calc}
+\usepgfplotslibrary{groupplots}
+%\usepgflpotslibrary{units}
+\usetikzlibrary{pgfplots.units}
+%\usepgfplotslibrary{groupplots}
+
+
+\begin{document}
+\begin{center}
+   \pgfplotstableread[col sep=&,row sep=\\]{
+%% program name: messmer_026_rndQ_rndDB_20k_10_800Q05
+QuerySize & DBsize & DBGraphCount & NNA & VF2 \\ 
+10 & 10 & 20000 & 1021e-6 & 138303e-6 \\
+20 & 10 & 20000 & 8672e-6 & 474416e-6 \\
+30 & 10 & 20000 & 121061e-6 & 2917251e-6 \\
+40 & 10 & 20000 & 889539e-6 & 11109083e-6 \\
+50 & 10 & 20000 & 7250847e-6 & 27463809e-6 \\
+60 & 10 & 20000 & 63110339e-6 & 60960031e-6 \\
+70 & 10 & 20000 & 363270770e-6 & 70054419e-6 \\
+80 & 10 & 20000 & 1339292950e-6 & 62421103e-6 \\
+ }\indsynLargeDBLowestEdgeDensity
+
+   \pgfplotstableread[col sep=&,row sep=\\]{
+%% messmer_050_rndQ_rndDB_20k_10_800Q05L
+QuerySize & DBsize & DBGraphCount & NNA & VF2 \\ 
+10 & 10 & 20000 & 1652e-6 & 230444e-6 \\
+20 & 10 & 20000 & 33715e-6 & 1336255e-6 \\
+30 & 10 & 20000 & 339952e-6 & 6261755e-6 \\
+40 & 10 & 20000 & 2765909e-6 & 21065286e-6 \\
+50 & 10 & 20000 & 24001066e-6 & 62902373e-6 \\
+60 & 10 & 20000 & 133690986e-6 & 166494922e-6 \\
+70 & 10 & 20000 & 533558398e-6 & 343988406e-6 \\
+80 & 10 & 20000 & 2165041629e-6 & 670518799e-6 \\
+ }\indsynLargeDBLowEdgeDensity
+
+   \pgfplotstableread[col sep=&,row sep=\\]{
+%% messmer_075_rndQ_rndDB_20k_10_800Q05L
+QuerySize & DBsize & DBGraphCount & NNA & VF2 \\ 
+10 & 10 & 20000 & 1554e-6 & 228018e-6 \\
+20 & 10 & 20000 & 35904e-6 & 2138427e-6 \\
+30 & 10 & 20000 & 568137e-6 & 10875708e-6 \\
+40 & 10 & 20000 & 5022829e-6 & 42490325e-6 \\
+50 & 10 & 20000 & 39062845e-6 & 122427342e-6 \\
+60 & 10 & 20000 & 222059654e-6 & 288818659e-6 \\
+70 & 10 & 20000 & 1040116508e-6 & 646244188e-6 \\
+80 & 10 & 20000 & 4004169889e-6 & 1373388525e-6 \\
+ }\indsynLargeDBHighEdgeDensity
+
+   \pgfplotstableread[col sep=&,row sep=\\]{
+%% messmer_100_rndQ_rndDB_20k_10_800Q05L
+QuerySize & DBsize & DBGraphCount & NNA & VF2 \\ 
+10 & 10 & 20000 & 2400e-6 & 268051e-6 \\
+20 & 10 & 20000 & 76596e-6 & 2657284e-6 \\
+30 & 10 & 20000 & 1200299e-6 & 18180267e-6 \\
+40 & 10 & 20000 & 23643245e-6 & 80869473e-6 \\
+50 & 10 & 20000 & 186422748e-6 & 265880571e-6 \\
+60 & 10 & 20000 & 1158786071e-6 & 694653429e-6 \\
+70 & 10 & 20000 & 7794778840e-6 & 1966560430e-6 \\
+80 & 10 & 20000 & 28361269025e-6 & 3852051458e-6 \\
+ }\indsynLargeDBHighestEdgeDensity
+ 
+ \pgfplotstableread[col sep=&,row sep=\\]{
+%% Edge Density 26,50,75,100 
+Density & QuerySize & DBsize & DBGraphCount &  DBStruct \\
+0 & 0 & 0 & 0 & 0  \\ 
+26 & 10 & 10 & 20000 & 14958132e-6  \\
+50 & 10 & 10 & 20000 & 25785203e-6 \\
+75 & 10 & 10 & 20000 & 30052342e-6 \\
+100 & 10 & 10 & 20000 & 44282941e-6 \\
+ }\indsynDBStructVsDensity 
+ 
+
+ \pgfplotstableread[col sep=&,row sep=\\]{
+%% Edge Density 26,50,75,100 
+Density & QuerySize & DBsize & DBGraphCount &  NNA & VF2 \\
+0 & 0 & 0 & 0 & 0 & 0 \\ 
+26 & 10 & 10 & 20000 & 1021e-6 & 138303e-6 \\ 
+50 & 10 & 10 & 20000 & 1652e-6 & 230444e-6 \\
+75 & 10 & 10 & 20000 & 1554e-6 & 228018e-6 \\
+100 & 10 & 10 & 20000 & 2400e-6 & 268051e-6 \\
+ }\indsynQTenVsDensity
+
+\pgfplotsset{small}
+\pgfplotsset{every axis/.append style={
+font=\footnotesize,
+thin,
+%%tick style={thin}
+tick label style={font=\footnotesize},
+label style={font=\footnotesize},
+legend style={font=\footnotesize},
+ylabel style={font=\footnotesize},
+xlabel style={font=\footnotesize},
+%%mark repeat=5,
+mark size=2pt,
+mark options={scale=1,fill=gray,draw=black},
+}}
+%\pgfplotsset{small}
+\begin{tikzpicture}[scale=4]
+%%  \pgfplotsset{small}
+  \matrix[row sep={1mm}] {    
+    \begin{axis}[
+         ylabel={Processing Time(s)},
+         xticklabel pos=upper,
+         scaled ticks=false,
+          xmin=0,
+          xmax=100,
+          ymin=0,
+          ymax=0.32,
+         mark size=1pt,
+%%         mark repeat=5,
+          enlargelimits=true,
+         legend columns=2,
+%        legend entries={Fast Network Method  ,$VF2$  ,Network Method},
+         mark options={scale=1,fill=gray,draw=black},
+         legend entries={FNM,VF2},
+         legend to name={named},
+%%         point format={(%.1f,%.1f)},
+]
+       \addplot[mark=o] table[x=Density,y=NNA] \indsynQTenVsDensity;
+       \addplot[mark=square] table[x=Density,y=VF2] \indsynQTenVsDensity;
+
+     \end{axis}
+
+    &[0.5mm] 
+
+      \begin{semilogyaxis}[yticklabel pos=right,
+          xticklabel pos=upper,
+          xmin=10,
+          xmax=100, 
+          ymax=1,
+         mark size=1pt,
+%%         mark repeat=5,
+         enlargelimits=true,
+]
+       \addplot[mark=o] table[x=Density,y=NNA] \indsynQTenVsDensity;
+       \addplot[mark=square] table[x=Density,y=VF2] \indsynQTenVsDensity;
+
+      \end{semilogyaxis}
+
+\\ 
+
+%%\pagebreak 
+
+    \begin{axis}[
+         ylabel={Processing Time},
+         xticklabel pos=lower,
+         scaled ticks=false,
+          xmin=0,
+          xmax=100,
+          ymin=0,
+          ymax=50,
+          mark size=1pt,
+          enlargelimits=true,
+]
+       \addplot[mark=o] table[x=Density,y=DBStruct] \indsynDBStructVsDensity ;
+%%       \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTwoHundred;
+%%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
+     \end{axis}
+    &[0.5mm] 
+      \begin{semilogyaxis}[yticklabel pos=right,
+          xticklabel pos=lower,
+          xmin=10,
+          xmax=100, 
+          ymin=10,
+          ymax=100,
+         mark size=1pt,
+%%         mark repeat=5,
+         enlargelimits=true,
+]
+        \addplot[mark=o] table[x=Density,y=DBStruct]  \indsynDBStructVsDensity ;
+%%      \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTwoHundred;
+%%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
+      \end{semilogyaxis}
+    
+\\
+
+
+%%     \begin{axis}[
+%%         y unit prefix=s,
+%%          ylabel={Processing Time},
+%%          xticklabel pos=lower,
+%%          scaled ticks=false,
+%%           xmin=-10,
+%%           xmax=20000,
+%%           ymin=-0.2,
+%%           ymax=2,
+%% %          enlargelimits=true,
+%% ]
+%%        \addplot[mark=o] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQFourHundred;
+%%         \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQFourHundred;
+%% %%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
+%%      \end{axis}
+%%     &[0.5mm] 
+%%       \begin{semilogyaxis}[yticklabel pos=right,
+%%           xticklabel pos=lower,
+%%           xmin=-10,
+%%           xmax=20000, 
+%%           ymax=10,
+%%          mark size=2pt,
+%%          mark repeat=5,
+%%          enlargelimits=true,
+%% ]
+%%         \addplot[mark=o] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQFourHundred;
+%%         \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQFourHundred;
+%% %%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
+%%       \end{semilogyaxis}
+    
+%% \\
+
+%%     \begin{axis}[
+%%         y unit prefix=s,
+%%          ylabel={Processing Time},
+%%          xticklabel pos=lower,
+%%          scaled ticks=false,
+%%           xmin=-10,
+%%           xmax=20000,
+%%           ymin=-0.2,
+%%           ymax=3,
+%% %          enlargelimits=true,
+%% ]
+%%        \addplot[mark=o] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQSixHundred;
+%%         \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQSixHundred;
+%% %%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
+%%      \end{axis}
+%%     &[0.5mm] 
+%%       \begin{semilogyaxis}[yticklabel pos=right,
+%%           xticklabel pos=lower,
+%%           xmin=-10,
+%%           xmax=20000, 
+%%           ymax=10,
+%%          mark size=2pt,
+%%          mark repeat=5,
+%%          enlargelimits=true,
+%% ]
+%%         \addplot[mark=o] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQSixHundred;
+%%         \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQSixHundred;
+%% %%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
+%%       \end{semilogyaxis}
+    
+%% \\
+
+%%     \begin{axis}[
+%%         y unit prefix=s,
+%%          ylabel={Processing Time},
+%%          xticklabel pos=lower,
+%%          scaled ticks=false,
+%%           xmin=-10,
+%%           xmax=20000,
+%%           ymin=-0.2,
+%%           ymax=50,
+%%           enlargelimits=true,
+%% ]
+%%        \addplot[mark=o] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQEightHundred;
+%%         \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQEightHundred;
+%% %%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
+%%      \end{axis}
+
+%%     &[0.5mm] 
+
+%%       \begin{semilogyaxis}[yticklabel pos=right,
+%%           xticklabel pos=lower,
+%%           xmin=-10,
+%%           xmax=20000, 
+%%           ymax=100,
+%%          mark size=2pt,
+%%          mark repeat=5,
+%%          enlargelimits=true,
+%% ]
+%%         \addplot[mark=o] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQEightHundred;
+%%         \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQEightHundred;
+%% %%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
+%%       \end{semilogyaxis}    
+ \\
+  };
+\end{tikzpicture}
+%%\pgfplotslegendfromname{named}
+\ref{named}
+\end{center}
+\end{document}
+
+% LocalWords:  pgf xticklabel xticklabels yticklabels

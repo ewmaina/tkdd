@@ -147,40 +147,6 @@ mark options={scale=1,fill=gray,draw=black},
 
 %%\pagebreak 
 
-    \begin{axis}[
-         ylabel={Processing Time},
-         xticklabel pos=lower,
-         scaled ticks=false,
-          xmin=0,
-          xmax=100,
-          ymin=0,
-          ymax=50,
-          mark size=1pt,
-          enlargelimits=true,
-]
-       \addplot[mark=o] table[x=Density,y=DBStruct] \indsynDBStructVsDensity ;
-%%       \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTwoHundred;
-%%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
-     \end{axis}
-    &[0.5mm] 
-      \begin{semilogyaxis}[yticklabel pos=right,
-          xticklabel pos=lower,
-          xmin=10,
-          xmax=100, 
-          ymin=10,
-          ymax=100,
-         mark size=1pt,
-%%         mark repeat=5,
-         enlargelimits=true,
-]
-        \addplot[mark=o] table[x=Density,y=DBStruct]  \indsynDBStructVsDensity ;
-%%      \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTwoHundred;
-%%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
-      \end{semilogyaxis}
-    
-\\
-
-
 %%     \begin{axis}[
 %%         y unit prefix=s,
 %%          ylabel={Processing Time},

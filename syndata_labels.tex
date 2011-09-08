@@ -181,13 +181,17 @@ mark options={scale=1,fill=gray,draw=black},
           xmin=4,
           xmax=10,
           ymin=0,
-          ymax=.3,
+          ymax=1,
          mark size=1pt,
 %%         mark repeat=5,
          enlargelimits=true,
 ]
 %       \addplot[mark=o] table[x=Density,y=NNA] \indsynQTenVsDensity;
 %       \addplot[mark=square] table[x=Density,y=VF2] \indsynQTenVsDensity;
+       \addplot[mark=o] table[x=Label,y=NNA] \indsynQTenVsLabelA;
+       \addplot[mark=square] table[x=Label,y=NNA] \indsynQTenVsLabelB;
+       \addplot[mark=triangle] table[x=Label,y=NNA] \indsynQTenVsLabelC;
+       \addplot[mark=star] table[x=Label,y=NNA] \indsynQTenVsLabelD;
 
        \addplot[mark=o] table[x=Label,y=VF2] \indsynQTenVsLabelA;
        \addplot[mark=square] table[x=Label,y=VF2] \indsynQTenVsLabelB;

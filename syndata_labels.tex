@@ -118,9 +118,18 @@ Label & Density & QuerySize & DBsize & DBGraphCount &  NNA & VF2 \\
 %% Labels 05
 Label & Density & QuerySize & DBsize & DBGraphCount &  NNA & VF2 \\
 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
-5 & 100 & 10 & 10 & 20000 & 1021e-6 & 138303e-6 \\ %
-10 & 100 & 10 & 10 & 20000 & 1652e-6 & 230444e-6 \\ 
+5 & 75 & 10 & 10 & 20000 & 1021e-6 & 138303e-6 \\ %
+10 & 75 & 10 & 10 & 20000 & 1652e-6 & 230444e-6 \\ 
  }\indsynQTenVsLabelD
+
+\pgfplotstableread[col sep=&,row sep=\\]{
+%% Edge Density 26,50,75,100 
+%% Labels 05
+Label & Density & QuerySize & DBsize & DBGraphCount &  NNA & VF2 \\
+0 & 0 & 0 & 0 & 0 & 0 & 0 \\ 
+5 & 75 & 10 & 10 & 20000 & 1021e-6 & 138303e-6 \\ %
+10 & 75 & 10 & 10 & 20000 & 1652e-6 & 230444e-6 \\ 
+ }\indsynQTenVsLabelE
 
 \pgfplotsset{small}
 \pgfplotsset{every axis/.append style={

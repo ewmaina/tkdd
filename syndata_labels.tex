@@ -179,9 +179,13 @@ mark options={scale=1,fill=gray,draw=black},
 %%         mark repeat=5,
          enlargelimits=true,
 ]
-       \addplot[mark=o] table[x=Density,y=NNA] \indsynQTenVsDensity;
-       \addplot[mark=square] table[x=Density,y=VF2] \indsynQTenVsDensity;
+%       \addplot[mark=o] table[x=Density,y=NNA] \indsynQTenVsDensity;
+%       \addplot[mark=square] table[x=Density,y=VF2] \indsynQTenVsDensity;
 
+       \addplot[mark=o] table[x=Label,y=NNA] \indsynQTenVslabelA;
+       \addplot[mark=square] table[x=Label,y=NNA] \indsynQTenVslabelB;
+       \addplot[mark=triangle] table[x=Label,y=NNA] \indsynQTenVslabelC;
+       \addplot[mark=star] table[x=Label,y=NNA] \indsynQTenVslabelD;
       \end{semilogyaxis}
 
 \\ 

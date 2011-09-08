@@ -104,49 +104,6 @@ mark options={scale=1,fill=gray,draw=black},
 %%  \pgfplotsset{small}
   \matrix[row sep={1mm}] {    
     \begin{axis}[
-         ylabel={Processing Time(s)},
-         xticklabel pos=upper,
-         scaled ticks=false,
-          xmin=0,
-          xmax=100,
-          ymin=0,
-          ymax=0.32,
-         mark size=1pt,
-%%         mark repeat=5,
-          enlargelimits=true,
-         legend columns=2,
-%        legend entries={Fast Network Method  ,$VF2$  ,Network Method},
-         mark options={scale=1,fill=gray,draw=black},
-         legend entries={FNM,VF2},
-         legend to name={named},
-%%         point format={(%.1f,%.1f)},
-]
-       \addplot[mark=o] table[x=Density,y=NNA] \indsynQTenVsDensity;
-       \addplot[mark=square] table[x=Density,y=VF2] \indsynQTenVsDensity;
-
-     \end{axis}
-
-    &[0.5mm] 
-
-      \begin{semilogyaxis}[yticklabel pos=right,
-          xticklabel pos=upper,
-          xmin=10,
-          xmax=100, 
-          ymax=1,
-         mark size=1pt,
-%%         mark repeat=5,
-         enlargelimits=true,
-]
-       \addplot[mark=o] table[x=Density,y=NNA] \indsynQTenVsDensity;
-       \addplot[mark=square] table[x=Density,y=VF2] \indsynQTenVsDensity;
-
-      \end{semilogyaxis}
-
-\\ 
-
-%%\pagebreak 
-
-    \begin{axis}[
          ylabel={Processing Time},
          xticklabel pos=lower,
          scaled ticks=false,

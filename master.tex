@@ -21,6 +21,9 @@
 \renewcommand{\algorithmcfname}{ALGORITHM}
 %%\usepackage{algorithm}
 
+%eextended character set 
+\usepackage[utf8]{inputenc}
+
 \usepackage{amsmath, amssymb}
 
 \usepackage{algorithmic}
@@ -41,6 +44,11 @@
 \usepackage{standalone}
 \usepackage{enumerate}
 \usepackage{turnstile}
+
+% Make tables with multirow content
+\usepackage{multirow}
+\usepackage{bigstrut}
+
 
 \usepackage{booktabs}
 %Use displaystyle everywhere
@@ -96,7 +104,7 @@ grant CNS-0435060, grant CCR-0325197 and grant EN-CS-0329609.
 Author's addresses: K. Katayama {and} E.W. Maina, Graduate School of System Design,
 Tokyo Metropolitan University.
 \end{bottomstuff}
-
+                                                                                                              
 %\date{08 April 2011}
 \maketitle
 
@@ -120,7 +128,7 @@ Tokyo Metropolitan University.
 \section{Proposed Algorithms}
 \input{s5_proposed_algorithms.tex}
 
-\section{Performance and Evaluation}
+\section{Performance Evaluation}
 \input{s6_performance_evaluation.tex}
 
 \section{Conclusions}

@@ -11,7 +11,7 @@ In this paper study the problem of efficient enumeration of all subgraph isomorp
 % for the \textit{Network Method} and extend it to cover retrieval of non-induced subgraph isomorphisms of a query graph. 
 We propose a new algorithm new algorithm which recursively decomposes random graphs and immediately rearranges the fragmented subgraphs of decomposition so that only two subgraphs result. This results depth-first process that is efficient for both positive (due to compact representation) and non-positive queries (due to minimal computation). The DAG data structure amplifies this properties.
 
- \textit{Fast  Network Method}
+% \textit{Fast  Network Method}
 %%recombining and reordering of the graph fragments to restrict decomposed graph count and maximize decomposed graph size. 
 
 We present experimental results where we compare our proposed algorithms with two well known algorithms: Messmer's all subgraph isomorphism detection Algorithm that efficiently aggregates multiple graphs in a database and the isomorphism detection only algorithm, VF2, which is the state-of-the-art for sequential one-on-one isomorphism testing. The results show that the proposed improvements result in an order of magnitude improvement in scalability over the original \textit{Network Method}  for query graphs of up to 500 nodes to a database of 20,000 graphs. We also show a substantial improvement over the VF2 algorithm despite the increased workload of detecting all subgraph isomorphisms. Our method is particularly suited to larger query graphs or very larger graph databases.

@@ -11,7 +11,7 @@ Messmer et al. studied an interesting method for retrieval of induced subgraph i
 In this paper study the problem of efficient enumeration of all subgraph isomorphisms of database graphs that exist in a query graph. Starting with Directed Acyclic Graph (DAG) data structure to represent decomposed subgraphs, we formulate a fast algorithm for decomposing and searching for subgraphs in large database scalably.
 
 % for the \textit{Network Method} and extend it to cover retrieval of non-induced subgraph isomorphisms of a query graph. 
-The new algorithm consists of recursive random decomposition of graphs, immediately followed by the rearrangement of the fragments at each decomposition so that only two subgraphs result. The resulting depth-first methodolgy is efficient for both positive (compact representation) and non-positive queries (rapid fail state propagation). The DAG data structure amplifies this properties.
+We propose a new algorithm new algorithm which recursively decomposes random graphs and immediately rearranges the fragmented subgraphs of decomposition so that only two subgraphs result. This results depth-first process that is efficient for both positive (due to compact representation) and non-positive queries (due to minimal computation). The DAG data structure amplifies this properties.
 
  \textit{Fast  Network Method}
 %%recombining and reordering of the graph fragments to restrict decomposed graph count and maximize decomposed graph size. 

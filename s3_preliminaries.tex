@@ -83,13 +83,15 @@ The \textit{decomposition to induced subgraph} of graph $g=(V,E,L^{v} ,L^{e} ,\m
 \item $E_{1} = E \cap (V_{1} \times V_{1})$, $E_{2} = E \cap (V_{2} \times V_{2})$, $E^{'} \subseteq (V_{1} \times V_{2})$ and $E_1 \cup E_2 \cup E^{'} = E$ where $\nu:E^{'} \rightarrow L_{E}$ is the edge labeling function for edges to $V_1$ and $V_2$.
 \item $\mu_1 , \mu_2 , \nu_1, \nu_2$ are the restrictions of $\mu$ and $\nu$ to $V_1$, $V_2$ and $E_1$, $E_2$ respectively, that is:
 %\item{ 
-\[\mu_1(v) = \left\{
+\[
+\mu_1(v) = \left\{
   \begin{array}{l l}  
      \mu(v)  & \quad \text{if }  v \in V_{1} \\  
      \text{undefined} & \quad \text{otherwise} 
   \end{array} \right
 \]
-\[\mu_2(v) = \left\{
+\[
+\mu_2(v) = \left\{
   \begin{array}{l l}  
      \mu(v)  & \quad \text{if }  v \in V_{2} \\ 
      \text{undefined} & \quad \text{otherwise} 
@@ -97,16 +99,19 @@ The \textit{decomposition to induced subgraph} of graph $g=(V,E,L^{v} ,L^{e} ,\m
 \]
 %}
 %\item{ 
-\[\nu_1(e) = \left\{
+
+\[
+\nu_1(e) = \left\{
   \begin{array}{l l}  \nu(e)  & \quad \text{if }  e \in E_{1} \\  
                       \text{undefined} & \quad \text{otherwise}     
   \end{array} \right
 \]
-\[\nu_2(e) = \left\{
+\[
+\nu_2(e) = \left\{
   \begin{array}{l l}  \nu(e)  & \quad \text{if }  e \in E_{2} \\  
                       \text{undefined} & \quad \text{otherwise}  
   \end{array} \right
-
+\]
 %}
 
 \end{enumerate} 

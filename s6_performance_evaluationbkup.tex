@@ -1,0 +1,247 @@
+Experimantal Results
+
+\subsection{Experimental Setup}
+The source code was developed in the C++ language and compiled using Microsoft Visual Studio 2010 Ultimate. The hardware consisted of a Dell T1500 personal computer with an
+Intel Core i-3 CPU 3.09 GHZ, 16 Gbyte memory, running the Windows 7 Professional Operating system.
+
+\subsection{The Datasets}
+
+Two types datasets are used in the experiments. The first type is the synthetic dataset of Erd\"{o}s-R\`{e}nyi random graphs. The parameters used to generate the synthetic dataset are shown in table \ref{tab:parameterTable}. Different sets of both query graphs and database were generated for each instance of Edge density and Label count. The result is 8 sets of random Graph Query-Database pairs. The query graph size varies from 10 vertices to 80 vertices, with either 5 or 10 vertex labels. The database graph has 10 vertices, with either 5 or 10 vertex labels. The database graph count varies from 1000 graphs to 20000 graphs. We also generated an one sparse query-database set for experiments to replicate the dataset of Messmer et. al \cite{messmer_bunke2000}. for the purpose of comparative evaluation of their algorithm which proved to be an order of magnitude or more slower on regular random graphs for even moderate increases in query graph size beyond 10 vertices and 12 edges.
+
+The second type is the real dataset, that is generated from AIDS Antiviral Screen data. This data contains around 43,000 chemical compounds and is available publicly from NCI \footnote{National Cancer Institute http://dtp.nci.nih.gov/}. The graphs created from the antiviral compounds data, is denoted `` AIDS'' and has on average, 25 vertices and 27 edges. The maximum is 438 vertices and 441 edges. There are 63 distinct vertex labels and 3 distinct edge labels.
+
+The random decomposition affects the processing time such that each individual run is different even for an identical query and database set. To minimize this we processed each query exactly 10 times over the database and averaged processing time.
+
+\subsection{Synthetic Data}
+
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|l|l|r|r|r|c|r|r|r|r|}  \hline
+\multirow{3}{*}{Experiment} & \multicolumn{5}{c|}{Database} & \multicolumn{4}{c|}{Query}  \\ \cline{2-2} \cline{3-3} \cline{4-4} \cline{5-5} \cline{6-6} \cline{7-7} \cline{8-8} \cline{9-9} \cline{10-10}
+       & \multicolumn{2}{c|}{Vertices} & \multicolumn{2}{c|}{Edges} & Graphs & \multicolumn{2}{c|}{Vertices} & \multicolumn{2}{c|}{Edges} \\ \cline{2-2} \cline{3-3} \cline{4-4} \cline{5-5}  \cline{7-7} \cline{8-8} \cline{9-9} \cline{10-10} 
+ & \#  & Labels & \# & Labels &  & \#  & Label & \# & Labels  \\ \hline
+Fig 9 & 10 & 10 & 26\% & 1 & 100 $\sim$ 20K & 10 & 10 & 26\% & 1 \\ \hline
+  & 10 & 10 & 50\% & 1 & 100 $\sim$ 20K & 10 & 10 & 50\% & 1 \\ \hline
+ & 10 & 10 & 75\% & 1 & 100 $\sim$ 20K & 10 & 10 & 75\% & 1 \\ \hline
+ & 10 & 10 & 100\% & 1 & 100 $\sim$  20K & 10 & 10 & 100\% & 1 \\ \hline
+ & 10 & 5 & 26\% & 1 & 100 $\sim$  20K & 10 & 5 & 26\% & 1 \\ \hline
+ & 10 & 5 & 50\% & 1 & 100 $\sim$  20K & 10 & 5 & 50\% & 1 \\ \hline
+ & 10 & 5 & 75\% & 1 & 100 $\sim$  20K & 10 & 5 & 75\% & 1 \\ \hline
+ & 10 & 5 & 100\% & 1 & 100 $\sim$ 20K & 10 & 5 & 100\% & 1 \\ \hline
+\end{tabular}
+\caption{ Synthetic Graph Generation Parameters \label{tab:parameterTable} }
+\end{center}
+\end{table}
+
+%Algorithm & Network Method & Fast Network Method \\ \hline
+%Data Structure & DAG                 & DAG                            \\ 
+%               &  (Induced Subgraph) &  (Subgraph \& Induced Subgraph) \\ \hline
+%Method of graph  & Partition to Subgraph  & Partition to Subgraph \\ 
+%Decomposition    &                        & Partition to Induced Subgraph \\ \hline
+%Processing    & No Restriction  & Connected graph input                     \\ 
+%Optimization      &                   & Connected graph Output                 \\ \hline 
+%Search Strategy & Whole DAG           & Local Depth First Search(LDFS) \\ 
+%                & bottom-up search          &  of Model Graphs in DAG   \\ \hline
+%Search graph type & Induced Graph & Subgraph and Induced Graph \\ \hline
+
+We test the performance of our algorithm with regard to induced subgraph query by evaluating the proposed algorithm and comparing it with Messmer's Network Algorithm and the state-of-the-art sequential scan algorithm for subgraph isomorphism, VF2\cite{cordella2001_vf2}.
+We also evaluate our algorithm with regard to non-induced subgraph query, where we compare proposed algorithm with the sequential scan(VF2) only.
+
+
+\subsubsection{Effect of size of query and Database graph on processing time}
+
+
+\begin{figure}[h]
+\centering
+\include[width=1.0\textwidth]{syndataplot.tex}
+\caption{\textbf{Results of the Experiments on the Synthetic Graph Data Set} 
+
+\textbf{ Top left:}Linear-linear plot of induced subgraph query processing time against query graph vertex count. The query graph size ranges from 10 vertices to 800 vertices. The \textit{Fast Network Method} and the \textit{Network Method} show the fastest processing time for induced subgraph queries of up to 600 vertices. For larger query graphs, the \textit{VF2} method is faster. The \textit{Network Method} takes more than 5sec for any induced subgraph query graph greater than 10 vertices. The \textit{VF2} method shows an almost linear time dependency of query graph vertex count, an advantage for induced subgraph queries larger than 600 vertices. 
+
+\textbf{Top Right:} Linear-log plot of the induce subgraph graph query processing time with query graph size. We observe that for induced subgraph query size less than 400 Vertices, there is an order of magnitude or better advantage to the \textit{Fast Network Method}. Beyond query graphs of about 600 vertices the \textit{VF2} method is clearly superior. We observe that the \textit{Network Method} is slowest, taking about 15min for an induced subgraph query of just 80 vertices.
+
+\textbf{ Bottom left:}Linear-linear plot of  query processing time for increasing size of graph query.The smallest query graph contains 10 vertices while the largest query graph contains 800 vertices. The \textit{Fast Network Method} processes query graphs faster than \textit{VF2} for subgraphs not larger than 600 vertices. Here too, \textit{VF2} method shows an almost linear processing time  dependency with query graph size.  
+
+\textbf{Bottom Right:} Linear-log plot of the induce subgraph graph query processing time with query graph size. For subgraph query size less than about 400 Vertices, there is an order of magnitude or better advantage to the \textit{Fast Network Method}. For synthetic graphs of less that 50 vertices, the advantage is about two orders of magnitude. Beyond query graphs of about 600 vertices the \textit{VF2} method is superior.
+}
+\label{fig:fig91}
+\end{figure}
+
+
+\subsubsection{Effect of Number of Labels in Query and Database Graphs on processing time}
+
+\subsubsection{Effect of Number of Edge Density in Query and Database Graphs on processing time}
+
+\subsection{Real Data}
+
+\subsubsection{Effect of size of query and Database graph count on processing time}
+
+\begin{figure}[h]
+\centering
+\include{realdataplot.tex}
+\caption{\textbf{Results of the Experiments on the Real World Graph Data Set} 
+
+
+\textbf{ Top left:}Linear-linear plot of  induced subgraph query processing time for increasing size of query graph.The smallest query graph contains 10 vertices while the largest query graph contains 60 vertices. The \textit{Fast Network Method} and the textit{Network Method} show almost identical processing times. The \textit{VF2} method is noticably slower. 
+
+
+\textbf{Top Right:} Linear-log plot of the induce subgraph graph query processing time with query graph size. The \textit{Fast Network Method} and the textit{Network Method} are almost indistinguishable and show an order of magnitude advantage over the state-of-the-art \textit{VF2} Method 
+
+\textbf{ Bottom left:}Linear-linear plot of  query processing time for increasing size of graph query. The smallest query graph contains 10 vertices while the largest query graph contains 60 vertices. The \textit{Fast Network Method} is faster than \textit{VF2} for subgraphs as well. The \textit{VF2} method takes more than 50s to process query graphs large than 10 vertices. 
+
+\textbf{Bottom Right:} Linear-log plot of the graph query processing time with query graph size. Both the \textit{Fast Network Method} and the textit{Network Method} are almost indistinguishable and show more than an order of magnitude advantage over the \textit{VF2} Method.}
+
+\label{fig:fig81}
+\end{figure}
+
+
+
+\subsubsection{Effect of number of graphs on processing time}
+
+\begin{figure}[h]
+\centering
+\include{syndata_graphcount.tex}
+\caption{\textbf{Results of the Experiments on the Real World Graph Data Set} 
+\label{fig:graphcount}
+\end{figure}
+
+
+\subsubsection{Effect of number of graphs on processing time}
+
+\begin{figure}[h]
+\centering
+\include{syndata_edegedensity.tex}
+\caption{\textbf{Results of the Experiments on the Real World Graph Data Set} 
+\label{fig:edgedensity}
+\end{figure}
+
+
+\subsubsection{Effect of number of Labels on processing time}
+
+\begin{figure}[h]
+\centering
+\include{syndata_labels.tex}
+\caption{\textbf{Results of the Experiments on the Real World Graph Data Set} 
+\label{fig:labels}
+\end{figure}
+
+
+\subsection{Graph Database Processing}
+
+\begin{figure}[h]
+\centering
+\include{syndata_database.tex}
+\caption{\textbf{Results of the Experiments on the Real World Graph Data Set} 
+\label{fig:database}
+\end{figure}
+
+END
+
+In this section we perform experiments on two datasets to evaluate the performance of the new algorithm in practice.
+
+In this section, we evaluate the proposed algorithms on two datasets and compare the results to two well known graph isomorphism detection algorithms. The first dataset is a set of synthetic graphs. These are aggregated in of several graph databases featuring one of several fixed edge densities, label counts and total database graph count. We call his the synthetic dataset. The second dataset is  a set of graphs modeling active ingredients in antiviral drugs for the treatment of AIDS. We call this the AIDS dataset. 
+
+We perform tests to evaluate the effect of several dataset parameters on the processing time.
+We perform two sets of tests; In the first set, we evaluate our algorithms on the retrieval of induced subgraph to query and In the second set, we evaluate retrieval of non induced sugraph to query.
+
+To test the efficacy of our algorithm with regard to induced subgraph query, we evaluate the proposed algorithm in comparison with Messmer's Network Algorithm and a sequential SCAN using the state-of-the-art subgraph isomorphism detection algorithm VF2\cite{cordella2001_vf2}.
+We also evaluate our algorithm with regard to non-induced subgraph query, where we compare proposed algorithm with the sequential scan only.
+All the algorithms were implemented using the C++ programming language and run on a Intel Core i-3 CPU 3.09 Ghz, 16 Gbyte memory, Personal Computer running Windows 7 Professional Operating system.
+
+\subsection{Graph Datasets}
+We evaluate our algorithms by processing the retrieval of descriptors from the compounds dataset.
+We use AIDS Antiviral Screen dataset to provide a real graph dataset.
+This dataset contains around 43,000 chemical compounds and is available publicly from NCI
+\footnote{National Cancer Institute http://dtp.nci.nih.gov/}.
+We denote this dataset as ``AIDS'' in our experiment.
+The graphs of AIDS have an average number of 25 vertices and 27 edges, a maximum of 438 vertices and 441 edges,
+63 distinct vertex labels and 3 distinct edge labels.
+
+In order to evaluate our algorithms over a larger database to test scalability, we use synthetic large dataset. 
+The graph generator is configured to emit only connected graphs thathave an edge probability of 50 percent. 
+Except where explicitly stated, 10 distinct vertex labels and 10 distinct.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{images/realdataplot.pdf}
+\caption{\textbf{Results of the Experiments on the Real World Graph Data Set} 
+
+
+\textbf{ Top left:}Linear-linear plot of  induced subgraph query processing time for increasing size of query graph.The smallest query graph contains 10 vertices while the largest query graph contains 60 vertices. The \textit{Fast Network Method} and the textit{Network Method} show almost identical processing times. The \textit{VF2} method is noticably slower. 
+
+
+\textbf{Top Right:} Linear-log plot of the induce subgraph graph query processing time with query graph size. The \textit{Fast Network Method} and the textit{Network Method} are almost indistinguishable and show an order of magnitude advantage over the state-of-the-art \textit{VF2} Method 
+
+\textbf{ Bottom left:}Linear-linear plot of  query processing time for increasing size of graph query. The smallest query graph contains 10 vertices while the largest query graph contains 60 vertices. The \textit{Fast Network Method} is faster than \textit{VF2} for subgraphs as well. The \textit{VF2} method takes more than 50s to process query graphs large than 10 vertices. 
+
+\textbf{Bottom Right:} Linear-log plot of the graph query processing time with query graph size. Both the \textit{Fast Network Method} and the textit{Network Method} are almost indistinguishable and show more than an order of magnitude advantage over the \textit{VF2} Method.}
+
+\label{fig:fig81}
+\end{figure}
+
+\subsection{Chemical Descriptor Search}
+In chemistry, substructures of compounds that imply a chemical, physical property of the compound are called as descriptor.
+Fast retrievals of descriptors from compounds aids research of compounds.
+We evaluate our algorihm by processing the retrievals of descriptors.
+We builded a model graph database $D$ by extracting graph database $W$ composed of 10,000 compounds whose size are less than 40 from AIDS and applying frequent graph mining to $W$.
+We set minimum support as 5 percent.
+$D$ is composed of 18930 distinct frequent subgraphs.
+
+We vary average size of query graphs and evaluate query processing time.
+For each plot, 100 query graphs are extracted from $W$.
+Query processing time is time to process the all query graphs and the time to construct the DAG is excluded. In the results we compare the processing time of two methods with our proposed \textit{Fast Network Algorithm}. These methods are: 
+
+The \textit{Network algorithm}, in which the use of $DAG$ data structure to store the graphs was pioneered. This method however was only implemented for induced subgraph queries, so we are only able to perform comparisons for half of the experiments. 
+
+The state-of-the-art one-on-one graph query algorithm \textit{VF2}. This algorithm  tests a graph for subgraph isomorphism or induced subgraph isomorphism to another single graph only. This is repeated sequentially for a large graph database. The solution is a binary true or false answer. It cannot be used to find all isomorphisms to a graph in a database as one is not able to differentiate multiple isomorphisms from a binary response.
+
+We now analyse the results.
+
+The  top left of Fig.\ref{fig:fig81} shows a Linear-linear plot of induced subgraph query processing time for increasing size of query graph. In this experiment, the smallest query graph contains 10 vertices while the largest query graph contains 60 vertices. For this real world graph database the \textit{Fast Network Method} and the textit{Network Method} show almost identical processing times. In this evaluation \textit{VF2} method is the slowest, taking more than 50 seconds to process query graphs containing more than 10 vertices. The fact that the \textit{Fast Network Method} is not substantially better than the \textit{network Method} implies that we do not have many fragmented graphs during decomposition, hence there is no advantage in ensuring that all decomposed graphs are connected.  
+
+Top Right of Fig.\ref{fig:fig81} shows a Linear-log plot of the induce subgraph graph query processing time with query graph size. We observe that both the \textit{Fast Network Method} and the textit{Network Method}, while almost indistinguishable, show an order of magnitude advantage in processing time over the state-of-the-art \textit{VF2} Method. 
+
+Bottom left of Fig.\ref{fig:fig81} shows a Linear-linear plot of  query processing time with increasing  time in the  graph query. The experiment was performed using query graphs containing 10 vertices to 60 vertices. Here \textit{Fast Network Method} is faster than \textit{VF2} for subgraphs too. We also observe that the \textit{VF2} method takes more than 50s to process query graphs large than 10 vertices. 
+
+Bottom Right of Fig.\ref{fig:fig81} shows a Linear-log plot of the graph query processing time with increasing query graph size. We observe that both the \textit{Fast Network Method} and the \textit{Network Method} while almost indistinguishable, show more than an order of magnitude advantage in processing time over the state-of-the-art \textit{VF2} Method.}
+
+It is because that their are originally few decompositions that creates disconnected graphs and also few redundant subgraph isomorphism detections in DAG.
+So in this experiment, our improvements did not work.
+
+Fig.\ref{fig:fig4} shows the processing time for subgraph isomorphism query.
+Fig.\ref{fig:fig4} indicates the subgraph isomorphism query is faster than SCAN same as Messmer et al's algorithm.
+
+\begin{figure}[h]
+\centering
+\include[width=1.0\textwidth]{syndataplot.tex}
+\caption{\textbf{Results of the Experiments on the Synthetic Graph Data Set} 
+
+\textbf{ Top left:}Linear-linear plot of induced subgraph query processing time against query graph vertex count. The query graph size ranges from 10 vertices to 800 vertices. The \textit{Fast Network Method} and the \textit{Network Method} show the fastest processing time for induced subgraph queries of up to 600 vertices. For larger query graphs, the \textit{VF2} method is faster. The \textit{Network Method} takes more than 5sec for any induced subgraph query graph greater than 10 vertices. The \textit{VF2} method shows an almost linear time dependency of query graph vertex count, an advantage for induced subgraph queries larger than 600 vertices. 
+
+\textbf{Top Right:} Linear-log plot of the induce subgraph graph query processing time with query graph size. We observe that for induced subgraph query size less than 400 Vertices, there is an order of magnitude or better advantage to the \textit{Fast Network Method}. Beyond query graphs of about 600 vertices the \textit{VF2} method is clearly superior. We observe that the \textit{Network Method} is slowest, taking about 15min for an induced subgraph query of just 80 vertices.
+
+\textbf{ Bottom left:}Linear-linear plot of  query processing time for increasing size of graph query.The smallest query graph contains 10 vertices while the largest query graph contains 800 vertices. The \textit{Fast Network Method} processes query graphs faster than \textit{VF2} for subgraphs not larger than 600 vertices. Here too, \textit{VF2} method shows an almost linear processing time  dependency with query graph size.  
+
+\textbf{Bottom Right:} Linear-log plot of the induce subgraph graph query processing time with query graph size. For subgraph query size less than about 400 Vertices, there is an order of magnitude or better advantage to the \textit{Fast Network Method}. For synthetic graphs of less that 50 vertices, the advantage is about two orders of magnitude. Beyond query graphs of about 600 vertices the \textit{VF2} method is superior.
+}
+\label{fig:fig91}
+\end{figure}
+%
+
+\subsection{Synthetic Data Search}
+In chemical descriptor search, we can not show improvements of proposed algorithm in term of processing time.
+In order to demonstrate improvements of proposed algorithm, we process subgraph isomorphism query on synthetic data.
+
+We vary average size of query graphs and evaluate query processing time.
+Model graph dataset is composed of 20,000 graphs whose average number of size are 10.
+100 query graphs are generated for each plot.
+
+
+
+Fig.\ref{fig:fig5} shows the processing time for induced subgraph isomorphism query.
+Fig.\ref{fig:fig5} indicates that proposed algorithm is faster than Messmer et al.'s algorithm.
+The processing time of proposed algorithm is stable against the variation of the size of query graphs.
+On the contrary, the processing time of Messmer et al.'s algorithms is skyrockets when the size of query graphs becomes large.
+
+% LocalWords:  kna

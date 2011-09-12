@@ -257,33 +257,7 @@ We vary size of model graph database and evaluate the construction time of DAG.
 Fig.\ref{fig:fig7} shows the construction time of DAG for induced subgraph isomorphism query.
 The construction Time of DAG of proposed algorithm is almost same as the one of Messmer et al.'s algorithm.
 
-%% \Subsection{Appendix}
 
-
-%% \begin{algorithm}
-%% \caption{New Network Algorithm, NNA($D , q$)}
-%% \label{alg:alg05}
-%% \begin{algorithmic}
-%% \STATE Input: Model graphs in DAG, $D(G)= \{$($g_1 ,s_1 ,P_1 ,\{c^{'}_1 ,c^{''}_1 \},E$)$,\ldots,$($g_n,s_n,P_n,\{c_n^{'},c_n^{''}\},E_n$)$ \}$, Query $q$
-%% \STATE and the set of all subgraphs in DAG, $G_{all} = \cup_{i=1}^n \{g_1 ,c_1^{'},c_1^{''},g_2 ,c_2^{'},c_2^{''}\ldots \}$ 
-%% \STATE Output: $Z$, the set of all subgraph isomorphisms in Model graphs in $D$ to query $q$ 
-%% \end{algorithmic}
-%% \begin{algorithmic}[1]
-%% \STATE $F \leftarrow \emptyset$
-%% \STATE $Z \leftarrow \emptyset$
-%% %%\FOR{ each $(g,s,P,\{c^{'},c^{''}\}) \in  D$}
-%% \FOR{ each subgraph in $G_{all}$}
-%%   \STATE  $s \leftarrow unsolved$
-%% \ENDFOR
-%% \FOR{ each $(g,s,P,\{c^{'},c^{''}\}) \in D$}
-%%    \STATE $F \leftarrow $SubgraphQuery($g,s,P,\{c^{'},c^{''}\},q$)
-%%    \IF{$F\neq \emptyset$}
-%%       \STATE $Z \leftarrow Z \cup \{F\}$
-%%    \ENDIF
-%% \ENDFOR
-%% \RETURN $Z$
-%% \end{algorithmic}
-%% \end{algorithm}
 
 
 % LocalWords:  kna

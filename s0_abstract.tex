@@ -1,3 +1,7 @@
+
+In this paper study the problem of efficient enumeration of all subgraph isomorphisms of database graphs that exist in a query graph. Starting with Directed Acyclic Graph (DAG) data structure to represent decomposed subgraphs, we formulate a fast algorithm for decomposing and searching for subgraphs in large database scalably.
+
+
 We study the problem of scalable enumeration of all subgraph isomorphisms to a query graph that exist in a graph database. We  propose several improvements and extensions to known algorithms to solve this problem that result in order of magnitude improvement in scalability. 
 
 Graphs have become increasingly important structures for representing and understanding complex structures. Deciding whether a graph is a subgraph of another graph is called the subgraph isomorphism problem. In this study we are concerned with the retrieval of all subgraph isomorphisms to a query that are present in a graph database.
@@ -5,8 +9,6 @@ We define the retrieval of isomorphic subgraphs to satisfy two conditions.  Firs
 Recently, there have been several studies on efficiency of retrieval of subgraph isomorphisms from a graph database but few have investigated decomposition methodology to reduce the larger, difficult graph matching problem to smaller more managable sub-problems in a divide and conquer fashion. 
 
 %%Messmer et al. studied an interesting method for retrieval of induced subgraph isomorphisms of a query graph. They proposed a so-called \textit{Network Method} that stores graphs  in a network structure  by recursively decomposing the individual graphs in a divide and conquer fashion, and the algorithms to facilitate retrieval using the structure.
-
-In this paper study the problem of efficient enumeration of all subgraph isomorphisms of database graphs that exist in a query graph. Starting with Directed Acyclic Graph (DAG) data structure to represent decomposed subgraphs, we formulate a fast algorithm for decomposing and searching for subgraphs in large database scalably.
 
 % for the \textit{Network Method} and extend it to cover retrieval of non-induced subgraph isomorphisms of a query graph. 
 We propose a new algorithm which recursively decomposes random graphs and immediately rearranges fragmented products so that only two subgraphs. This subgraph decomposition without fragmentation process is efficient for both positive (due to compact representation) and non-positive queries (due to minimal computation). The DAG data structure amplifies this properties.

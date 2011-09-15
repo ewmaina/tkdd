@@ -121,10 +121,10 @@ mark options={scale=1,fill=gray,draw=black},
          legend to name={named},
 %%         point format={(%.1f,%.1f)},
 ]
-       \addplot[mark=o] table[x=Density,y=NNA] \indsynLargeDBLowestEdgeDensity;
-       \addplot[mark=square] table[x=Density,y=NNA] \indsynLargeDBLowEdgeDensity;
-       \addplot[mark=star] table[x=Density,y=NNA] \indsynLargeDBHighEdgeDensity;
-       \addplot[mark=triangle] table[x=Density,y=NNA] \indsynLargeDBHighestEdgeDensity;
+       \addplot[mark=o] table[x=QuerySize,y=NNA] \indsynLargeDBLowestEdgeDensity;
+       \addplot[mark=square] table[x=QuerySize,y=NNA] \indsynLargeDBLowEdgeDensity;
+       \addplot[mark=star] table[x=QuerySize,y=NNA] \indsynLargeDBHighEdgeDensity;
+       \addplot[mark=triangle] table[x=QuerySize,y=NNA] \indsynLargeDBHighestEdgeDensity;
      \end{axis}
 
     &[0.5mm] 
@@ -138,10 +138,10 @@ mark options={scale=1,fill=gray,draw=black},
 %%         mark repeat=5,
          enlargelimits=true,
 ]
-       \addplot[mark=o] table[x=Density,y=NNA] \indsynLargeDBLowestEdgeDensity;
-       \addplot[mark=square] table[x=Density,y=NNA] \indsynLargeDBLowEdgeDensity;
-       \addplot[mark=star] table[x=Density,y=NNA] \indsynLargeDBHighEdgeDensity;
-       \addplot[mark=triangle] table[x=Density,y=NNA] \indsynLargeDBHighestEdgeDensity;
+       \addplot[mark=o] table[x=QuerySize, y=NNA] \indsynLargeDBLowestEdgeDensity;
+       \addplot[mark=square] table[x=QuerySize, y=NNA] \indsynLargeDBLowEdgeDensity;
+       \addplot[mark=star] table[x=QuerySize, y=NNA] \indsynLargeDBHighEdgeDensity;
+       \addplot[mark=triangle] table[x=QuerySize, y=NNA] \indsynLargeDBHighestEdgeDensity;
 
       \end{semilogyaxis}
 

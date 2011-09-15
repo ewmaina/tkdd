@@ -158,17 +158,17 @@ mark options={scale=1,fill=gray,draw=black},
          mark size=1pt,
 %%         mark repeat=5,
           enlargelimits=true,
-         legend columns=4,
+%         legend columns=4,
 %        legend entries={Fast Network Method  ,$VF2$  ,Network Method},
-         mark options={scale=1,fill=gray,draw=black},
-         legend entries={26\%,50\%,75\%,100\%},
-         legend to name={named},
+%         mark options={scale=1,fill=gray,draw=black},
+%         legend entries={26\%,50\%,75\%,100\%},
+%         legend to name={named},
 %%         point format={(%.1f,%.1f)},
 ]
-       \addplot[mark=o] table[x=QuerySize,y=NNA] \indsynLargeDBLowestEdgeDensity;
-       \addplot[mark=square] table[x=QuerySize,y=NNA] \indsynLargeDBLowEdgeDensity;
-       \addplot[mark=star] table[x=QuerySize,y=NNA] \indsynLargeDBHighEdgeDensity;
-       \addplot[mark=triangle] table[x=QuerySize,y=NNA] \indsynLargeDBHighestEdgeDensity;
+       \addplot[mark=o] table[x=QuerySize,y=VF2] \indsynLargeDBLowestEdgeDensity;
+       \addplot[mark=square] table[x=QuerySize,y=VF2] \indsynLargeDBLowEdgeDensity;
+       \addplot[mark=star] table[x=QuerySize,y=VF2] \indsynLargeDBHighEdgeDensity;
+       \addplot[mark=triangle] table[x=QuerySize,y=VF2] \indsynLargeDBHighestEdgeDensity;
      \end{axis}
 
     &[0.5mm] 
@@ -182,10 +182,10 @@ mark options={scale=1,fill=gray,draw=black},
 %%         mark repeat=5,
          enlargelimits=true,
 ]
-       \addplot[mark=o] table[x=QuerySize, y=NNA] \indsynLargeDBLowestEdgeDensity;
-       \addplot[mark=square] table[x=QuerySize, y=NNA] \indsynLargeDBLowEdgeDensity;
-       \addplot[mark=star] table[x=QuerySize, y=NNA] \indsynLargeDBHighEdgeDensity;
-       \addplot[mark=triangle] table[x=QuerySize, y=NNA] \indsynLargeDBHighestEdgeDensity;
+       \addplot[mark=o] table[x=QuerySize, y=VF2] \indsynLargeDBLowestEdgeDensity;
+       \addplot[mark=square] table[x=QuerySize, y=VF2] \indsynLargeDBLowEdgeDensity;
+       \addplot[mark=star] table[x=QuerySize, y=VF2] \indsynLargeDBHighEdgeDensity;
+       \addplot[mark=triangle] table[x=QuerySize, y=VF2] \indsynLargeDBHighestEdgeDensity;
 
       \end{semilogyaxis}
 \\

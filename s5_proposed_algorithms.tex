@@ -506,7 +506,7 @@ The decomposition of a disconnected graph is identical to the one for subgraph q
 %%\STATE  partition at random $V_g $ to $V_{c^{'}}$ and $V_{c^{''}}$
 %%\STATE $| V_{c^{'}} | = | V_g / 2 |$
 %%\STATE $| V_{c^{''}} | = | V_g | - | V_{c^{'}} |$
-\WHILE {$|V_{c^{'}}| \leq   \lfloor |V_g |/2 \rfloor $} \DO
+\WHILE {$|V_{c^{'}}| \leq   \lfloor |V_{g} |/2 \rfloor $} \DO
        \STATE $v \leftarrow$ random vertex of $ V_g $
        \STATE $V_{c^{'}} \leftarrow V_{c^{'}} \cup v $ 
        \STATE  $ V_g \leftarrow V_g - v $

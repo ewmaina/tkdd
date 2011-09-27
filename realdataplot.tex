@@ -161,7 +161,8 @@ legend style={font=\footnotesize},
  %         yticklabels={-0.25e8,2.0e8,4.0e8,6.0e8,8.0e8,1.0e9,1.2e9}
        ]
 %%        \addplot[mark=o] table[x=Query,y=NNA] \ninducedrealdata;
-%%        \addplot[mark=square] table[x=Query,y=VF2]  \ninducedrealdata;  
+%%        \addplot[mark=square] table[x=Query,y=VF2]  \ninducedrealdata; 
+        \node  at (axis cs:12,1.8) {Isomorphism};
         \addplot[mark=o] table[x=QVertexAve, y=NNAPerQGraph] \ninducedrealdataAve;
          \addplot[mark=square] table[x=QVertexAve, y=VF2PerQGraph] \ninducedrealdataAve;
       \end{axis}
@@ -175,6 +176,7 @@ legend style={font=\footnotesize},
         ]
 %%        \addplot[mark=o] table[x=Query,y=NNA] \ninducedrealdata;
 %%        \addplot[mark=square] table[x=Query,y=VF2]  \ninducedrealdata;  
+        \node  at (axis cs:18,1.8) {Induced Isomorphism};
         \addplot[mark=o] table[x=QVertexAve, y=NNAPerQGraph] \ninducedrealdataAve;
          \addplot[mark=square] table[x=QVertexAve, y=VF2PerQGraph] \ninducedrealdataAve;
       \end{semilogyaxis}

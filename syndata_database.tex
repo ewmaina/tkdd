@@ -104,13 +104,14 @@ mark options={scale=1,fill=gray,draw=black},
 %%  \pgfplotsset{small}
   \matrix[row sep={1mm}] {    
     \begin{axis}[
-         ylabel={Processing Time},
+         ylabel={\texttt{Processing Time}},
          xticklabel pos=lower,
          scaled ticks=false,
           xmin=0,
           xmax=100,
           ymin=0,
           ymax=50,
+          xlabel={\texttt{Database Graph Density}},
           mark size=1pt,
           enlargelimits=true,
 ]

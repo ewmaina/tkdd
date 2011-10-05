@@ -608,6 +608,234 @@ mark options={scale=1,fill=gray,draw=black},
 
 %%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
       \end{semilogyaxis}
+\begin{tikzpicture}[scale=5]
+%%  \pgfplotsset{small}
+  \matrix[row sep={1mm}] {    
+    \begin{axis}[
+         ylabel={Processing Time},
+         xticklabel pos=upper,
+         scaled ticks=false,
+          xmin=-10,
+          xmax=20500,
+          ymin=-0.5,
+          ymax=3,
+         mark size=1pt,
+         mark repeat=5,
+%          enlargelimits=true,
+         legend columns=2,
+%        legend entries={Fast Network Method  ,$VF2$  ,Network Method},
+         mark options={scale=1,fill=gray,draw=black},
+         legend entries={$FNA-10$,$VF2-10$,$F200$,$V200$,$F400$,$V400$,$F600$,$V600$,$F800$, $V800$},
+         legend to name={named},
+]
+       \addplot[mark=triangle] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTen;
+        \addplot[mark=triangle*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTen;
+       \addplot[mark=x] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTwoHundred;
+        \addplot[mark=otimes] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTwoHundred;
+       \addplot[mark=diamond] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQFourHundred;
+        \addplot[mark=diamond*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQFourHundred;
+        \addplot[mark=pentagon] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQSixHundred;
+        \addplot[mark=pentagon*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQSixHundred;
+        \addplot[mark=+] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQEightHundred;
+        \addplot[mark=oplus] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQEightHundred;
+%%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
+%%        \legend{$F10$,$V10$,$F200$,$V200$,$F400$,$V400$,$F600$,$V600$,$F800$, $V800$ }
+     \end{axis}
+
+    &[0.5mm] 
+
+      \begin{semilogyaxis}[yticklabel pos=right,
+          xticklabel pos=upper,
+          xmin=-10,
+          xmax=20000, 
+          ymax=100,
+         mark size=1pt,
+         mark repeat=5,
+         enlargelimits=true,
+]
+       \addplot[mark=triangle] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTen;
+        \addplot[mark=triangle*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTen;
+       \addplot[mark=x] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTwoHundred;
+        \addplot[mark=otimes] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTwoHundred;
+       \addplot[mark=diamond] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQFourHundred;
+        \addplot[mark=diamond*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQFourHundred;
+        \addplot[mark=pentagon] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQSixHundred;
+        \addplot[mark=pentagon*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQSixHundred;
+        \addplot[mark=+] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQEightHundred;
+        \addplot[mark=oplus] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQEightHundred;
+
+%%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
+      \end{semilogyaxis}
+\begin{tikzpicture}[scale=5]
+%%  \pgfplotsset{small}
+  \matrix[row sep={1mm}] {    
+    \begin{axis}[
+         ylabel={Processing Time},
+         xticklabel pos=upper,
+         scaled ticks=false,
+          xmin=-10,
+          xmax=20500,
+          ymin=-0.5,
+          ymax=3,
+         mark size=1pt,
+         mark repeat=5,
+%          enlargelimits=true,
+         legend columns=2,
+%        legend entries={Fast Network Method  ,$VF2$  ,Network Method},
+         mark options={scale=1,fill=gray,draw=black},
+         legend entries={$FNA-10$,$VF2-10$,$F200$,$V200$,$F400$,$V400$,$F600$,$V600$,$F800$, $V800$},
+         legend to name={named},
+]
+       \addplot[mark=triangle] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTen;
+        \addplot[mark=triangle*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTen;
+       \addplot[mark=x] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTwoHundred;
+        \addplot[mark=otimes] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTwoHundred;
+       \addplot[mark=diamond] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQFourHundred;
+        \addplot[mark=diamond*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQFourHundred;
+        \addplot[mark=pentagon] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQSixHundred;
+        \addplot[mark=pentagon*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQSixHundred;
+        \addplot[mark=+] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQEightHundred;
+        \addplot[mark=oplus] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQEightHundred;
+%%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
+%%        \legend{$F10$,$V10$,$F200$,$V200$,$F400$,$V400$,$F600$,$V600$,$F800$, $V800$ }
+     \end{axis}
+
+    &[0.5mm] 
+
+      \begin{semilogyaxis}[yticklabel pos=right,
+          xticklabel pos=upper,
+          xmin=-10,
+          xmax=20000, 
+          ymax=100,
+         mark size=1pt,
+         mark repeat=5,
+         enlargelimits=true,
+]
+       \addplot[mark=triangle] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTen;
+        \addplot[mark=triangle*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTen;
+       \addplot[mark=x] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTwoHundred;
+        \addplot[mark=otimes] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTwoHundred;
+       \addplot[mark=diamond] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQFourHundred;
+        \addplot[mark=diamond*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQFourHundred;
+        \addplot[mark=pentagon] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQSixHundred;
+        \addplot[mark=pentagon*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQSixHundred;
+        \addplot[mark=+] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQEightHundred;
+        \addplot[mark=oplus] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQEightHundred;
+
+%%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
+      \end{semilogyaxis}
+\begin{tikzpicture}[scale=5]
+%%  \pgfplotsset{small}
+  \matrix[row sep={1mm}] {    
+    \begin{axis}[
+         ylabel={Processing Time},
+         xticklabel pos=upper,
+         scaled ticks=false,
+          xmin=-10,
+          xmax=20500,
+          ymin=-0.5,
+          ymax=3,
+         mark size=1pt,
+         mark repeat=5,
+%          enlargelimits=true,
+         legend columns=2,
+%        legend entries={Fast Network Method  ,$VF2$  ,Network Method},
+         mark options={scale=1,fill=gray,draw=black},
+         legend entries={$FNA-10$,$VF2-10$,$F200$,$V200$,$F400$,$V400$,$F600$,$V600$,$F800$, $V800$},
+         legend to name={named},
+]
+       \addplot[mark=triangle] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTen;
+        \addplot[mark=triangle*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTen;
+       \addplot[mark=x] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTwoHundred;
+        \addplot[mark=otimes] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTwoHundred;
+       \addplot[mark=diamond] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQFourHundred;
+        \addplot[mark=diamond*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQFourHundred;
+        \addplot[mark=pentagon] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQSixHundred;
+        \addplot[mark=pentagon*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQSixHundred;
+        \addplot[mark=+] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQEightHundred;
+        \addplot[mark=oplus] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQEightHundred;
+%%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
+%%        \legend{$F10$,$V10$,$F200$,$V200$,$F400$,$V400$,$F600$,$V600$,$F800$, $V800$ }
+     \end{axis}
+
+    &[0.5mm] 
+
+      \begin{semilogyaxis}[yticklabel pos=right,
+          xticklabel pos=upper,
+          xmin=-10,
+          xmax=20000, 
+          ymax=100,
+         mark size=1pt,
+         mark repeat=5,
+         enlargelimits=true,
+]
+       \addplot[mark=triangle] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTen;
+        \addplot[mark=triangle*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTen;
+       \addplot[mark=x] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTwoHundred;
+        \addplot[mark=otimes] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTwoHundred;
+       \addplot[mark=diamond] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQFourHundred;
+        \addplot[mark=diamond*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQFourHundred;
+        \addplot[mark=pentagon] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQSixHundred;
+        \addplot[mark=pentagon*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQSixHundred;
+        \addplot[mark=+] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQEightHundred;
+        \addplot[mark=oplus] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQEightHundred;
+
+%%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
+      \end{semilogyaxis}
+\begin{tikzpicture}[scale=5]
+%%  \pgfplotsset{small}
+  \matrix[row sep={1mm}] {    
+    \begin{axis}[
+         ylabel={Processing Time},
+         xticklabel pos=upper,
+         scaled ticks=false,
+          xmin=-10,
+          xmax=20500,
+          ymin=-0.5,
+          ymax=3,
+         mark size=1pt,
+         mark repeat=5,
+%          enlargelimits=true,
+         legend columns=2,
+%        legend entries={Fast Network Method  ,$VF2$  ,Network Method},
+         mark options={scale=1,fill=gray,draw=black},
+         legend entries={$FNA-10$,$VF2-10$,$F200$,$V200$,$F400$,$V400$,$F600$,$V600$,$F800$, $V800$},
+         legend to name={named},
+]
+       \addplot[mark=triangle] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTen;
+        \addplot[mark=triangle*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTen;
+       \addplot[mark=x] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQTwoHundred;
+        \addplot[mark=otimes] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTwoHundred;
+       \addplot[mark=diamond] table[x=DBGraphCount,y=NNA] \inducedsynDBdataQFourHundred;
+        \addplot[mark=diamond*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQFourHundred;
+        \addplot[mark=pentagon] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQSixHundred;
+        \addplot[mark=pentagon*] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQSixHundred;
+        \addplot[mark=+] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQEightHundred;
+        \addplot[mark=oplus] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQEightHundred;
+%%      \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata ;
+%%        \legend{$F10$,$V10$,$F200$,$V200$,$F400$,$V400$,$F600$,$V600$,$F800$, $V800$ }
+     \end{axis}
+
+    &[0.5mm] 
+
+      \begin{semilogyaxis}[yticklabel pos=right,
+          xticklabel pos=upper,
+          xmin=-10,
+          xmax=20000, 
+          ymax=100,
+         mark size=1pt,
+         mark repeat=5,
+         enlargelimits=true,
+]
+        \addplot[mark=+] table[x=DBGraphCount,y=NNA]  \inducedsynDBdataQEightHundred;
+        \addplot[mark=oplus] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQEightHundred;
+
+%%     \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
+      \end{semilogyaxis}
+
+
+
+
 
 %% \\ 
 

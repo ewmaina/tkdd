@@ -1,35 +1,4 @@
 
-We study the problem of efficient enumeration of all subgraph isomorphisms of database graphs that exist in a query graph. We start by storing the graph database in a Directed Acyclic Graph (DAG) data structure. This allows  nodes represent unique subgraphs of the database graphs. Usidng this structure we formulate a fast algorithm for decomposing and searching for subgraphs in large database scalably.
-
-%We study the problem of scalable enumeration of all subgraph isomorphisms to a query graph that exist in a graph database. We  propose several improvements and extensions to known algorithms to solve this problem that result in order of magnitude improvement in scalability. 
-Graphs have become increasingly important structures for representing and understanding complex structures. Enumeration of subgraphs requires deciding whether a graph is a subgraph of another graph is called the subgraph isomorphism problem and is NP complete. In this study we are concerned with the efficient enumeration of all subgraphs of a query isomorphic to the graphs in a database. 
-%In this study we are concerned with the enumeration of all subgraph isomorphisms of query subgraphs that are present in a graph database.
-
-%We define the enumeration of isomorphic subgraphs to satisfy two conditions. First, a decision whether or not a graph isomorphic to a subgraph of a query graph exists in the graph database. 
-%Second, for each graph in the database we find all instances of isomorphic subgraphs in the query. 
-However mere detection of subgraph isomorphisms requires subgraph isomorphism tests that are known to be NP-complete. Additional Search for features multiple times in the query graph also results in redundant computation.
-%However the retrieval of all subgraph isomorphisms is complicated and expensive because the subgraph isomorphism problem is NP-complete.
-
-Recently, there have been several studies on efficiency of detection of subgraph isomorphisms of a query from a graph database but few have considered decomposition methodology to reduce the larger, difficult graph matching problem to smaller more managable sub-problems in a divide and conquer fashion. 
-
-%%Messmer et al. studied an interesting method for retrieval of induced subgraph isomorphisms of a query graph. They proposed a so-called \textit{Network Method} that stores graphs  in a network structure  by recursively decomposing the individual graphs in a divide and conquer fashion, and the algorithms to facilitate retrieval using the structure.
-
-% for the \textit{Network Method} and extend it to cover retrieval of non-induced subgraph isomorphisms of a query graph. 
-We propose a new method of decomposition and subgraph processing to facilitate subgraph isomorphism queries. First, we recursively decompose at random  the query graph. Each decomposition is immediately followed by redistribution of resulting graph fragments so that only two subgraphs result. This subgraph decomposition without fragmentation process is efficient for both positive queries, where the database graphs is isomorphic to a subgraph of query and non-positive queries where no subgraph isomorphism exists. For positive queries, our method is efficient due to the compact representation of unique common subgraphs in the DAG  and recursive processing, both of which remove redundant computation. This is also the case for non-positive queries since computation is minimized by the recursive processing that allows early termination of computation. Repeated decomposition and redistribution for each node on DAG data structure amplifies these desirable properties. 
-
-% \textit{Fast  Network Method}
-%%recombining and reordering of the graph fragments to restrict decomposed graph count and maximize decomposed graph size. 
-
-%We validate our proposed method experimentally. The result 
-An extensive empirical study demonstrates the efficiency and scalability of the proposed methods. We achieve  an order of magnitude improvement in scalability over existing method for all subgraph isomorphism enumeration.
-% for larger query graphs of up to 500 nodes and a database of 20,000 graphs. 
-We also show a substantial improvement even when compared to state-of-the-art subgraph isomorphism detection-only algorithms. 
-
-%Our method is particularly suited to larger query graphs or very larger graph databases.
-
-%Graphs have become increasingly ubiquitous and very important structures for representing and understanding complex structures. In many cases the decomposition of Graphs and their representation has become central problem affecting the tractability of graph search algorithms. Traditional graph search 
-
-
 Graphs have become increasingly important structures for representing and understanding complex structures.
 We study the problem of scalably enumerating all subgraph isomorphisms of a query graph that exist in a graph database.
 

@@ -32,6 +32,7 @@ We also show a substantial improvement even when compared to state-of-the-art su
 1. Scalable Enumeration
 
 We study the problem of scalably enumerating all subgraph isomorphisms of a query graph that exist in a graph database.
+Graphs have become increasingly important structures for representing and understanding complex structures. Enumeration of subgraphs requires first deciding whether a graph is a subgraph of another graph. This is called the subgraph isomorphism problem and is NP complete. In this study we are concerned with the efficient enumeration of all subgraphs of a query isomorphic to the graphs in a database. 
 
 2. DAG data structure
 First, we construct a database by decomposing database graphs and storing all the subgraphs in nodes of a Directed Acyclic Graph (DAG).
@@ -42,7 +43,7 @@ Using the DAG data structure we apply heuristics to reduce unnecessary computati
 2. If any subgraph of the database graph does not exist in the query graph, the database graph is not a subgraph of the query graph.
 3. If a common subgraph of some database graphs does not exist in the query graph, none of the database graphs is a subgraph of the query graph.
 
-We implement these heuristics as a traversal of the DAG data structure that represents the all the subgraphs in the graph Database, 
+We implement these heuristics as a traversal of the DAG data structure. 
 
 
 4. Results

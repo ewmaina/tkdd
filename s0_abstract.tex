@@ -37,11 +37,12 @@ We study the problem of scalably enumerating all subgraph isomorphisms of a quer
 First, we construct a database by decomposing database graphs and storing all the subgraphs in nodes of a Directed Acyclic Graph (DAG).
 
 
-We use heuristics to reduce unnecessary computation of subgraph isomorphism. 
+Using the DAG data structure we apply heuristics to reduce unnecessary computation of subgraph isomorphism. 
 1. If all the nodes in the database graph do not exist in the query then that database graph is not a subgraph of the query graph.
 2. If any subgraph of the database graph does not exist in the query graph, the database graph is not a subgraph of the query graph.
+3. If a common subgraph of some database graphs does not exist in the query graph, none of the database graphs is a subgraph of the query graph.
 
-We implement this heuristics as a traversal of the DAG data structure that represents the all the subgraphs in the graph Database, 
+We implement these heuristics as a traversal of the DAG data structure that represents the all the subgraphs in the graph Database, 
 
 
 4. Results

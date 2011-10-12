@@ -1,11 +1,12 @@
 
-In this paper study the problem of efficient enumeration of all subgraph isomorphisms of database graphs that exist in a query graph. Starting with Directed Acyclic Graph (DAG) data structure whose nodes represent unique subgraphs of the database graphs, we formulate a fast algorithm for decomposing and searching for subgraphs in large database scalably.
+We study the problem of efficient enumeration of all subgraph isomorphisms of database graphs that exist in a query graph. We start by storing the graph database in a Directed Acyclic Graph (DAG) data structure. This allows  nodes represent unique subgraphs of the database graphs. Usidng this structure we formulate a fast algorithm for decomposing and searching for subgraphs in large database scalably.
 
 %We study the problem of scalable enumeration of all subgraph isomorphisms to a query graph that exist in a graph database. We  propose several improvements and extensions to known algorithms to solve this problem that result in order of magnitude improvement in scalability. 
-Graphs have become increasingly important structures for representing and understanding complex structures. Deciding whether a graph is a subgraph of another graph is called the subgraph isomorphism problem. In this study we are concerned with the enumeration of all query subgraphs isomorphic of graphs in a database. 
+Graphs have become increasingly important structures for representing and understanding complex structures. Enumeration of subgraphs requires deciding whether a graph is a subgraph of another graph is called the subgraph isomorphism problem and is NP complete. In this study we are concerned with the efficient enumeration of all subgraphs of a query isomorphic to the graphs in a database. 
 %In this study we are concerned with the enumeration of all subgraph isomorphisms of query subgraphs that are present in a graph database.
 
-We define the enumeration of isomorphic subgraphs to satisfy two conditions. First, a decision whether or not a graph isomorphic to a subgraph of a query graph exists in the graph database. Second, for each graph in the database we find all instances of isomorphic subgraphs in the query. 
+%We define the enumeration of isomorphic subgraphs to satisfy two conditions. First, a decision whether or not a graph isomorphic to a subgraph of a query graph exists in the graph database. 
+%Second, for each graph in the database we find all instances of isomorphic subgraphs in the query. 
 However mere detection of subgraph isomorphisms requires subgraph isomorphism tests that are known to be NP-complete. Additional Search for features multiple times in the query graph also results in redundant computation.
 %However the retrieval of all subgraph isomorphisms is complicated and expensive because the subgraph isomorphism problem is NP-complete.
 
@@ -27,3 +28,14 @@ We also show a substantial improvement even when compared to state-of-the-art su
 %Our method is particularly suited to larger query graphs or very larger graph databases.
 
 %Graphs have become increasingly ubiquitous and very important structures for representing and understanding complex structures. In many cases the decomposition of Graphs and their representation has become central problem affecting the tractability of graph search algorithms. Traditional graph search 
+
+1. Scalable Enumeration
+
+We study the problem of scalably enumerating all subgraph isomorphisms of a query graph that exist in a graph database.
+
+2. DAG data structure
+First, we construct a database by construct storing the data in nodes of a Directed Acyclic Graph (DAG)
+
+3. Depth first Search
+
+4. Results

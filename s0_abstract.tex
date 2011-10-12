@@ -34,8 +34,16 @@ We also show a substantial improvement even when compared to state-of-the-art su
 We study the problem of scalably enumerating all subgraph isomorphisms of a query graph that exist in a graph database.
 
 2. DAG data structure
-First, we construct a database by construct storing the data in nodes of a Directed Acyclic Graph (DAG)
+First, we construct a database by decomposing database graphs and storing the subgraphs in nodes of a Directed Acyclic Graph (DAG)
 
-3. Depth first Search
+3. Search process
+
+we develop a set of heuristics to match a database graph to a subgraph of the query
+1. If all the nodes in the database graph do not exist in the query then that database graph is not a subgraph of the query graph.
+2. If a subgraph of the database graph does not exist in the query graph, the database graph is not a subgraph of the query graph.
+3. 
+To process a query graph we search the root of each database graph  
+search begins at root 
+If 
 
 4. Results

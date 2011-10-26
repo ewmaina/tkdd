@@ -213,7 +213,7 @@ mark size=2pt,
   \matrix[row sep={1mm}] {    
     \begin{axis}[
         use units,
-        y unit= seconds, 
+        %%y unit= seconds, 
 %        y unit prefix=s,
 %          scaled y ticks=manual:{$1$}{%
 %          \pgfmathfloatcreate{1}{1.0}{6}%
@@ -222,7 +222,7 @@ mark size=2pt,
 %        yticklabel style={
 %          /pgf/number format/fixed,
 %          /pgf/number format/precision=1},
-         ylabel={\texttt{Processing Time}},
+         ylabel={\texttt{Processing Time (s)}},
          ylabel style={font=\footnotesize},
          xlabel style={font=\footnotesize},
          xticklabel pos=upper,
@@ -274,7 +274,7 @@ mark size=2pt,
 %\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
      \begin{axis}[
         use units,
-        y unit= seconds,
+      %  y unit= sec.,
          yticklabel pos=left,
           ylabel style={font=\normalsize},
           ylabel={\texttt{Processing Time}},

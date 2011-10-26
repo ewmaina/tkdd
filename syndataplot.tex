@@ -248,7 +248,9 @@ mark size=2pt,
      \end{axis}
     &[0.5mm] 
 %\pgfplotsset{ytick scale label code/.code={$\cdot 10^{#1}$}
-      \begin{semilogyaxis}[yticklabel pos=right,
+      \begin{semilogyaxis}[
+          title = {\texttt{Linear Plot}},
+          yticklabel pos=right,
           xticklabel pos=upper,
           xmin=-20,
           xmax=840, 

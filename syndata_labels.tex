@@ -142,20 +142,20 @@ mark options={scale=1,fill=gray,draw=black},
 %%  \pgfplotsset{small}
   \matrix[row sep={1mm}] {    
     \begin{axis}[
-         ylabel={Processing Time(s)},
+         ylabel={\texttt{Processing Time (s)}},
          xticklabel pos=upper,
          scaled ticks=false,
           xmin=4,
           xmax=10,
           ymin=0,
           ymax=0.3,
-         mark size=1pt,
+         mark size=1.4pt,
 %%         mark repeat=5,
           enlargelimits=true,
          legend columns=4,
 %        legend entries={Fast Network Method  ,$VF2$  ,Network Method},
          mark options={scale=1,fill=gray,draw=black},
-         legend entries={26\%,50\%,75\%,100\%},
+         legend entries={\texttt{26\%},\texttt{50\%},\texttt{75\%},\texttt{100\%}},
          legend to name={named},
 %%         point format={(%.1f,%.1f)},
 ]

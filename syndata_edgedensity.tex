@@ -104,6 +104,7 @@ mark options={scale=1,fill=gray,draw=black},
 %%  \pgfplotsset{small}
   \matrix[row sep={1mm}] {    
     \begin{axis}[
+         title=\texttt{Linear Plot},
          ylabel={\texttt{Processing Time (s)}},
          xticklabel pos=upper,
          scaled ticks=false,
@@ -128,7 +129,9 @@ mark options={scale=1,fill=gray,draw=black},
 
     &[0.5mm] 
 
-      \begin{semilogyaxis}[yticklabel pos=right,
+      \begin{semilogyaxis}[
+          title=\texttt{Linear-log Plot},
+          yticklabel pos=right,
           xticklabel pos=upper,
           xmin=10,
           xmax=100, 

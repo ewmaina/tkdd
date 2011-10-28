@@ -116,6 +116,9 @@ mark options={scale=1,fill=gray,draw=black},
           xlabel={\texttt{Database Graph Density}},
           mark size=1.4pt,
           enlargelimits=false,
+         legend columns=-1,
+         legend entries={\texttt{Fast Network Method}},
+         legend to name={named},
 ]
        \addplot[mark=o] table[x=Density,y=DBStruct] \indsynDBStructVsDensity ;
 %%       \addplot[mark=square] table[x=DBGraphCount,y=VF2]  \inducedsynDBdataQTwoHundred;

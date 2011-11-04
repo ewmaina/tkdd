@@ -233,7 +233,7 @@ mark size=2pt,
 %%         ylabel={$Processing$ $Time$, ($s$)}
 ]
 %\pgfplotsset{ytick scale label code/.code={$\times 10^{#1}$}
-       \node  at (axis cs:340,4.8) {\texttt{Induced Isomorphism}};
+       \node  at (axis cs:340,4.8) {\texttt{(a)}};
        \addplot[mark=o,mark repeat=5] table[x=Q,y=NNA] \inducedsyndata;
         \addplot[mark=square,mark repeat=5] table[x=Q,y=VF2]  \inducedsyndata;
       \addplot[mark=asterisk] table[x=Q,y=Messmer]  \inducedmesssyndata;
@@ -250,7 +250,7 @@ mark size=2pt,
          mark size=2pt,
          mark repeat=5,
 %          xticklabels={,,},
-]        \node  at (axis cs:340,500) {\texttt{Induced Isomorphism}};
+]        \node  at (axis cs:340,500) {\texttt{(b)}};
         \addplot[mark=o] table[x=Q,y=NNA]  \inducedsyndata;
         \addplot[mark=square] table[x=Q,y=VF2]  \inducedsyndata;
      \addplot[mark=asterisk] table[x=Q,y=Messmer] \inducedmesssyndata;
@@ -272,7 +272,7 @@ mark size=2pt,
           ymin=-0.2,
           enlargelimits=false,
        ]
-       \node  at (axis cs:235,4.8) {\texttt{Isomorphism}};
+       \node  at (axis cs:235,4.8) {\texttt{(c)}};
         \addplot[mark=o] table[x=Query,y=NNA] \ninducedsyndata;
         \addplot[mark=square] table[x=Query,y=VF2]  \ninducedsyndata;  
       \end{axis}
@@ -285,7 +285,7 @@ mark size=2pt,
           xmax=840,
           ymax=1600,
         ]
-       \node  at (axis cs:235,500) {\texttt{Isomorphism}};
+       \node  at (axis cs:235,500) {\texttt{(d)}};
           \addplot[mark=o] table[x=Query,y=NNA] \ninducedsyndata;
           \addplot[mark=square] table[x=Query,y=VF2]  \ninducedsyndata;
       \end{semilogyaxis}

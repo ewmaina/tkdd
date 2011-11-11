@@ -28,12 +28,16 @@ directly at developing practical procedures. Most of the algorithms are based on
 field was Corniel and Gotlieb \cite{corneil1970}. A major improvement of the bactracking method was then presented by Ullmann, who introduced  a refinement 
 method which reduces the search space of the backtracking procedure remarkably \cite{ullmann1976}.
 
-The methods for subgraph isomorphism  detection mentioned so far work only with two graphs at a time. However in many applications there is more than 
+The methods for finding subgraph isomorphism mentioned so far work only with two graphs at a time. However in many applications there is more than 
 one model that must be matched with the input graph. Consequently it is necessary to apply the subgraph isomorphism algorithm to each input pair 
 resulting in a computation time that is linearly dependent on the size of the database. This dependency becomes prohibitive when the number of graphs 
 in the database is large.  
 
-We can classify a third, more recent and interesting  Approach. This is represented by the network based approach to graph detection proposed by Messmer and  Bunke
+A newer method for searching for all subgraphs is to first construct a database of the graphs to search for and the process the query over the database. In this
+an efficient method to determing all possible matches over a large database is useful. Such a method is the Rete Matching Algorithm proposed by Forgy et. al. 
+ in the filed of production rules. These algorithm is efficient because it avoids iterating over the dataset by  
+
+We can classify a third, more recent and interesting  Approach. This is represented by the network based approach to graph detection proposed by Messmer and Bunke
 \cite{messmer_bunke2000} . In the new approach the tree is replaced by a network whose nodes contain subgraphs of the model graphs and traversing the 
 network is equivalent to constructing a graph from the subgraphs. In this method, a powerful tool for obtaining efficient solutions to graph isomorphism 
 detection, enumeration  and  problems is divide and conquer, which is expressed in the form of random graph decomposition. Decomposition techniques are 

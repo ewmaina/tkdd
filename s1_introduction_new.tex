@@ -33,14 +33,13 @@ one model graph in a graph database that must be matched with the input graph. C
 resulting in a computation time that is linearly dependent on the size of the database. This dependency becomes prohibitive when the number of graphs 
 in the database is large.  
 
-A newer method for searching for all subgraphs is to first construct a database of the graphs to search for and the process the query over the database. In this
+A newer method for searching for all subgraphs is to first construct a database of the model graphs to search for and the process the query over the database. In this
 an efficient method to determing all possible matches over a large database is useful. Such a method is the Rete Matching Algorithm proposed by Forgy et. al. 
  in the filed of production rules. These algorithm is efficient because it compiles all the patterns into a tree structure. avoids iterating over the dataset by  
 
 A newer approach to improving search over multiple graphs is construct an efficient representation of database graphs. One such representation  
 
-We can classify a third, more recent and Approach aims to reduce the cost of matching a query graph against a very large library of model graphs.
-One example of this approach,  was proposed by Messmer and Bunke \cite{messmer_bunke2000}. Their work is based on the RETE match algorithm for initially conceived production matching in expert systems.
+We can classify a third, more recent and approach aims to reduce the cost of matching a query graph against a very large library of model graphs by representing the common subgraphs efficiently. One example of this approach was proposed by Messmer and Bunke \cite{messmer_bunke2000}. Their work is based on the RETE match algorithm initially applied to production matching in expert systems.
 
 \cite{messmer_bunke2000} . In the new approach the tree is replaced by a network whose nodes contain subgraphs of the model graphs and traversing the 
 network is equivalent to constructing a graph from the subgraphs. In this method, a powerful tool for obtaining efficient solutions to graph isomorphism 

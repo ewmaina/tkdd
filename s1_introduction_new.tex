@@ -29,8 +29,7 @@ field was Corniel and Gotlieb \cite{corneil1970}. A major improvement of the bac
 method which reduces the search space of the backtracking procedure remarkably \cite{ullmann1976}.
 
 The methods for finding subgraph isomorphism mentioned so far work only with two graphs at a time. However in many applications there is more than 
-one model graph in a graph database that must be matched with one or more input graphs. Consequently it is necessary to compute subgraph isomorphism algorithm to each input pair resulting in a computation time that is linearly dependent on the size of the database. This dependency becomes prohibitive when the number of graphs 
-in the database is large.  
+one model graph in a graph database that must be matched with one or more input graphs. Consequently it is necessary to compute subgraph isomorphism algorithm for each input graph-database graph pair resulting in a computation time that increases linearly with the size of the database. This dependency becomes prohibitive when the number of graphs in the database is large.  
 
 A newer method for searching for all subgraphs is to first construct a database of the model graphs to search for and the process the query over the database. In this
 an efficient method to determing all possible matches over a large database is useful. Such a method is the Rete Matching Algorithm proposed by Forgy et. al. 

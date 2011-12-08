@@ -31,7 +31,7 @@ method which reduces the search space of the backtracking procedure remarkably \
 The methods for finding subgraph isomorphism mentioned so far work only with two graphs at a time. However in many applications there is more than 
 one model graph in a graph database that must be matched with one or more input graphs. Consequently it is necessary to compute subgraph isomorphism algorithm for each input graph-database graph pair resulting in a computation time that increases linearly with the size of the database. This dependency becomes prohibitive when the number of graphs in the database is large.  
 
-One of the few methods in literature for searching for all isomorphic subgraphs from a collection of graphs is based on the RETE matching algorithm. This algorithm was originally developed as a solution to the many pattern many target object matching problem in forward chaining rule based systems. It is well researched in the field of Expert Systems. The application of RETE in graph theory was first proposed by Bunke \cite{bunke_glauser_tran1991}. Subsequently a more efficient variation was proposed by Messmer\cite{messmer_bunke2000}. The main feature of the RETE algorithm are: 
+One of the few methods in literature for searching for all isomorphic subgraphs from a collection of graphs is based on the RETE matching algorithm. This algorithm was originally developed as a solution to the many pattern many target object matching problem in forward chaining rule based systems. It is well researched in the field of Expert Systems. The application of RETE in graph theory was first proposed by Bunke \cite{bunke_glauser_tran1991}. Subsequently a more efficient variation was proposed by Messmer\cite{messmer_bunke2000}. The main features of the RETE inspired algorithm are: 
 
 \begin{enumerate}
 \item Objects to be matched are collective represented by a directed acyclic graph (DAG) network
@@ -39,7 +39,8 @@ One of the few methods in literature for searching for all isomorphic subgraphs 
 \item Search is performed by following only the successful paths in the DAG 
 \end{enumerate}
  
-The details of the implementation differ somewhat.
+\cite{bunke_glauser_tran1991} developed the their RETE inspired graph matching algorithm to match dynamically changing graphs to a large number of prototypes graphs.
+So the DAG network constructed to represent the edges in the 
 
 \cite{messmer_bunke2000} . In the new approach the tree is replaced by a network whose nodes contain subgraphs of the model graphs and traversing the 
 network is equivalent to constructing a graph from the subgraphs. In this method, a powerful tool for obtaining efficient solutions to graph isomorphism 

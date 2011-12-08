@@ -40,11 +40,10 @@ One such method for retrieving  isomorphic subgraphs from a collection of graphs
  
 \cite{bunke_glauser_tran1991} developed the their RETE inspired graph matching algorithm to allow matching of dynamically changing scene graphs. To do so the graphs are decomposed by deleting edges to a (possibly very) large number of prototype graphs. These graphs are stored in the DAG during offline preprocessed. For the actual search, a scene graph is input and the DAG outputs all the prototype graphs actually present in the scene by dynamically  adding the new edges and deleting old edges not present in the scene.
 
+In contrast, \cite{messmer_bunke2000} builds the DAG is build offline by random decomposition of the database graphs, and storing of the subgraphs in the nodes of the DAG.   As a result the structure of the DAG network is not unique and varies randomly. However even for very large graphs the DAG forms a more balanced tree and so is efficient.  
+During the search the DAG is not altered in any way. The DAG outputs all the subgraphs in the input graph that are also in the graph database. 
 
-
-
-In \cite{messmer_bunke2000} the DAG is build offline by random decomposition of the database graphs. As a result the structure of the DAG network is not unique and varies randomly.However for very large graphs the DAG forms a balanced tree and so is efficient.  
- . In the new approach the tree is replaced by a network whose nodes contain subgraphs of the model graphs and traversing the 
+In the new approach the tree is replaced by a network whose nodes contain subgraphs of the model graphs and traversing the 
 network is equivalent to constructing a graph from the subgraphs. In this method, a powerful tool for obtaining efficient solutions to graph isomorphism 
 detection, enumeration  and  problems is divide and conquer, which is expressed in the form of random graph decomposition. Decomposition techniques are 
 an instantiation of the divide and conquer paradigm to overcome redundant work for independent partial problems. The main features of the Network based 

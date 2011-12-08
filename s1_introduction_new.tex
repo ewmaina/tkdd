@@ -30,14 +30,13 @@ method which reduces the search space of the backtracking procedure remarkably \
 
 The methods for finding subgraph isomorphism mentioned so far work only with two graphs at a time. However in many applications there is a large number of model graphs in a graph database that must be matched with one or more input graphs. Consequently it is necessary to compute subgraph isomorphism algorithm for each input graph-database graph pair resulting in a computation time that increases linearly with the size of the database. This dependency becomes prohibitive when the number of graphs in the database is large.  
 
-%In the new approach the tree is replaced by a network whose nodes contain subgraphs of the model graphs and traversing the 
+%In a new approach the tree is replaced by a network whose nodes contain subgraphs of the model graphs and traversing the 
 %network is equivalent to constructing a graph from the subgraphs. In this method, a powerful tool for obtaining efficient solutions to graph isomorphism 
 %detection, enumeration  and  problems is divide and conquer, which is expressed in the form of random graph decomposition. Decomposition techniques are 
 %an instantiation of the divide and conquer paradigm to overcome redundant work for independent partial problems. The main features of the Network based 
 %approach are as follows:
 
-
-One such method for retrieving  isomorphic subgraphs from a collection of graphs is based on the RETE matching algorithm. This algorithm was originally developed as a solution to the many pattern many target object matching problem in forward chaining rule based systems. It is well researched in the field of Expert Systems. The application of RETE in graph theory was first proposed by Bunke \cite{bunke_glauser_tran1991}. Subsequently a more efficient variation was proposed by Messmer\cite{messmer_bunke2000}. The main features of these RETE inspired algorithms are: 
+One such method for retrieving  isomorphic subgraphs from a large collection of graphs is based on the RETE matching algorithm. This algorithm was originally developed as a solution to the many pattern many target object matching problem in forward chaining rule based systems. It is well researched in the field of Expert Systems. The application of RETE in graph theory was first proposed by Bunke \cite{bunke_glauser_tran1991}. Subsequently a more efficient variation was proposed by Messmer\cite{messmer_bunke2000}. The main features of these RETE inspired algorithms are: 
 
 \begin{enumerate}
 \item Objects to be matched are collective represented by a directed acyclic graph (DAG) network

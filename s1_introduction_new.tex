@@ -38,11 +38,12 @@ One such method for retrieving  isomorphic subgraphs from a collection of graphs
 \item Search is performed by following only the successful paths in the DAG 
 \end{enumerate}
  
-\cite{bunke_glauser_tran1991} developed the their RETE inspired graph matching algorithm to allow match of dynamically changing scene graphs. To do so the graphs are decomposed by deleting edges to a (possibly very) large number of prototype graphs which are stored in the DAG. The links  DAG network are constructed to represent addition of edges in the dynamic graph.
+\cite{bunke_glauser_tran1991} developed the their RETE inspired graph matching algorithm to allow matching of dynamically changing scene graphs. To do so the graphs are decomposed by deleting edges to a (possibly very) large number of prototype graphs. These graphs are stored in the DAG during offline preprocessed. For the actual search, a scene graph is input and the DAG outputs all the prototype graphs actually present in the scene after adding the new edges and deleting old edges not present in the scene at the time.
+is the DAG recognizes stored prototype graphs in the input and  links  DAG network are constructed to represent addition of edges in the dynamic graph.
 
 
 
-In \cite{messmer_bunke2000} the DAG is build offline by random decomposition of the database graphs. As a result the structure of the DAG network is not unique and varies randomly.  
+In \cite{messmer_bunke2000} the DAG is build offline by random decomposition of the database graphs. As a result the structure of the DAG network is not unique and varies randomly.However for very large graphs the DAG forms a balanced tree and so is efficient.  
  . In the new approach the tree is replaced by a network whose nodes contain subgraphs of the model graphs and traversing the 
 network is equivalent to constructing a graph from the subgraphs. In this method, a powerful tool for obtaining efficient solutions to graph isomorphism 
 detection, enumeration  and  problems is divide and conquer, which is expressed in the form of random graph decomposition. Decomposition techniques are 

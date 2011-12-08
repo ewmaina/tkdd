@@ -38,8 +38,8 @@ One such method for retrieving  isomorphic subgraphs from a collection of graphs
 \item Search is performed by following only the successful paths in the DAG 
 \end{enumerate}
  
-\cite{bunke_glauser_tran1991} developed the their RETE inspired graph matching algorithm to allow matching of dynamically changing scene graphs. To do so the graphs are decomposed by deleting edges to a (possibly very) large number of prototype graphs. These graphs are stored in the DAG during offline preprocessed. For the actual search, a scene graph is input and the DAG outputs all the prototype graphs actually present in the scene after adding the new edges and deleting old edges not present in the scene at the time.
-is the DAG recognizes stored prototype graphs in the input and  links  DAG network are constructed to represent addition of edges in the dynamic graph.
+\cite{bunke_glauser_tran1991} developed the their RETE inspired graph matching algorithm to allow matching of dynamically changing scene graphs. To do so the graphs are decomposed by deleting edges to a (possibly very) large number of prototype graphs. These graphs are stored in the DAG during offline preprocessed. For the actual search, a scene graph is input and the DAG outputs all the prototype graphs actually present in the scene by dynamically  adding the new edges and deleting old edges not present in the scene.
+
 
 
 

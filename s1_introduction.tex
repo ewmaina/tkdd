@@ -23,36 +23,47 @@ isomorphism detection of graphs with bounded valence. These methods, though theo
 are therefore impractical. They also apply only to graph isomorphism detection, but not the detection and enumeration of subgraph isomorphism which is 
 required for a wide range of applications.
 
-The second approach to graph and subgraph isomorphism is the use of heuristics for graph matching. This approach is  more practically oriented and aims 
+The second approach to graph and subgraph isomorphism is the use of heuristics for graph matching. This approach is more practically oriented and aims 
 directly at developing practical procedures. Most of the algorithms are based on search tree with backtracking. One of the first publications in this 
 field was Corniel and Gotlieb \cite{corneil1970}. A major improvement of the bactracking method was then presented by Ullmann, who introduced  a refinement 
 method which reduces the search space of the backtracking procedure remarkably \cite{ullmann1976}.
 
-The methods for finding subgraph isomorphism mentioned so far work only with two graphs at a time. However in many applications there is more than 
-one model that must be matched with the input graph. Consequently it is necessary to apply the subgraph isomorphism algorithm to each input pair 
-resulting in a computation time that is linearly dependent on the size of the database. This dependency becomes prohibitive when the number of graphs 
-in the database is large.  
+The methods for finding subgraph isomorphism mentioned so far work only with two graphs at a time. However in many applications there is a large number of model graphs in a graph database that must be matched with one or more input graphs. Consequently it is necessary to compute subgraph isomorphism algorithm for each input graph-database graph pair resulting in a computation time that increases linearly with the size of the database. This dependency becomes prohibitive when the number of graphs in the database is large.  
 
-A newer method for searching for all subgraphs is to first construct a database of the graphs to search for and the process the query over the database. In this
-an efficient method to determing all possible matches over a large database is useful. Such a method is the Rete Matching Algorithm proposed by Forgy et. al. 
- in the filed of production rules. These algorithm is efficient because it compiles all the patterns into a tree structure. avoids iterating over the dataset by  
+%In a new approach the tree is replaced by a network whose nodes contain subgraphs of the model graphs and traversing the 
+%network is equivalent to constructing a graph from the subgraphs. In this method, a powerful tool for obtaining efficient solutions to graph isomorphism 
+%detection, enumeration  and  problems is divide and conquer, which is expressed in the form of random graph decomposition. Decomposition techniques are 
+%an instantiation of the divide and conquer paradigm to overcome redundant work for independent partial problems. The main features of the Network based 
+%approach are as follows:
 
-We can classify a third, more recent and Approach. This is represented by the network based approach to graph detection proposed by Messmer and Bunke
-\cite{messmer_bunke2000} . In the new approach the tree is replaced by a network whose nodes contain subgraphs of the model graphs and traversing the 
-network is equivalent to constructing a graph from the subgraphs. In this method, a powerful tool for obtaining efficient solutions to graph isomorphism 
-detection, enumeration  and  problems is divide and conquer, which is expressed in the form of random graph decomposition. Decomposition techniques are 
-an instantiation of the divide and conquer paradigm to overcome redundant work for independent partial problems. The main features of the Network based 
-approach are as follows:
+One such method for retrieving  isomorphic subgraphs from a large collection of graphs is based on the RETE matching algorithm. This algorithm was originally developed as a solution to the many pattern many target object matching problem in forward chaining rule based systems. It is well researched in the field of Expert Systems. The application of RETE in graph theory was first proposed by Bunke \cite{bunke_glauser_tran1991}. Subsequently a more efficient variation was proposed by Messmer\cite{messmer_bunke2000}. The main features of these the Bunke RETE inspired algorithm are: 
 
 \begin{enumerate}
-\item Offline decomposition of the model graphs into smaller graphs using  random decomposition
-\item Decomposed subgraphs of model graph are saved in a network structure as the database. The process is repeated for all the model graphs in the database.
-\item Subgraphs that appear in the same or multiple model graphs multiple times are represented in the network structure only once.
+\item Decomposition of scene graphs by deleting graph edges
+\item Offline compilation of Network prototype graphs
+\item Objects to be matched are collective represented by a directed acyclic graph (DAG) network (referred to as a Network of prototype Graphs)
+\item In the DAG network  all objects are represented only once. Multiple copies are represented by additional links.
+\item Given a scene the Network of prototype graphs is edited to add any new prototype graphs present and previous prototypes that are no longer in the scene.
+\end{enumerate}
+ 
+Bunke\cite{bunke_glauser_tran1991} developed the their RETE inspired graph matching algorithm to allow matching of dynamically changing scene graphs. To do so the graphs are decomposed by deleting edges to a (possibly very) large number of prototype graphs. These graphs are stored in the DAG during offline preprocessed. For the actual search, a scene graph is input and the DAG outputs all the prototype graphs actually present in the scene by dynamically  adding the new edges and deleting old edges not present in the scene.
+
+In contrast, in\cite{messmer_bunke2000} the DAG is build offline by  random decomposition of the database (model) graphs, and storing of the subgraphs in the nodes of the DAG. As a result the structure of the DAG network, hence the decomposed subgraphs, is not unique and varies randomly. However especially for very larger database graphs, the DAG is more likely to form a balanced tree resulting in better search efficiency. In contrast to \cite{bunke_glauser_tran1991}, during the search the DAG is not altered in any way. The DAG outputs all instances of all the subgraphs in the input graph isomorphic to graphs in the graph database.  
+
+The main features of \cite{bunke_glauser_tran1991} are:
+
+\begin{enumerate}
+\item Offline decomposition of the model graphs into smaller graphs using random decomposition
+\item Offline compilation of directed acyclic graph.
+\item Subgraphs that appear in the same or multiple model graphs multiple times are represented in the network structure only once and linked to multiple times..
 \item During graph matching the subgraphs are matched only once to the input graphs, the algorithm is only sublinearly dependent on the number of model graphs.
+\item Search is performed by decomposing the query graph, searching for the individual graphs while recombining the subgraphs till a database graph is constucted  or the search fails.
 \end{enumerate}
 
-For the above algorithms, given a database $D$ comprising of a set of graphs $g=g_1 ,g_2 ,\ldots g_n$ and query $Q$ consisting of a set of graphs 
-$q=q_1 ,q_2 ,\ldots q_n$, there are, in general, two kinds of graph search problems that we can define. By far the traditional and the most popular 
+
+In fact the algorithm of Messmer et al retains all the advantages of Bunke et al with the additional advantage of dealing with arbitrary query graphs.
+For the above algorithms, given a database $D$ comprising of a set of graphs $g=g_{1} ,g_{2} ,\ldots g_{n}$ and query $Q$ consisting of a set of graphs 
+$q=q_{1} ,q_{2} ,\ldots q_{n}$, there are, in general, two kinds of graph search problems that we can define. By far the traditional and the most popular 
 one is the subgraph query. Given a graph database $D$ and a subgraph query $Q$ with  a query graph $q$, the answer to $Q$ is the set of $\{g \| g\in D$ 
 and $q$ is a subgraph of $g\} $. The second search problem is a graph containment search where Given a graph database $D$ and a subgraph query $Q$ with  
 a query graph $q$, the answer to $Q$ is the set of $\{g\ | g\in D$ and $q$ is a supergraph of $g\}$. Graph containment search with exclusion logic has 

@@ -43,7 +43,7 @@ One such method for retrieving  isomorphic subgraphs from a large collection of 
 \item Offline compilation of Network prototype graphs
 \item Objects to be matched are collective represented by a directed acyclic graph (DAG) network (referred to as a Network of prototype Graphs)
 \item In the DAG network  all objects are represented only once. Multiple copies are represented by additional links.
-\item Given a scene the Network of protoype graphs is edited to add any new prototype graphs present and previous prototypes that are no longer in the scene.
+\item Given a scene the Network of prototype graphs is edited to add any new prototype graphs present and previous prototypes that are no longer in the scene.
 \end{enumerate}
  
 \cite{bunke_glauser_tran1991} developed the their RETE inspired graph matching algorithm to allow matching of dynamically changing scene graphs. To do so the graphs are decomposed by deleting edges to a (possibly very) large number of prototype graphs. These graphs are stored in the DAG during offline preprocessed. For the actual search, a scene graph is input and the DAG outputs all the prototype graphs actually present in the scene by dynamically  adding the new edges and deleting old edges not present in the scene.

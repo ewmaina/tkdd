@@ -43,7 +43,7 @@ One such method for retrieving  isomorphic subgraphs from a large collection of 
 \item Offline compilatiojn of Network prototype graphs
 \item Objects to be matched are collective represented by a directed acyclic graph (DAG) network (referred to as a Network of prototype Graphs)
 \item In the DAG network  all objects are represented only once. Multiple copies are represented by additional links.
-\item Search is performed by following only the successful paths in the DAG 
+\item Given a scene the Network of protoype graphs is edited to add any new prototype graphs present and previous prototypes that are no longer in the scene.
 \end{enumerate}
  
 \cite{bunke_glauser_tran1991} developed the their RETE inspired graph matching algorithm to allow matching of dynamically changing scene graphs. To do so the graphs are decomposed by deleting edges to a (possibly very) large number of prototype graphs. These graphs are stored in the DAG during offline preprocessed. For the actual search, a scene graph is input and the DAG outputs all the prototype graphs actually present in the scene by dynamically  adding the new edges and deleting old edges not present in the scene.
@@ -54,9 +54,10 @@ The main features of \cite{bunke_glauser_tran1991} are:
 
 \begin{enumerate}
 \item Offline decomposition of the model graphs into smaller graphs using random decomposition
-\item Decomposed subgraphs of model graph are saved in a network structure as the database. The process is repeated for all the model graphs in the database.
+\item Offline compilation of directed acyclic graph.
 \item Subgraphs that appear in the same or multiple model graphs multiple times are represented in the network structure only once and linked to multiple times..
 \item During graph matching the subgraphs are matched only once to the input graphs, the algorithm is only sublinearly dependent on the number of model graphs.
+\item Search is performed by decomposing the query graph, searching for the individual graphs while recombining the subgraphs till a database graph is constucted  or the search fails.
 \end{enumerate}
 
 

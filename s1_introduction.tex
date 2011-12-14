@@ -41,7 +41,7 @@ One such method for retrieving  isomorphic subgraphs from a large collection of 
 \begin{enumerate}
 \item Offline decomposition of scene graphs by deleting graph edges
 \item Offline compilation of Network prototype graphs
-\item Objects to be matched are represented only once by a directed acyclic graph (DAG) network (referred to as a Network of prototype Graphs). Multiple instances are reperesented using links
+\item Objects to be matched are represented only once by a directed acyclic graph (DAG) network (referred to as a Network of prototype Graphs). Multiple instances are represented using links
 \item In the DAG network  all objects are searched at most  once, the search algorithm is sublinearly dependent on the number of network prototype graphs.
 \item Given a scene the Network of prototype graphs is edited to add any new prototype graphs present and previous prototypes that are no longer in the scene.
 \end{enumerate}
@@ -82,8 +82,8 @@ In this paper, we investigate an efficient method to search subgraphs of query g
 Our main contributions are as follows.
 
 \begin{enumerate}
-\item The \textit{Network Method} originally only supports induced subgraph isomorphism query. We extend it  cover \textit{subgraph isomorphism} queries.
-\item  In the \textit{Network Method}, much of graph decomposition is performed on graphs at random potentially creating many graph fragments. We add a new recombining 
+\item The previous work using RETE based graph search originally only supports induced subgraph isomorphism query. We porpose an algorithm for \textit{subgraph isomorphism} queries.
+\item  In the \textit{Messmer's Algorithm}, much of graph decomposition is performed on graphs at random potentially creating many graph fragments. We add a new recombining 
 process after each decomposition which is active when more than a pair of  subgraphs result from the decomposition.  Recombining results in exactly  two larger 
 graphs for each decomposition step, where possible.  As a consequence, we are able to drastically reduce the potential rapid increase in matchings. 
 \item We formulate and implement  a  \textit{Fast Network Method} on the offline preparation of the database. The new algorithm performs recombination 

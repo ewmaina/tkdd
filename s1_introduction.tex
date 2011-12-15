@@ -41,7 +41,7 @@ One such method for retrieving isomorphic subgraphs from a large collection of g
 \begin{enumerate}
 \item Offline decomposition of scene graphs by deleting graph edges
 \item Offline compilation of Network prototype graphs
-\item Decomposition of new scene graphs by deleting graph edges
+\item online decomposition of new scene graphs by deleting graph edges
 \item Objects to be matched are represented only once by a directed acyclic graph (DAG) network (referred to as a Network of prototype Graphs). Multiple instances are represented using links
 \item In the DAG network all objects are searched at most once, the search algorithm is sublinearly dependent on the number of network prototype graphs.
 \item Given a scene the Network of prototype graphs is edited to add any new prototype graphs present and previous prototypes that are no longer in the scene.
@@ -56,7 +56,7 @@ The main features of \cite{bunke_glauser_tran1991} are:
 \begin{enumerate}
 \item Offline successive decomposition of the model graphs into smaller graphs using random decomposition
 \item Offline compilation of directed acyclic graph.
-\item 
+\item online  decomposition of the query graph.
 \item Subgraphs that appear in the same or multiple model graphs multiple times are represented in the network structure only once and linked to multiple times.
 \item Graph matching the subgraphs are matched only once to the input graphs, the search algorithm is only sublinearly dependent on the number of model graphs.
 \item Search is performed by decomposing the query graph, searching for the individual graphs while recombining the subgraphs till a matching database graph is found or the search fails.

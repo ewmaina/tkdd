@@ -7,10 +7,10 @@ data is being accumulated in large databases. An essential problem in managing t
 processing. In this article we address the problem of scalable enumeration of all subgraph isomorphisms existing in a database of graphs.
 
 A subproblem of the subgraph isomorphism enumeration problem is the decision problem of whether a graph contains another graph, which is called the 
-\textit{subgraph isomorphism problem}. A subgraph isomorphism exist between two 
-graphs if there exists one-to-one mapping between the smaller graph and a subgraph of the larger graph such that edge the adjacencies are preserved. 
+\textit{subgraph isomorphism problem}. A subgraph isomorphism exist between two graphs if there exists one-to-one mapping between the smaller graph 
+and a subgraph of the larger graph such that edge the adjacencies are preserved. 
 Testing for subgraph isomorphism for an $n$-node graph in an $m$-node larger graph is a combinatorial matching exercise with $m^n$ possibilities, hence it is 
-expensive. Therefore for a given query, evaluating a database for subgraph  isomorphism by individually testing each graph  in the database is 
+expensive. Therefore for a given query, evaluating a database for subgraph isomorphism by individually testing each graph in the database is 
 inefficient.  In fact, the subgraph isomorphism problem is known to be NP-complete \cite{cook1971_np}. Enumeration of all subgraph isomorphisms clearly requires 
 solving the subgraph isomorphism problem multiple times, one for each instance of isomorphism at the very least. In  many cases, the graph database is also very 
 large which makes it necessary to build a framework to facilitate efficient query processing.
